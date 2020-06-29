@@ -48,13 +48,14 @@ angleList, sinList = randomPoints(10000, angles) # good number of points and ran
 
 # neural network code
 model = models.Sequential()
-model.add(layers.Dense(10, activation='tanh', input_shape=(1,)))
+model.add(layers.Dense(12, activation='tanh', input_shape=(1,)))
 model.add(layers.Dense(1, activation=None))
 model.compile(optimizer='Adam',
                 loss=losses.MeanSquaredError(),
                 metrics=['mean_squared_error'])
 
 history = model.fit(np.array(angleList),np.array(sinList), epochs=200)
+print(model.get_weights())
 
 # plots out learning curve
 # plt.plot(history.history['mean_squared_error'], label='mean_squared_error')
