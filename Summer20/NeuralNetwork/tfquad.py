@@ -7,34 +7,26 @@ import matplotlib.pyplot as plt
 # randomPoints on the sin graph
 # number - number of points
 # bounds - tuple for range of values
-# func - function to be used
-def randomPoints(number, bounds, func):
+# bool - either 1 or 0
+def generatePoints(number, bounds):
     inputList = []
     outputList = []
     while(number>0):
         value = random.uniform(bounds[0],bounds[1])
         inputList.append([value])
-        outputList.append([func(value)])
+        outputList.append([value**2])
         number = number - 1
     return inputList, outputList
-
-def boolfunc(x):
-    return x*0 + 1
-
-def linear(x):
-    return x
-
-def coolLinear(x):
-    return 3*x + 1
 
 # generate training data
 bounds = (-10,10) # represents full system dynamics
 
-inputList, outputList = randomPoints(10000, bounds, boolfunc)
+inputList, outputList = generatePoints(10000, bounds)
 
 # neural network code
 model = models.Sequential()
-model.add(layers.Dense(1, activation='linear', input_shape=(1,)))
+model.add(layers.Dense(16, activation='exponential', input_shape=(1,)))
+model.add(layers.Dense(1, activation=None))
 model.compile(optimizer='Adam',
                 loss=losses.MeanSquaredError(),
                 metrics=['mean_squared_error'])
@@ -51,7 +43,7 @@ print(model.get_weights())
 # plt.show()
 
 # generate test data
-inputTest, outputTest = randomPoints(10, bounds, boolfunc)
+inputTest, outputTest = generatePoints(10, bounds)
 print(model.predict(np.array(inputTest)))
 print(outputTest)
 
@@ -60,9 +52,9 @@ graph = plt.figure()
 ax = graph.add_subplot(111)
 
 x = np.linspace(-10,10,500)
-y = boolfunc(x)
+y = x**2
 
-plt.plot(x,y, label= 'y = 1', markersize = 2, c='c')
+plt.plot(x,y, label= 'y = x^2', markersize = 2, c='c')
 ax.scatter(inputTest, outputTest, label = 'training', c='b')
 ax.scatter(inputTest,model.predict(np.array(inputTest)), label = 'testing', c='r')
 plt.legend(loc='lower right')
