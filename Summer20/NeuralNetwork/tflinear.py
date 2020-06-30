@@ -50,6 +50,8 @@ print(model.get_weights())
 # plt.legend(loc='lower right')
 # plt.show()
 
+bounds = (-15,15) # represents full system dynamics
+
 # generate test data
 inputTest, outputTest = randomPoints(10, bounds, boolfunc)
 print(model.predict(np.array(inputTest)))
@@ -63,7 +65,7 @@ x = np.linspace(-10,10,500)
 y = boolfunc(x)
 
 plt.plot(x,y, label= 'y = 1', markersize = 2, c='c')
-ax.scatter(inputTest, outputTest, label = 'training', c='b')
+ax.scatter(inputList, outputList, label = 'training', c='b')
 ax.scatter(inputTest,model.predict(np.array(inputTest)), label = 'testing', c='r')
 plt.legend(loc='lower right')
 plt.show()

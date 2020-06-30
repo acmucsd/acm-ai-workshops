@@ -42,8 +42,9 @@ print(model.get_weights())
 # plt.legend(loc='lower right')
 # plt.show()
 
+bounds = (-15,15)
 # generate test data
-inputTest, outputTest = generatePoints(10, bounds)
+inputTest, outputTest = generatePoints(20, bounds)
 print(model.predict(np.array(inputTest)))
 print(outputTest)
 
@@ -51,11 +52,11 @@ print(outputTest)
 graph = plt.figure()
 ax = graph.add_subplot(111)
 
-x = np.linspace(-10,10,500)
+x = np.linspace(-15,15,500)
 y = x**2
 
 plt.plot(x,y, label= 'y = x^2', markersize = 2, c='c')
-ax.scatter(inputTest, outputTest, label = 'training', c='b')
+ax.scatter(inputList, outputList, label = 'training', c='b')
 ax.scatter(inputTest,model.predict(np.array(inputTest)), label = 'testing', c='r')
 plt.legend(loc='lower right')
 plt.show()

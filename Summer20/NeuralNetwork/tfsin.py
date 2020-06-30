@@ -37,7 +37,7 @@ def selectPoints(number, angle=90):
 
 
 # generate training data
-angles = (-360,360) # represents full system dynamics
+angles = (-720,720) # represents full system dynamics
 #angles = (0,90) # doesn't represent full system dynamics
 
 angleList, sinList = randomPoints(10000, angles) # good number of points and random points
@@ -48,7 +48,7 @@ angleList, sinList = randomPoints(10000, angles) # good number of points and ran
 
 # neural network code
 model = models.Sequential()
-model.add(layers.Dense(12, activation='tanh', input_shape=(1,)))
+model.add(layers.Dense(16, activation='tanh', input_shape=(1,)))
 model.add(layers.Dense(1, activation=None))
 model.compile(optimizer='Adam',
                 loss=losses.MeanSquaredError(),
@@ -66,7 +66,7 @@ print(model.get_weights())
 # plt.show()
 
 # generate test data
-angleTest, sinTest = randomPoints(10)
+angleTest, sinTest = randomPoints(20, (-1080,1080))
 print(model.predict(np.array(angleTest)))
 print(sinTest)
 
@@ -75,7 +75,7 @@ print(sinTest)
 graph = plt.figure()
 ax = graph.add_subplot(111)
 
-x = np.linspace(-math.pi*2,math.pi*2,300)
+x = np.linspace(-math.pi*6,math.pi*6,300)
 y = np.sin(x)
 
 plt.plot(x,y, label= 'y = sin(x)', markersize = 2, c='c')
