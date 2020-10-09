@@ -10,6 +10,8 @@ def average_nn(x):
         [1/3, 1/3, 1/3] # a weights matrix of size 1 x 3
     )
     bias = 0
+
+    # we perform wx + b, using np.matmul to multiply matrices w and x
     weighted_input = np.matmul(weights, x) + bias
     y = activation(weighted_input)
     return y
