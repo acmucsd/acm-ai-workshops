@@ -1,6 +1,7 @@
 # 1. Introduction to AI and Neural Networks
 
-Welcome to the repo for ACM AI's first workshop on AI and Neural Networks, hosted in fall 2020
+Welcome to the repo for ACM AI's first workshop on AI and Neural Networks, hosted in fall 2020. Slides are here:
+https://docs.google.com/presentation/d/1a9TwuZkqAwEvo1eCFcL-Hub1OiJNxzidvtBaL3OwLWQ/edit?usp=sharing
 
 Here's a quick run down of what was in the workshop!
 
@@ -8,7 +9,7 @@ Here's a quick run down of what was in the workshop!
 2. Stats and history of AI
 3. What is AI all about? Is it just Neural Networks? (answer is no)
 4. Applications
-5. What is a Neural Network? 
+5. What is a Neural Network?
 6. What is a Neuron? Biologically and Computationally?
 7. Weights and Biases of a Network
 8. Activation Functions
@@ -17,6 +18,7 @@ Here's a quick run down of what was in the workshop!
 11. Resources
 
 In this folder there is also code for various work we demoed in the workshop. We use the `numpy` package to do our demos. To download it, do
+
 ```
 pip install numpy
 ```
