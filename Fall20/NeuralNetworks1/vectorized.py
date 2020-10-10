@@ -59,24 +59,34 @@ def random_nn(x):
 
     return a_3
 
-print("On 3 layer network, input {} fed forward gives {}".format(x, random_nn(x)))
+# print("On 3 layer network, input {} fed forward gives {}".format(x, random_nn(x)))
 
 # 4 layer NN for computing whether absolute difference is between 1 and 3
 # if between 1 and 3 outputs >0 else output <=0
 def multilayer(x):
+
+    # layer 2
     w1 = np.array([1,-1])
     b1 = 0
     weighted_input1 = np.matmul(w1,x) + b1
-    output1 = parametric_activation(-1,weighted_input1)
+
+    # output of layer 2
+    output2 = parametric_activation(-1, weighted_input1)
+
+    # layer 3
     w2 = np.array([1])
     b2 = -2
-    weighted_input2 = np.matmul(w2,[output1]) + b2
-    output2 = parametric_activation(-1,weighted_input2)
+    weighted_input2 = np.matmul(w2, [output2]) + b2
+
+    # output of layer 3
+    output3 = parametric_activation(-1, weighted_input2)
+
+    # final layer!
     w3 = np.array([-1])
     b3 = 1
-    weighted_input3 = np.matmul(w3,[output2]) + b3
+    weighted_input3 = np.matmul(w3, [output3]) + b3
     y = tanh_activation(weighted_input3)
     return y
 
 x = np.array([4,5.5])
-print(multilayer(x))
+# print(multilayer(x))
