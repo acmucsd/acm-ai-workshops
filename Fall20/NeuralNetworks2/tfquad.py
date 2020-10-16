@@ -21,18 +21,18 @@ def generatePoints(number, bounds):
 # generate training data
 bounds = (-3,3) # represents full system dynamics
 
-inputList, outputList = generatePoints(10000, bounds)
+inputList, outputList = generatePoints(20000, bounds)
 
 # neural network code
 model = models.Sequential()
-model.add(layers.Dense(3, activation='exponential', input_shape=(1,)))
-model.add(layers.Dense(3, activation='exponential'))
-model.add(layers.Dense(1, activation=None))
+model.add(layers.Dense(3, activation='exponential', input_shape=(1,),kernel_initializer=tf.keras.initializers.Zeros(), bias_initializer=tf.keras.initializers.Zeros()))
+model.add(layers.Dense(3, activation='exponential',kernel_initializer=tf.keras.initializers.Zeros(), bias_initializer=tf.keras.initializers.Zeros()))
+model.add(layers.Dense(1, activation=None,kernel_initializer=tf.keras.initializers.Zeros(), bias_initializer=tf.keras.initializers.Zeros()))
 model.compile(optimizer='Adam',
                 loss=losses.MeanSquaredError(),
                 metrics=['mean_squared_error'])
 
-history = model.fit(np.array(inputList),np.array(outputList), epochs=200)
+history = model.fit(np.array(inputList),np.array(outputList), epochs=2000)
 print(model.get_weights())
 
 # plots out learning curve
