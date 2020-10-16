@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
-# Backprop From Scratch
+# Backprop From Scratch for linear regression
 
 def sigmoid(x):
     return 1.0/(1+np.exp(-x))
@@ -89,7 +89,7 @@ X_train, Y_train = generate_data()
 # supposed to find where loss is minimized
 
 learning_rate = 0.0001
-n_iter = 200000                        # Number of iterations
+n_iter = 20000                        # Number of iterations
 np.random.seed(0)
 W1 = np.random.randn(2,3)/((2*3)**2)   # Weight matrix 1.
 b1 = np.random.randn(3,1)/((3*1)**2)   # Bias vector 1.
@@ -129,4 +129,5 @@ print ('W1 matrix: \n' + str(W1))
 print ('b1 vector: \n' + str(b1))
 print ('W2 matrix: \n' + str(W2))
 print ('b2 vector: \n' + str(b2))
+
 
