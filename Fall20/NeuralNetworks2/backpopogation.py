@@ -130,16 +130,3 @@ print ('b1 vector: \n' + str(b1))
 print ('W2 matrix: \n' + str(W2))
 print ('b2 vector: \n' + str(b2))
 
-# backpropogation In Tensorflow
-
-model = tf.keras.Sequential([
-    tf.keras.layers.Flatten(input_shape=(28, 28)),
-    tf.keras.layers.Dense(128, activation='relu'),
-    tf.keras.layers.Dense(10)
-])
-
-model.compile(optimizer='SGD',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
-
-
