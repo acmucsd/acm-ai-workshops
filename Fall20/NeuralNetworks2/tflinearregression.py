@@ -18,7 +18,6 @@ def generate_data():
 
 X_train, Y_train = generate_data()
 
-# print(X_train, Y_train)
 # See how simple this is using keras :)
 # Try adding more layers, changing activation to e.g. 'tanh' or 'relu' or 'sigmoid' and compare results!
 # You may notice that "linear" works best and thats obvious because our data is fairly linear
@@ -40,7 +39,6 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0005),
 
 # fit the model onto our dataset and run for 1000 epochs
 model.fit(X_train, Y_train, epochs=1000)
-print(X_train[0])
 
 # lets look at 20 data points and see how we do
 for x, y in zip(X_train[0:80:4], Y_train[0:80:4]):
