@@ -4,11 +4,11 @@ import numpy as np
 import tensorflow as tf
 
 # lets generate some data using a function mapping from R^2 -> R^1 (2d coordinates to scalar values)
-def generate_data(size = 1000):
+def generate_data(size = 1000, range=[0.1, 1.1]):
     
     # generates size many ordered data points from 0 to 1 with a bit of noise using random.uniform
     def generate_linear_noisy():
-        return np.linspace(0.1, 1.1, num=size) + np.random.uniform(-0.0005, 0.0005, (size,))
+        return np.linspace(range[0], range[1], num=size) + np.random.uniform(-0.0005, 0.0005, (size,))
     
     X_train = np.array([generate_linear_noisy(), generate_linear_noisy(), generate_linear_noisy()]).T
     
@@ -17,7 +17,7 @@ def generate_data(size = 1000):
     return X_train, Y_train
 
 X_train, Y_train = generate_data(1000)
-X_test, Y_test = generate_data(20)
+X_test, Y_test = generate_data(250)
 
 optimizers = [
     tf.keras.optimizers.SGD(learning_rate=0.0005),
