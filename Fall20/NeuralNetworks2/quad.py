@@ -13,16 +13,17 @@ def quad(x):
     weighted_input1 = np.matmul(w1,x) + b1
     output_input1 = exp(weighted_input1)
 
-    w2 = np.array([[[-0.09753932, -0.09753932, -0.34223053],
-       [-0.09753932, -0.09753932, -0.34223053],
-       [ 0.68423134,  0.68423134, -1.364272  ]]).T
-    b2 = np.array(([0.39727366, 0.39727366, 4.1392593 ])
+    w2 = np.array([
+        [-0.09753932, -0.09753932, -0.34223053],
+        [-0.09753932, -0.09753932, -0.34223053],
+        [ 0.68423134,  0.68423134, -1.364272  ]]).T
+    b2 = np.array(([0.39727366, 0.39727366, 4.1392593 ]))
     weighted_input2 = np.matmul(w2,output_input1) + b2
     output_input2 = exp(weighted_input2)
 
     w3 = np.array([[0.49944505],
        [0.49944505],
-       [3.0982096 ])
+       [3.0982096 ]])
     w3 = w3.reshape(1,3)
     b3 = np.array([-11.837644])
     weighted_input3 = np.matmul(w3,output_input2) + b3
