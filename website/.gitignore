@@ -34,4 +34,5 @@ yarn-error.log*
 .vercel
 
 # persistence to get around not being able to pass data directly from getStaticPaths to getStaticProps
-.serde
+.serde/*
+!.serde/README.md
