@@ -1,0 +1,1 @@
+This directory serves as a "staging area" for Next.js's `getStaticPaths` data such that it can be read in `getStaticProps`. As the data is generated, the contents of this folder are untracked.
