@@ -11,11 +11,10 @@ export const processor = unified()
   .use(remarkRehype)
   .use(rehypeReact, { createElement: React.createElement })
 
-
-export const notebookToMd = (notebook: string) => {
-  const md = unified()
+export const notebookToMd = async (contents: string) => {
+  const md = await unified()
     .use(nbParse)
     .use(remarkStringify)
-    .processSync(notebook);
+    .process(contents);
   return md;
 }
