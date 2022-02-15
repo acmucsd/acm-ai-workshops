@@ -1,0 +1,26 @@
+
+.grid {
+  --gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.card {
+  --border-color: #ebedf0;
+  --shadow-color: hsla(0deg 0% 0% / 20%);
+  --width: calc(50% - var(--gap));
+
+  flex: 0 0 var(--width);
+  height: 8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1rem;
+
+  box-shadow: 0 2px 4px var(--shadow-color);
+  &:hover {
+    box-shadow: 0 4px 8px var(--shadow-color);
+  }
+
+  transition: box-shadow 400ms ease 0s;
+}

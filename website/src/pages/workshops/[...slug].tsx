@@ -1,23 +1,23 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from 'next-mdx-remote/serialize';
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-import React from "react";
-import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree } from "../../lib/getWorkshops";
-import MDXComponents from "../../mdx/components";
-import { ser } from "../../utils/serializeProps";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from 'next-mdx-remote/serialize';
+import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree, slugToHref } from "@/lib/getWorkshops";
+import { ser } from "@/lib/serde";
+import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
+import NotebookPage from "@/layouts/pages/NotebookPage";
 
 interface CommonWorkshopPageProps {
   breadcrumb: string[]
 }
 
-interface NotebookPageProps extends CommonWorkshopPageProps {
+export interface NotebookPageProps extends CommonWorkshopPageProps {
   type: 'notebook';
   title: string;
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
-interface IndexPageProps extends CommonWorkshopPageProps {
+export interface IndexPageProps extends CommonWorkshopPageProps {
   type: 'index';
   items: Array<{
     type: WorkshopsPageType;
@@ -31,39 +31,11 @@ type WorkshopsPageProps = NotebookPageProps | IndexPageProps
 type WorkshopsPageType = WorkshopsPageProps['type']
 
 const Workshop: NextPage<WorkshopsPageProps> = ({ type, ...props }) => {
-  if (type === 'notebook') {
-    const { breadcrumb, source } = props as NotebookPageProps;
-    return (
-      <div style={{
-        minHeight: "100vh",
-        padding: "2rem",
-      }}>
-        <main>
-          <MDXRemote {...source} components={MDXComponents} />
-          {source.compiledSource}
-        </main>
-      </div>
-    );
-  } else {
-    const { breadcrumb, items } = props as IndexPageProps
-
-    return (
-      <div style={{
-        minHeight: "100vh",
-        padding: "2rem",
-      }}>
-        <main>
-          {items.map(({ type, href, title, description }) => (
-            <Link key={href} href={href}>
-              <a>
-                <h3>{title}</h3>
-                <p>{description}</p>
-              </a>
-            </Link>
-          ))}
-        </main>
-      </div>
-    )
+  switch (type) {
+    case 'notebook':
+      return <NotebookPage {...props as NotebookPageProps} />
+    case 'index':
+      return <WorkshopIndexPage {...props as IndexPageProps} />
   }
 };
 
@@ -89,14 +61,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     description: '', // TODO
                   }
                 case 'directory':
+                  const numItems = Object.keys(entry.items).length;
                   return {
                     type: 'index',
                     title: entry.fsPath[entry.fsPath.length - 1],
-                    description: `${Object.keys(entry.items).length} items`,
+                    description: numItems === 1
+                      ? `${numItems} item`
+                      : `${numItems} items`,
                   }
               }
             })();
-            const href = entry.slug.join('/');
+            const href = slugToHref(entry.slug, '/workshops');
 
             return {
               type,

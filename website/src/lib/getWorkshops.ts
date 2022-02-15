@@ -3,7 +3,7 @@ import path from 'path';
 import glob from 'glob';
 import { promisify } from 'util';
 import { notebookToMd } from './unified/processor';
-import { des } from '../utils/serializeProps';
+import { des } from './serde';
 
 const WORKSHOPS_ROOT_DIR = path.join(process.cwd(), '..');
 
@@ -88,7 +88,6 @@ export const getFsTree = async () => {
       }
     }
   }, Promise.resolve());
-  console.log(tree.items.wi21)
 
   return tree;
 }
@@ -153,4 +152,8 @@ export const getEntryFromSlug = (tree: VRoot, slug: string[]) => {
     cur = cur.items[s] as VDir;
   }
   return cur as VEntry;
+}
+
+export const slugToHref = (slug: string[], basepath: string) => {
+  return [basepath, ...slug].join('/');
 }
