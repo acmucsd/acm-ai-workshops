@@ -1,3 +1,4 @@
+import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
 import { Cell, JupyterNotebook } from "../types/notebook";
@@ -31,7 +32,11 @@ export const fromNotebook = (doc: string) => {
         // });
         break
       case 'markdown':
-        const root = unified().use(remarkParse).parse(sourceStr);
+        const root = unified()
+          .use(remarkParse)
+          .use(remarkMath)
+          .parse(sourceStr)
+        ;
         ast.children.push(...root.children);
         break
       case 'raw':

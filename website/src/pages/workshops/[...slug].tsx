@@ -1,7 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Link from "next/link";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from 'next-mdx-remote/serialize';
+import { serialize } from "next-mdx-remote/serialize";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree, slugToHref } from "@/lib/getWorkshops";
 import { ser } from "@/lib/serde";
 import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
@@ -87,7 +88,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } as Omit<IndexPageProps, keyof CommonWorkshopPageProps>;
       
       case 'file':
-        const mdx = await serialize(entry.md);
+        const mdx = await serialize(entry.md, {
+          mdxOptions: {
+            remarkPlugins: [remarkMath],
+            rehypePlugins: [rehypeKatex],
+          },
+        });
         return {
           type: 'notebook',
           title: entry.title,

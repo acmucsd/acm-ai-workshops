@@ -1,8 +1,10 @@
-import Link from 'next/link';
 import React, { isValidElement } from 'react';
+import Link from 'next/link';
+import type { MDXRemoteProps } from 'next-mdx-remote';
+
 import CodeBlock from './CodeBlock';
 
-const MDXComponents: any = {
+const MDXComponents: MDXRemoteProps['components'] = {
   code: (props: any) => {
     const { children } = props;
 
