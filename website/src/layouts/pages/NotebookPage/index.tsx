@@ -10,7 +10,6 @@ const NotebookPage = ({ breadcrumb, source }: NotebookPageProps) => {
     }}>
       <main>
         <MDXRemote {...source} components={MDXComponents} />
-        {source.compiledSource}
       </main>
     </div>
   );
