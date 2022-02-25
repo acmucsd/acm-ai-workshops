@@ -9,18 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
     "clsx": "^1.1.1",
     "copy-text-to-clipboard": "^3.0.1",
     "glob": "^7.2.0",
-    "next": "12.0.10",
-    "next-mdx-remote": "^3.0.6",
+    "next": "12.1.0",
+    "next-mdx-remote": "^4.0.0",
     "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "rehype-react": "^7.0.4",
+    "rehype-katex": "^6.0.2",
+    "remark-math": "^5.1.1",
     "remark-parse": "^10.0.0",
-    "remark-rehype": "^10.1.0",
     "remark-stringify": "^10.0.0",
     "sass": "^1.49.7",
     "unified": "^10.1.0"
