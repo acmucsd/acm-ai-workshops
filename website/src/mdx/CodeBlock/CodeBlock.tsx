@@ -35,7 +35,7 @@ const CodeBlock = (props: any): JSX.Element => {
 
   const content = Array.isArray(children)
     ? children.join('')
-    : (children as string);
+    : (children as string) ?? '';
   const code = content.replace(/\n$/, '');
 
   const language = languageClassName?.replace(/language-/, '');
