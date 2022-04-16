@@ -66,12 +66,12 @@ Have you ever wondered how Siri learns your interests, or how Twitter filters ha
 # 4. Resources
 
 - [Melanie Walsh Text Analysis Tutorial](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/04-Sentiment-Analysis.html#) is a great scaffolding for our first workshop.
-- [NeuromatchAcademy's Text Analysis Tutorial](https://github.com/NeuromatchAcademy/course-content-dl/tree/main/tutorials) provides another skeleton for our workshop.
+- [NeuromatchAcademy's Text Analysis Tutorial](https://github.com/NeuromatchAcademy/course-content-dl/tree/main/tutorials) provides another skeleton for our first workshop.
 - [Arth's Colab Notebooks](https://drive.google.com/drive/folders/1y7R_lD8-OAyMD6oecoShiDl23ke5Nai0) is the 3rd reference for a table of contents for our first workshop.
 
 # 5. Meeting Notes
 
-Meeting notes are weekly on Fridays. All meeting notes are organized in the Meeting-Notes folder.
+Meeting notes kept on 1 rolling document located [here](https://docs.google.com/document/d/1UKkSFjyYP_txn-A7Lig2tjfwcZqNEzux6DfYdCZAM4U/edit#).
 
 # 6. Author Info
 
