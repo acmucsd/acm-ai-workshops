@@ -10,7 +10,6 @@ interface LayoutProps {
 }
 
 const Layout = ({ sidebar, path, children }: LayoutProps): JSX.Element => {
-  console.log({sidebar})
   
   return (
     <div className={styles.wrapper}>

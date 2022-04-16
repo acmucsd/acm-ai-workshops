@@ -12,8 +12,6 @@ export interface SidebarProps {
 
 const Sidebar = (props: SidebarProps): JSX.Element => {
 
-  console.log(props.items)
-
   const windowSize = useWindowSize();  
 
   switch (windowSize) {
