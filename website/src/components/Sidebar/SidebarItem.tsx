@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE-docusaurus file in the root directory of the website source tree.
+ */
+
 import React from "react";
 import Link from "next/link";
 import clsx from "clsx";

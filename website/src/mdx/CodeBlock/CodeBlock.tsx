@@ -2,10 +2,10 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- * 
- * https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme/CodeBlock
+ * LICENSE-docusaurus file in the root directory of the website source tree.
  */
+
+// taken from https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme/CodeBlock
 
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import React, { useRef, useState } from 'react';

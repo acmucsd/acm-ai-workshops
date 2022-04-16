@@ -1,4 +1,11 @@
-// https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-theme-common/src/components/Collapsible/index.tsx
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE-docusaurus file in the root directory of the website source tree.
+ */
+
+// taken from https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-theme-common/src/components/Collapsible/index.tsx
 
 import React, {
   useState,
