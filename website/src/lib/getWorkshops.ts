@@ -43,8 +43,13 @@ const slugify = (str: string) => str
   .replace(/[^0-9a-zA-Z-]/g, '')
 ;
 
+let tree: VRoot | null = null
 export const getFsTree = async () => {
-  const tree: VRoot = { type: 'root', items: {} };
+  if (tree !== null) {
+    return tree;
+  }
+
+  tree = { type: 'root', items: {} };
   const createVDir = (fsPath: string[], slug?: string[]): VDir => ({
     type: 'directory',
     fsPath,
@@ -63,7 +68,7 @@ export const getFsTree = async () => {
     } as VFile
   }
 
-  const notebookPaths = await promisify(glob)('**/*.ipynb', { cwd: WORKSHOPS_ROOT_DIR })
+  const notebookPaths = await promisify(glob)('**/*.ipynb', { cwd: WORKSHOPS_ROOT_DIR, ignore: 'website/*' })
   await notebookPaths.reduce(async (promise, filepath) => {
     const relPath = path.relative(WORKSHOPS_ROOT_DIR, filepath);
     const dirs = relPath.split(path.sep).slice(1); // skip the first index, which is always "."
@@ -90,6 +95,64 @@ export const getFsTree = async () => {
   }, Promise.resolve());
 
   return tree;
+}
+export const setTree = (t: typeof tree) => {
+  tree = t;
+}
+
+export type SidebarDoc = {
+  type: 'doc';
+  href: string;
+  title: string;
+}
+export type SidebarCategory = {
+  type: 'category';
+  href: string;
+  label: string;
+  items: (SidebarDoc | SidebarCategory)[];
+}
+export type SidebarItem = SidebarDoc | SidebarCategory
+export type Sidebar = SidebarItem[]
+
+let sidebar: Sidebar | null = null;
+export const getSidebar = async (baseUrl = '/workshops') => {
+  if (tree === null) {
+    await getFsTree();
+  }
+
+  if (sidebar !== null) {
+    return sidebar;
+  }
+
+  const isVFile = (obj: VEntry): obj is VFile => obj.type === 'file';
+  const buildSidebar = (obj: VEntry): SidebarItem => {
+    // base case - a "leaf" (aka a file). directly extract the slug and title
+    if (isVFile(obj)) {
+      const { slug, title } = obj as VFile;
+      const href = `${baseUrl}/${slug.map(encodeURIComponent).join('/')}`;
+
+      const doc: SidebarDoc = { type: 'doc', href, title };
+      return doc;
+    }
+
+    const { slug, fsPath } = obj as VDir;
+    const href = `${baseUrl}/${slug.map(encodeURIComponent).join('/')}`;
+    // TODO: abstract logic for getting sidebar label of category
+    // in this manner we could e.g. have a `.category.yml` file or something that allows
+    // defining a custom label
+    const label = fsPath[fsPath.length - 1];
+
+    const category: SidebarCategory = {
+      type: 'category',
+      href,
+      label,
+      items: Object.values(obj.items).map(buildSidebar),
+    }
+    return category;
+  }
+
+  sidebar = Object.values((tree as VRoot).items).map(buildSidebar);
+  return sidebar;
 }
 
 export const flattenTreeToPathsArray = async (tree: VRoot) => {
@@ -141,10 +204,10 @@ const getMdTitle = (md: string) => {
   return md.match(/^\s*# (?<title>.*)$/m)?.groups?.title;
 }
 
-let deserializedTree: VRoot | undefined = undefined;
-export const deserializeTree = () => {
-  return deserializedTree ?? des();
-}
+// layer of indirection, i.e. in case we no longer want to make
+// __props.json the file to use for storing the tree,
+// we can just update the deserializeTree definition
+export const deserializeTree = des;
 
 export const getEntryFromSlug = (tree: VRoot, slug: string[]) => {
   let cur = tree as unknown as VDir;

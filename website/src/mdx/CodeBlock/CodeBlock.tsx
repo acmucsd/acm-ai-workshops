@@ -14,7 +14,7 @@ import copy from 'copy-text-to-clipboard';
 
 import theme from 'prism-react-renderer/themes/vsLight';
 
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
 const CodeBlock = (props: any): JSX.Element => {
   const {

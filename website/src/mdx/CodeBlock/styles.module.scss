@@ -1,3 +1,5 @@
+@use "@/styles/mixins";
+
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
@@ -37,6 +39,9 @@
   margin: 0;
   padding: 0;
   border-radius: 0;
+  
+  overflow: auto;
+  @include mixins.scrollbar(4px);
 }
 
 .cleanBtn {

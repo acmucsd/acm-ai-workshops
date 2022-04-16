@@ -1,0 +1,36 @@
+$sidebar-width: 300px;
+$navbar-height: 0;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.sidebarContainer {
+  display: none;
+
+  @media (min-width: 996px) {
+    width: $sidebar-width;
+    border-right: 1px solid #dadde1;
+    clip-path: inset(0);
+    display: block;
+    margin-top: $navbar-height * -1;
+  }
+}
+
+.contentWrapper {
+  width: 100%;
+  display: flex;
+
+  @media (min-width: 996px) {
+    flex-grow: 1;
+    max-width: calc(100% - #{$sidebar-width});
+  }
+
+  .contentContainer {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px - $sidebar-width;
+  }
+}

@@ -1,17 +1,15 @@
+$gap: 2rem;
 
 .grid {
-  --gap: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap;
 }
 
 .card {
   --border-color: #ebedf0;
   --shadow-color: hsla(0deg 0% 0% / 20%);
-  --width: calc(50% - var(--gap));
-
-  flex: 0 0 var(--width);
+  
   height: 8rem;
   border: 1px solid var(--border-color);
   border-radius: 1rem;

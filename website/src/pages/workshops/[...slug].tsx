@@ -3,13 +3,16 @@ import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree, slugToHref } from "@/lib/getWorkshops";
+import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree, getSidebar, setTree, Sidebar, slugToHref } from "@/lib/getWorkshops";
 import { ser } from "@/lib/serde";
 import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
 import NotebookPage from "@/layouts/pages/NotebookPage";
+import Layout from "@/layouts/Layout";
+import { Router, useRouter } from "next/router";
 
 interface CommonWorkshopPageProps {
-  breadcrumb: string[]
+  breadcrumb: string[];
+  sidebar: Sidebar;
 }
 
 export interface NotebookPageProps extends CommonWorkshopPageProps {
@@ -31,12 +34,22 @@ export interface IndexPageProps extends CommonWorkshopPageProps {
 type WorkshopsPageProps = NotebookPageProps | IndexPageProps
 type WorkshopsPageType = WorkshopsPageProps['type']
 
-const Workshop: NextPage<WorkshopsPageProps> = ({ type, ...props }) => {
+const Workshop: NextPage<WorkshopsPageProps> = ({ type, sidebar, ...props }) => {
+  const router = useRouter();
+
   switch (type) {
     case 'notebook':
-      return <NotebookPage {...props as NotebookPageProps} />
+      return (
+        <Layout sidebar={sidebar} path={router.asPath}>
+          <NotebookPage {...props as NotebookPageProps} />
+        </Layout>
+      );
     case 'index':
-      return <WorkshopIndexPage {...props as IndexPageProps} />
+      return (
+        <Layout sidebar={sidebar} path={router.asPath}>
+          <WorkshopIndexPage {...props as IndexPageProps} />
+        </Layout>
+      );
   }
 };
 
@@ -45,7 +58,8 @@ export default Workshop;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string[] };
 
-  const tree = await deserializeTree();
+  const tree = deserializeTree();
+  setTree(tree);
   const entry = getEntryFromSlug(tree, slug);
 
   const uniqueProps = await (async () => {
@@ -102,8 +116,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     }
   })();
 
+  const sidebar = await getSidebar();
+
   const props = {
     breadcrumb: slug,
+    sidebar,
     ...uniqueProps,
   }
   

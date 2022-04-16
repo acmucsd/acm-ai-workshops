@@ -1,5 +1,11 @@
+@use "@/styles/mixins";
+
 @import "./reset";
 @import "./katex-0.15.2/katex.min.css";
+
+html {
+  @include mixins.scrollbar();
+}
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

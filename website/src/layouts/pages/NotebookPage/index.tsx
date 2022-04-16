@@ -4,14 +4,9 @@ import type { NotebookPageProps } from "@/pages/workshops/[...slug]";
 
 const NotebookPage = ({ breadcrumb, source }: NotebookPageProps) => {
   return (
-    <div style={{
-      minHeight: "100vh",
-      padding: "2rem",
-    }}>
-      <main>
-        <MDXRemote {...source} components={MDXComponents} />
-      </main>
-    </div>
+    <article>
+      <MDXRemote {...source} components={MDXComponents} />
+    </article>
   );
 }
 

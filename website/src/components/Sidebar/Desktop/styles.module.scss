@@ -1,0 +1,23 @@
+@use "@/styles/mixins";
+
+$sidebar-width: 300px;
+
+$breakpoint-desktop: 996px;
+
+.sidebar {
+  display: none;
+
+  @media (min-width: $breakpoint-desktop) {
+    position: sticky;
+    top: 0;
+    width: $sidebar-width;
+    height: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--header-height, 0);
+    overflow-x: hidden;
+
+    @include mixins.scrollbar();
+  }
+}
