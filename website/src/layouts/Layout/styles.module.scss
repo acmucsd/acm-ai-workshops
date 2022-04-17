@@ -1,7 +1,6 @@
 @use "@/styles/mixins";
 @use "@/components/Sidebar/Desktop/styles.module" as desktop-sidebar;
 
-$navbar-height: 0;
 $sidebar-width: desktop-sidebar.$desktop-sidebar-width;
 
 .wrapper {
@@ -16,7 +15,6 @@ $sidebar-width: desktop-sidebar.$desktop-sidebar-width;
     height: 100%;
     border-right: 1px solid #dddddd; // TODO: unify colors
     clip-path: inset(0);
-    margin-top: $navbar-height * -1;
   }
 }
 
