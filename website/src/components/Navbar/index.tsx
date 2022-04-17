@@ -1,8 +1,6 @@
 import Link from "next/link"
 import { useWindowSize } from "@/hooks/useWindowSize";
 
-// @ts-ignore
-import { breakpointsDesktop } from "@/styles/_export.module.scss";
 import styles from "./styles.module.scss"
 import clsx from "clsx";
 
