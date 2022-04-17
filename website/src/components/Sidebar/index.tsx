@@ -10,10 +10,10 @@ import DesktopSidebar from "./Desktop";
 import MobileSidebar from "./Mobile";
 import { useWindowSize } from "@/hooks/useWindowSize";
 
-import type { Sidebar as SidebarData } from "@/lib/getWorkshops";
+import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 
 export interface SidebarProps {
-  items: SidebarData;
+  items: SidebarItemType[];
   activePath: string;
 }
 

@@ -1,18 +1,20 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { deserializeTree, flattenTreeToPathsArray, getEntryFromSlug, getFsTree, getSidebar, setTree, Sidebar, slugToHref } from "@/lib/getWorkshops";
-import { ser } from "@/lib/serde";
+import type { SidebarItem } from "@/lib/helpers/sidebar"
+import { serializeMdx } from "@/lib/unified/serializeMdx";
+import { createPipeline } from "@/lib/pipelines";
+import { workshopsConfig } from "@/lib/pipelines/workshops";
+import { slugToHref } from "@/lib/utils/slugToHref";
+
+import { useRouter } from "next/router";
+
 import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
 import NotebookPage from "@/layouts/pages/NotebookPage";
 import Layout from "@/layouts/Layout";
-import { Router, useRouter } from "next/router";
 
 interface CommonWorkshopPageProps {
   breadcrumb: string[];
-  sidebar: Sidebar;
+  sidebar: SidebarItem[];
 }
 
 export interface NotebookPageProps extends CommonWorkshopPageProps {
@@ -58,9 +60,7 @@ export default Workshop;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string[] };
 
-  const tree = deserializeTree();
-  setTree(tree);
-  const entry = getEntryFromSlug(tree, slug);
+  const { entry, sidebar } = await createPipeline(workshopsConfig).getStaticProps(...slug);
 
   const uniqueProps = await (async () => {
     switch (entry.type) {
@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                   }
               }
             })();
-            const href = slugToHref(entry.slug, '/workshops');
+            const href = slugToHref(entry.slug, workshopsConfig.baseUrl);
 
             return {
               type,
@@ -102,12 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } as Omit<IndexPageProps, keyof CommonWorkshopPageProps>;
       
       case 'file':
-        const mdx = await serialize(entry.md, {
-          mdxOptions: {
-            remarkPlugins: [remarkMath],
-            rehypePlugins: [rehypeKatex],
-          },
-        });
+        const mdx = await serializeMdx(entry.md);
         return {
           type: 'notebook',
           title: entry.title,
@@ -115,8 +110,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } as Omit<NotebookPageProps, keyof CommonWorkshopPageProps>
     }
   })();
-
-  const sidebar = await getSidebar();
 
   const props = {
     breadcrumb: slug,
@@ -128,15 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tree = await getFsTree();
-  const entries = await flattenTreeToPathsArray(tree);
-
-  const paths = entries.map(({ slug }) => ({ params: { slug } }));
-
-  // because next doesnt support passing props from getstaticpaths to getstaticprops:
-  // workaround by creating temp file, writing necessary data there,
-  // and reading it back in getStaticProps
-  ser(tree);
+  const { paths } = await createPipeline(workshopsConfig).getStaticPaths()
 
   return {
     paths,

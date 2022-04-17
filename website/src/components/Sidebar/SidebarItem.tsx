@@ -14,7 +14,7 @@ import SidebarItems from "./SidebarItems";
 
 import styles from "./styles.module.scss";
 
-import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/getWorkshops";
+import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 import { SidebarProps } from ".";
 
 interface SidebarItemProps extends Omit<SidebarProps, 'items'>, React.AnchorHTMLAttributes<HTMLAnchorElement> {

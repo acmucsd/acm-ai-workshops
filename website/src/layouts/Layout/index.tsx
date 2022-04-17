@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
 import styles from "./styles.module.scss";
-import type { Sidebar as SidebarType } from "@/lib/getWorkshops";
+import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 
 interface LayoutProps {
-  sidebar: SidebarType;
+  sidebar: SidebarItemType[];
   path: string;
   children?: ReactNode;
 }

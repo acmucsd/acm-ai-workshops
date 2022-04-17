@@ -1,7 +1,13 @@
+/**
+ * converts an ipynb file into a syntax tree,
+ * it's honestly basically just an mdx tree, however,
+ * rather than an actual new "nbast" custom specification syntax tree
+ */
+
+import { unified } from "unified";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
-import { unified } from "unified";
-import { Cell, JupyterNotebook } from "../types/notebook";
+import type { Cell, JupyterNotebook } from "../types/notebook";
 
 export const fromNotebook = (doc: string) => {
   const notebookJson = JSON.parse(doc) as JupyterNotebook;
@@ -10,6 +16,7 @@ export const fromNotebook = (doc: string) => {
 
   const { cells } = notebookJson;
 
+  // construct the ast
   let ast = { type: 'root', children: [] as any[] };
   cells.forEach((cell: Cell) => {
     const { id, cell_type, metadata, source } = cell;
