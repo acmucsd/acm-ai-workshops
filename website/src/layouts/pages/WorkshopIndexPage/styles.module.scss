@@ -7,17 +7,17 @@ $gap: 2rem;
 }
 
 .card {
-  --border-color: #ebedf0;
-  --shadow-color: hsla(0deg 0% 0% / 20%);
+  $border-color: #eeeeee; // TODO: unify colors
+  $shadow-color: hsla(0deg 0% 0% / 20%); // TODO: unify colors
   
   height: 8rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid $border-color;
   border-radius: 1rem;
   padding: 1rem;
 
-  box-shadow: 0 2px 4px var(--shadow-color);
+  box-shadow: 0 2px 4px $shadow-color;
   &:hover {
-    box-shadow: 0 4px 8px var(--shadow-color);
+    box-shadow: 0 4px 8px $shadow-color;
   }
 
   transition: box-shadow 400ms ease 0s;

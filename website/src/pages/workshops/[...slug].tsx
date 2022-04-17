@@ -1,6 +1,6 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import type { SidebarItem } from "@/lib/helpers/sidebar"
+import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar"
 import { serializeMdx } from "@/lib/unified/serializeMdx";
 import { createPipeline } from "@/lib/pipelines";
 import { workshopsConfig } from "@/lib/pipelines/workshops";
@@ -14,7 +14,6 @@ import Layout from "@/layouts/Layout";
 
 interface CommonWorkshopPageProps {
   breadcrumb: string[];
-  sidebar: SidebarItem[];
 }
 
 export interface NotebookPageProps extends CommonWorkshopPageProps {
@@ -33,7 +32,9 @@ export interface IndexPageProps extends CommonWorkshopPageProps {
   }>
 }
 
-type WorkshopsPageProps = NotebookPageProps | IndexPageProps
+export type WorkshopsPageProps = (NotebookPageProps | IndexPageProps) & {
+  sidebar: SidebarItemType[]
+}
 type WorkshopsPageType = WorkshopsPageProps['type']
 
 const Workshop: NextPage<WorkshopsPageProps> = ({ type, sidebar, ...props }) => {

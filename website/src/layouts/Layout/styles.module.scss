@@ -1,19 +1,21 @@
-$sidebar-width: 300px;
+@use "@/styles/mixins";
+@use "@/components/Sidebar/Desktop/styles.module" as desktop-sidebar;
+
 $navbar-height: 0;
+$sidebar-width: desktop-sidebar.$desktop-sidebar-width;
 
 .wrapper {
   width: 100%;
+  height: 100%;
   display: flex;
 }
 
 .sidebarContainer {
-  display: none;
-
-  @media (min-width: 996px) {
+  @include mixins.desktop-only(block) {
     width: $sidebar-width;
-    border-right: 1px solid #dadde1;
+    height: 100%;
+    border-right: 1px solid #dddddd; // TODO: unify colors
     clip-path: inset(0);
-    display: block;
     margin-top: $navbar-height * -1;
   }
 }
@@ -22,7 +24,7 @@ $navbar-height: 0;
   width: 100%;
   display: flex;
 
-  @media (min-width: 996px) {
+  @include mixins.desktop() {
     flex-grow: 1;
     max-width: calc(100% - #{$sidebar-width});
   }
@@ -31,6 +33,6 @@ $navbar-height: 0;
     padding: 1rem;
     margin: 0 auto;
     width: 100%;
-    max-width: 1200px - $sidebar-width;
+    max-width: 1200px - $sidebar-width; // TODO: pick less arbitrary value
   }
 }

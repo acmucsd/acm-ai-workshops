@@ -1,3 +1,20 @@
+@use "@/styles/breakpoints";
+
+@mixin desktop() {
+  @media (min-width: breakpoints.$desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-only($display: unset) {
+  display: none;
+  @media (min-width: breakpoints.$desktop) {
+    display: $display;
+    @content;
+  }
+}
+
+
 @mixin scrollbar(
   $scrollbar-size: 8px,
   $track-color: #eeeeee,

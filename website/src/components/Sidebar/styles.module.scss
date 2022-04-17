@@ -4,9 +4,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
-
-$red: #ff6f6f;
-$grey: #333333;
+@use "@/styles/colors";
 
 .items {
   list-style: none;
@@ -34,27 +32,23 @@ $grey: #333333;
   position: relative;
 }
 
-$link-padding-vertical: 0.375rem;
-$link-padding-horizontal: 1rem;
 .link, .arrow {
   display: flex;
   padding: 0.375rem 1rem;
 }
 
 .link {
-  color: $grey;
   flex: 1;
 
   &.active {
-    color: $red;
+    color: colors.$red;
   }
 }
 
 $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.5)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
 
 .arrow {
-  $left-margin: 0.1rem;
-  margin: 0 0 0 $left-margin;
+  margin: 0 0 0 0.1rem;
   cursor: pointer;
   align-items: center;
 
@@ -73,5 +67,5 @@ $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg
 }
 
 .active {
-  color: $red;
+  color: colors.$red;
 }
