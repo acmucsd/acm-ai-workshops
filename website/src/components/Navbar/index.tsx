@@ -1,8 +1,9 @@
 import Link from "next/link"
+import clsx from "clsx";
+
 import { useWindowSize } from "@/hooks/useWindowSize";
 
 import styles from "./styles.module.scss"
-import clsx from "clsx";
 
 const navLinks = [
   { href: '/workshops', label: 'Workshops' },
