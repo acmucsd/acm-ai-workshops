@@ -12,7 +12,6 @@ const navLinks = [
 ]
 
 const Navbar = (): JSX.Element => {
-  console.log({breakpointsDesktop})
 
   const size = useWindowSize()
   
