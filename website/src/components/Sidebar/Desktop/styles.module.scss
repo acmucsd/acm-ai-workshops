@@ -11,11 +11,7 @@ $desktop-sidebar-width: 300px;
 
 .sidebar {
   @include mixins.desktop-only(flex) {
-    position: sticky;
-    top: 0;
     width: $desktop-sidebar-width;
-    height: 100%;
-    max-height: 100vh;
     flex-direction: column;
     padding-top: var(--header-height, 0);
     overflow-x: hidden;
