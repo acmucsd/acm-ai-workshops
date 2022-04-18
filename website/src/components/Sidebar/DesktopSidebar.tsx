@@ -5,15 +5,16 @@
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
 
-import { SidebarProps } from "..";
-import SidebarItems from "../SidebarItems";
-import styles from "./styles.module.scss";
-import sidebarItemsStyles from "../styles.module.scss";
+import SidebarItems from "./SidebarItems";
+
+import s from "./styles.module.scss";
+
+import type { SidebarProps } from ".";
 
 const DesktopSidebar = ({ items, activePath }: SidebarProps): JSX.Element => {
   return (
-    <nav className={styles.sidebar}>
-      <ul className={sidebarItemsStyles.items}>
+    <nav className={s.desktop}>
+      <ul className={s.items}>
         <SidebarItems items={items} activePath={activePath} />
       </ul>
     </nav>

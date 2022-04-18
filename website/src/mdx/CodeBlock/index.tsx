@@ -7,14 +7,15 @@
 
 // taken from https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme/CodeBlock
 
-import Highlight, { defaultProps } from 'prism-react-renderer';
 import React, { useRef, useState } from 'react';
-import clsx from 'clsx';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import c from 'clsx';
 import copy from 'copy-text-to-clipboard';
 
-import theme from 'prism-react-renderer/themes/vsLight';
+import s from './styles.module.scss';
 
-import styles from './styles.module.scss';
+// we can change this theme tbh. could also look into making a custom one too
+import theme from 'prism-react-renderer/themes/vsLight';
 
 const CodeBlock = (props: any): JSX.Element => {
   const {
@@ -48,19 +49,19 @@ const CodeBlock = (props: any): JSX.Element => {
       language={language}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <div className={styles.codeBlockContainer}>
+        <div className={s.codeBlockContainer}>
           {title && (
-            <div style={style} className={styles.codeBlockTitle}>
+            <div style={style} className={s.codeBlockTitle}>
               {title}
             </div>
           )}
-          <div className={clsx(styles.codeBlockContent, language)}>
+          <div className={c(s.codeBlockContent, language)}>
             <pre
               /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
               tabIndex={0}
-              className={clsx(className, styles.codeBlock, 'thin-scrollbar')}
+              className={c(className, s.codeBlock, 'thin-scrollbar')}
               style={style}>
-              <code className={styles.codeBlockLines}>
+              <code className={s.codeBlockLines}>
                 {tokens.map((line, i) => {
                   if (line.length === 1 && line[0].content === '\n') {
                     line[0].content = '';
@@ -84,7 +85,7 @@ const CodeBlock = (props: any): JSX.Element => {
               ref={button}
               type="button"
               aria-label={'Copy code to clipboard'}
-              className={clsx(styles.copyButton, styles.cleanBtn)}
+              className={c(s.copyButton, s.cleanBtn)}
               onClick={handleCopyCode}>
               {showCopied ? 'Copied' : 'Copy'}
             </button>

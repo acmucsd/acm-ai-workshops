@@ -1,16 +1,17 @@
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
-import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar"
-import { serializeMdx } from "@/lib/unified/serializeMdx";
 import { createPipeline } from "@/lib/pipelines";
 import { workshopsConfig } from "@/lib/pipelines/workshops";
+import { serializeMdx } from "@/lib/unified/serializeMdx";
 import { slugToHref } from "@/lib/utils/slugToHref";
+import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar"
 
 import { useRouter } from "next/router";
 
 import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
 import NotebookPage from "@/layouts/pages/NotebookPage";
 import Layout from "@/layouts/Layout";
+
+import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface CommonWorkshopPageProps {
   breadcrumb: string[];

@@ -1,8 +1,8 @@
 @use "@/styles/mixins";
-@use "@/components/Sidebar/Desktop/styles.module" as desktop-sidebar;
+@use "@/components/Sidebar/styles.module" as sidebar;
 @use "@/components/Navbar/styles.module" as navbar;
 
-$sidebar-width: desktop-sidebar.$desktop-sidebar-width;
+$sidebar-width: sidebar.$desktop-sidebar-width;
 $navbar-height: navbar.$navbar-height;
 
 .wrapper {

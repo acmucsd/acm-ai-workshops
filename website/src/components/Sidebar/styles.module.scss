@@ -4,7 +4,9 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
+
 @use "@/styles/colors";
+@use "@/styles/mixins";
 
 .items {
   list-style: none;
@@ -68,4 +70,19 @@ $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg
 
 .active {
   color: colors.$red;
+}
+
+/* desktop sidebar */
+
+$desktop-sidebar-width: 300px;
+
+.desktop {
+  @include mixins.desktop-only(flex) {
+    width: $desktop-sidebar-width;
+    flex-direction: column;
+    padding-top: var(--header-height, 0);
+    overflow-x: hidden;
+
+    @include mixins.scrollbar();
+  }
 }

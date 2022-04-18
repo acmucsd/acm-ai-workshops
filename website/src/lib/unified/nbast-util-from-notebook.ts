@@ -1,14 +1,16 @@
+import { unified } from "unified";
+import remarkMath from "remark-math";
+import remarkParse from "remark-parse";
+
+import type { Cell, JupyterNotebook } from "@/lib/types/notebook";
+
 /**
  * converts an ipynb file into a syntax tree,
  * it's honestly basically just an mdx tree, however,
  * rather than an actual new "nbast" custom specification syntax tree
+ * @param doc: ipynb file contents
+ * @returns the mdx syntax tree created from the ipynb file
  */
-
-import { unified } from "unified";
-import remarkMath from "remark-math";
-import remarkParse from "remark-parse";
-import type { Cell, JupyterNotebook } from "../types/notebook";
-
 export const fromNotebook = (doc: string) => {
   const notebookJson = JSON.parse(doc) as JupyterNotebook;
 

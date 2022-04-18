@@ -1,6 +1,7 @@
 import path from 'path';
 
 import { notebookToMd } from '@/lib/unified/processor';
+
 import type { PipelineConfig } from '.';
 
 export const workshopsConfig: PipelineConfig = {

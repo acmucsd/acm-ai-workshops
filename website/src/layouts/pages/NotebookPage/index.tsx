@@ -1,5 +1,7 @@
 import { MDXRemote } from "next-mdx-remote";
+
 import MDXComponents from "@/mdx/components";
+
 import type { NotebookPageProps } from "@/pages/workshops/[...slug]";
 
 const NotebookPage = ({ breadcrumb, source }: NotebookPageProps) => {

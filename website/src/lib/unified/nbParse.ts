@@ -1,12 +1,10 @@
-/**
- * conceptually works akin to `remark-parse` or `rehype-parse`:
- *  it's a unified plugin that converts a ipynb file
- *  into a syntax tree (specifically, a mdx one here)
- */
-
-import type { Plugin } from 'unified';
 import { fromNotebook } from './nbast-util-from-notebook';
 
+import type { Plugin } from 'unified';
+
+/**
+ * unified plugin to convert ipynb files into an mdx syntax tree
+ */
 export const nbParse: Plugin = function () {
   const parser = (doc: string) => {
     return fromNotebook(doc);

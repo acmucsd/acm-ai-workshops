@@ -4,9 +4,10 @@ import {
   getFsTree,
   setTree,
 } from "@/lib/helpers/fs-tree";
-import type { Options as FsTreeOptions } from "@/lib/helpers/fs-tree";
 import { des, ser } from "@/lib/helpers/serde";
-import { getSidebar } from "../helpers/sidebar";
+import { getSidebar } from "@/lib/helpers/sidebar";
+
+import type { Options as FsTreeOptions } from "@/lib/helpers/fs-tree";
 
 export type PipelineConfig = {
   serde_file: string,

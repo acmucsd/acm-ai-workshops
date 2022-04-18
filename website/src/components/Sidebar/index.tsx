@@ -6,9 +6,10 @@
  */
 
 import { memo } from "react";
-import DesktopSidebar from "./Desktop";
-import MobileSidebar from "./Mobile";
+
 import { useWindowSize } from "@/hooks/useWindowSize";
+import DesktopSidebar from "./DesktopSidebar";
+import MobileSidebar from "./MobileSidebar";
 
 import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 

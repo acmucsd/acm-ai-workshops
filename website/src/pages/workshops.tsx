@@ -1,23 +1,24 @@
-import type { GetStaticProps, NextPage } from "next";
+import { getFsTree } from "@/lib/helpers/fs-tree";
 import { getSidebar } from "@/lib/helpers/sidebar";
 import { workshopsConfig } from "@/lib/pipelines/workshops";
 import { slugToHref } from "@/lib/utils/slugToHref";
 
 import { useRouter } from "next/router";
 
-import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
 import Layout from "@/layouts/Layout";
-import { getFsTree } from "@/lib/helpers/fs-tree";
-import type { IndexPageProps, WorkshopsPageProps } from "./workshops/[...slug]";
+import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
 
-import styles from "@/sections/workshops/styles.module.scss"
+import s from "@/sections/workshops/styles.module.scss"
+
+import type { GetStaticProps, NextPage } from "next";
+import type { IndexPageProps, WorkshopsPageProps } from "./workshops/[...slug]";
 
 const WorkshopsRootPage: NextPage<WorkshopsPageProps> = ({ type, sidebar, ...props }) => {
   const router = useRouter();
 
   return (
     <Layout sidebar={sidebar} path={router.asPath}>
-      <h1 className={styles.title}>ACM AI Workshops</h1>
+      <h1 className={s.title}>ACM AI Workshops</h1>
       <WorkshopIndexPage {...props as IndexPageProps} />
     </Layout>
   );

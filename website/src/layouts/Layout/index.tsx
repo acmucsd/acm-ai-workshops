@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
-import Sidebar from "@/components/Sidebar";
-import styles from "./styles.module.scss";
-import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
+import c from "clsx";
+
 import Navbar from "@/components/Navbar";
-import clsx from "clsx";
+import Sidebar from "@/components/Sidebar";
+
+import s from "./styles.module.scss";
+
+import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 
 interface LayoutProps {
   sidebar: SidebarItemType[];
@@ -16,17 +19,17 @@ const Layout = ({ sidebar, path, className, children }: LayoutProps): JSX.Elemen
   
   return (
     <>
-    <Navbar />
-    <div className={styles.wrapper}>
-      <aside className={styles.sidebarContainer}>
-        <Sidebar items={sidebar} activePath={path} />
-      </aside>
-      <main className={styles.contentWrapper}>
-        <div className={clsx(styles.contentContainer, className)}>
-          {children}
-        </div>
-      </main>
-    </div>
+      <Navbar />
+      <div className={s.wrapper}>
+        <aside className={s.sidebarContainer}>
+          <Sidebar items={sidebar} activePath={path} />
+        </aside>
+        <main className={s.contentWrapper}>
+          <div className={c(s.contentContainer, className)}>
+            {children}
+          </div>
+        </main>
+      </div>
     </>
   )
 }

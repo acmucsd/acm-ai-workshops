@@ -8,6 +8,7 @@
 // adapted from https://github.com/facebook/docusaurus/blob/main/packages/docusaurus-theme-common/src/hooks/useWindowSize.ts
 
 import { useState, useEffect } from "react";
+
 import { canUseDOM } from "@/utils/environment"
 
 type WindowSize = 'desktop' | 'mobile' | 'ssr';

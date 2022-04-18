@@ -1,11 +1,12 @@
-import type { GetStaticProps, NextPage } from 'next'
-
-import Layout from '@/layouts/Layout'
-import { workshopsConfig } from '@/lib/pipelines/workshops'
 import { getSidebar } from '@/lib/helpers/sidebar'
+import { workshopsConfig } from '@/lib/pipelines/workshops'
 import type { SidebarItem as SidebarItemType } from '@/lib/helpers/sidebar'
 
-import styles from '@/sections/index/styles.module.scss'
+import Layout from '@/layouts/Layout'
+
+import s from '@/sections/index/styles.module.scss'
+
+import type { GetStaticProps, NextPage } from 'next'
 
 interface HomePageProps {
   sidebar: SidebarItemType[]
@@ -16,7 +17,7 @@ const Home: NextPage<HomePageProps> = ({ sidebar }) => {
   return (
     <>
       {/* use dummy path of empty string, so nothing is the active path */}
-      <Layout sidebar={sidebar} path="" className={styles.content} >
+      <Layout sidebar={sidebar} path="" className={s.content} >
         <h1>ACM AI Wiki</h1>
         <p>Welcome to the ACM AI Wiki!</p>
         <p>The ACM AI wiki serves as a central repository for various resources produced by ACM AI.</p>

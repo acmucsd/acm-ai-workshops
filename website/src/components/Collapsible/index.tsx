@@ -14,10 +14,9 @@ import React, {
   useCallback,
   useLayoutEffect,
   RefObject,
-  Dispatch,
-  SetStateAction,
   ReactNode,
 } from 'react';
+
 import { canUseDOM } from '@/utils/environment';
 
 const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect;

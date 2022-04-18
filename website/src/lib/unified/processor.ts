@@ -1,7 +1,8 @@
 import { unified } from "unified";
-import { nbParse } from "./nbParse";
 import remarkMath from "remark-math";
 import remarkStringify from "remark-stringify/lib";
+
+import { nbParse } from "./nbParse";
 
 /**
  * converts a jupyter notebook string into a markdown string

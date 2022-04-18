@@ -7,15 +7,15 @@
 
 import React from "react";
 import Link from "next/link";
-import clsx from "clsx";
+import c from "clsx";
 
 import Collapsible, { useCollapsible } from "@/components/Collapsible";
 import SidebarItems from "./SidebarItems";
 
-import styles from "./styles.module.scss";
+import s from "./styles.module.scss";
 
 import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
-import { SidebarProps } from ".";
+import type { SidebarProps } from ".";
 
 interface SidebarItemProps extends Omit<SidebarProps, 'items'>, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   item: SidebarItemType
@@ -36,22 +36,16 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
 
   return (
     <li>
-      <div className={styles.category}>
+      <div className={s.category}>
         {/* given we have sidebar, could instead just make these buttons that collapse the category maybe? */}
         <Link href={href}><a
-          className={clsx(
-            styles.link,
-            isActive && styles.active,
-          )}
+          className={c(s.link, isActive && s.active)}
           aria-expanded={!collapsed}
         >
           {label}
         </a></Link>
         <button
-          className={clsx(
-            styles.arrow,
-            collapsed && styles.collapsed,
-          )}
+          className={c(s.arrow, collapsed && s.collapsed)}
           aria-label={`toggle the sidebar category '${label}'`}
           onClick={(e) => {
             e.preventDefault();
@@ -60,7 +54,7 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
         />
       </div>
       <Collapsible
-        className={styles.items}
+        className={s.items}
         as="ul"
         collapsed={collapsed}
         lazy
@@ -83,9 +77,9 @@ const SidebarDoc = ({ item, activePath, ...props }: SidebarItemProps) => {
   return (
     <li>
       <Link href={href}><a
-        className={clsx(
-          styles.link,
-          isActive && styles.active,
+        className={c(
+          s.link,
+          isActive && s.active,
         )}
         {...props}
       >

@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import path from 'path';
-import globCb from 'glob';
 import { promisify } from 'util';
+import globCb from 'glob';
 
 import { slugify } from '@/lib/utils/slugify';
 import { extractTitleFromMdString } from "./extractMdTitle";
