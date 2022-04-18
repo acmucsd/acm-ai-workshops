@@ -3,7 +3,7 @@ import path from 'path';
 import { promisify } from 'util';
 import globCb from 'glob';
 
-import { slugify } from '@/lib/utils/slugify';
+import { slugify } from '@/utils/slugify';
 import { extractTitleFromMdString } from "./extractMdTitle";
 
 const glob = promisify(globCb);

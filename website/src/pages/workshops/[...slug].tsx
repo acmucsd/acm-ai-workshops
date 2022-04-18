@@ -1,7 +1,7 @@
 import { createPipeline } from "@/lib/pipelines";
 import { workshopsConfig } from "@/lib/pipelines/workshops";
 import { serializeMdx } from "@/lib/unified/serializeMdx";
-import { slugToHref } from "@/lib/utils/slugToHref";
+import { slugToHref } from "@/utils/slugToHref";
 import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar"
 
 import { useRouter } from "next/router";

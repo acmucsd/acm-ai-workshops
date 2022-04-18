@@ -1,4 +1,4 @@
-import { slugToHref } from "@/lib/utils/slugToHref";
+import { slugToHref } from "@/utils/slugToHref";
 import { getFsTree } from "./fs-tree";
 
 import type {

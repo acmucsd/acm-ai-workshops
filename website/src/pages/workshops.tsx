@@ -1,7 +1,7 @@
 import { getFsTree } from "@/lib/helpers/fs-tree";
 import { getSidebar } from "@/lib/helpers/sidebar";
 import { workshopsConfig } from "@/lib/pipelines/workshops";
-import { slugToHref } from "@/lib/utils/slugToHref";
+import { slugToHref } from "@/utils/slugToHref";
 
 import { useRouter } from "next/router";
 
