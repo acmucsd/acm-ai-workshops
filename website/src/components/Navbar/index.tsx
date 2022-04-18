@@ -16,7 +16,7 @@ const Navbar = (): JSX.Element => {
   
   return (
     <nav className={styles.navbar}>
-      {/* Logo */}
+      {/* logo */}
       <div className={styles.left}>
         <Link href="/">
           <a className={styles.logo}>
@@ -26,7 +26,7 @@ const Navbar = (): JSX.Element => {
         </Link>
       </div>
 
-      {/* Desktop Nav Links */}
+      {/* desktop nav links */}
       <div className={clsx(
         styles.right,
         size === 'mobile' && styles.hidden,
@@ -42,6 +42,8 @@ const Navbar = (): JSX.Element => {
           </a>
         </Link>
       </div>
+
+      {/* TODO - mobile nav links */}
     </nav>
   );
 }
