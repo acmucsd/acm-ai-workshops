@@ -15,6 +15,7 @@ const Home: NextPage<HomePageProps> = ({ sidebar }) => {
 
   return (
     <>
+      {/* use dummy path of empty string, so nothing is the active path */}
       <Layout sidebar={sidebar} path="" className={styles.content} >
         <h1>ACM AI Wiki</h1>
         <p>Welcome to the ACM AI Wiki!</p>
@@ -33,8 +34,10 @@ export const getStaticProps: GetStaticProps = async () => {
     ...restWorkshopsConfig
   } = workshopsConfig
 
+  // we can add other sidebars here as well if we want to have stuff other than just the workshops here
   const workshopsSidebar = await getSidebar({ basePath: workshopsBasePath, ...restWorkshopsConfig });
 
+  // populate the list of sidebars we want to render on the main page
   const sidebar: SidebarItemType[] = [
     {
       type: 'category',
