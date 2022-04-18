@@ -1,9 +1,8 @@
 import type { GetStaticProps, NextPage } from 'next'
 
-import Navbar from '@/components/Navbar'
 import Layout from '@/layouts/Layout'
 import { workshopsConfig } from '@/lib/pipelines/workshops'
-import { getSidebar, SidebarItem } from '@/lib/helpers/sidebar'
+import { getSidebar } from '@/lib/helpers/sidebar'
 import type { SidebarItem as SidebarItemType } from '@/lib/helpers/sidebar'
 
 import styles from '@/sections/index/styles.module.scss'
@@ -13,7 +12,7 @@ interface HomePageProps {
 }
 
 const Home: NextPage<HomePageProps> = ({ sidebar }) => {
-  
+
   return (
     <>
       <Layout sidebar={sidebar} path="" className={styles.content} >
