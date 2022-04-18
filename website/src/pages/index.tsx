@@ -13,7 +13,7 @@ interface HomePageProps {
 }
 
 const Home: NextPage<HomePageProps> = ({ sidebar }) => {
-  console.log(sidebar)
+  
   return (
     <>
       <Layout sidebar={sidebar} path="" className={styles.content} >
