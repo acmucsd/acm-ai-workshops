@@ -29,6 +29,7 @@ const Home: NextPage<HomePageProps> = ({ sidebar }) => {
             <h1>ACM AI Wiki</h1>
             <p>Welcome to the ACM AI Wiki!</p>
             <p>The ACM AI wiki serves as a central repository for various resources produced by ACM AI.</p>
+          </ContentContainer>
         </ContentWrapper>
       </MainWrapper>
     </>

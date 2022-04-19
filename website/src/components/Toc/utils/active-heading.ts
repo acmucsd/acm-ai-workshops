@@ -10,9 +10,11 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { noop } from "@/utils/noop"
 import useTocHeadingIds from "./heading-ids"
 
-import { navbarHeight } from "@/components/Navbar/styles.export.module.scss"
+import { navbarHeight as navbarHeightString } from "@/components/Navbar/styles.export.module.scss"
 
 import type { TocItem } from "@/lib/unified/toc/types"
+
+const navbarHeight = parseInt(navbarHeightString, 10);
 
 // If the anchor has no height and is just a "marker" in the dom we'll use the parent (normally the link text) rect boundaries instead
 const getVisibleBoundingClientRect = (element: HTMLElement | null): DOMRect | null => {
@@ -32,15 +34,16 @@ const isInViewportTopHalf = (boundingRect: DOMRect, threshold: number) => {
 
 const useAnchors = (toc: TocItem[]) => {
   const headingIds = useTocHeadingIds(toc)
-  const headingIdsSelector = useMemo(() => headingIds.map((id) => `#${id}`).join(','), [headingIds])
   
-  const [anchors, setAnchors] = useState<HTMLElement[]>([])
-  
+  const [anchors, setAnchors] = useState<HTMLElement[]>([]);
+
   useEffect(() => {
-    if (headingIdsSelector) {
-      setAnchors(Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[])
-    }
-  }, [headingIdsSelector])
+    const headingIdsSelector = headingIds.map((id) => `#${id}`).join(',');
+    setAnchors(headingIdsSelector
+      ? Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[]
+      : []
+    );
+  }, [headingIds]);
   
   return anchors
 }
@@ -103,8 +106,6 @@ export type TocHighlightConfig = {
 const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
   const lastActiveLinkRef = useRef<HTMLAnchorElement | undefined>(undefined)
 
-  const anchorTopOffset = navbarHeight
-
   const anchors = useAnchors(toc)
 
   const cancelScroll = useRef<() => void>(noop)
@@ -139,7 +140,7 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
 
     const updateActiveLink = () => {
       const links = getLinks(linkClassName)
-      const activeAnchor = getActiveAnchor(anchors, { anchorTopOffset })
+      const activeAnchor = getActiveAnchor(anchors, { anchorTopOffset: navbarHeight })
 
       links.forEach((link) => {
         if (activeAnchor?.id === getLinkAnchorValue(link)) {
@@ -165,7 +166,7 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
       document.removeEventListener('scroll', updateActiveLink)
       document.removeEventListener('resize', updateActiveLink)
     }
-  }, [config, anchorTopOffset])
+  }, [config, anchors])
 }
 
 export default useActiveTocItem
