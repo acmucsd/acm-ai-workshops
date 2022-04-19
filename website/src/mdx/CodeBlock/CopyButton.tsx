@@ -33,11 +33,7 @@ interface CopyButtonProps {
        type="button"
        aria-label={isCopied ? 'Copied' : 'Copy code to clipboard'}
        title="Copy"
-       className={c(
-         s.copyButton,
-         s.cleanBtn,
-         isCopied && s.copied,
-       )}
+       className={c(s.copyButton, isCopied && s.copied)}
        onClick={handleCopyCode}>
        <span className={s.icons} aria-hidden="true">
          <svg className={s.copyIcon} viewBox="0 0 24 24">

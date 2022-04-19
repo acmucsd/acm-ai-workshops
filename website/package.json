@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@teamsupercell/typings-for-css-modules-loader": "^2.5.1",
     "clsx": "^1.1.1",
     "copy-text-to-clipboard": "^3.0.1",
     "glob": "^7.2.0",

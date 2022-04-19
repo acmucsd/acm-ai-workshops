@@ -36,11 +36,9 @@ const Navbar = (): JSX.Element => {
             <a className={s.navItem}>{label}</a>
           </Link>
         ))}
-        <Link href={"https://github.com/acmucsd/acm-ai-workshops"}>
-          <a className={s.githubButton}>
-            <img src="/static/github.svg" alt="GitHub" />
-          </a>
-        </Link>
+        <Link href={"https://github.com/acmucsd/acm-ai-workshops"}><a>
+          <img src="/static/github.svg" alt="GitHub" />
+        </a></Link>
       </div>
 
       {/* TODO - mobile nav links */}

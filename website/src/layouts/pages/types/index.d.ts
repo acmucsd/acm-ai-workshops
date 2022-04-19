@@ -27,13 +27,17 @@ export interface WithBreadcrumbs {
   sidebar: SidebarItemType[];
 }
 
-export interface DocPageProps extends WithSidebar, WithBreadcrumbs {
+export interface CommonPageProps extends WithSidebar, WithBreadcrumbs {
+
+}
+
+export interface DocPageProps extends CommonPageProps {
   type: Doc['type'];
   title: string;
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
 }
 
-export interface CategoryPageProps extends WithSidebar, WithBreadcrumbs {
+export interface CategoryPageProps extends CommonPageProps {
   type: 'category';
   items: Array<Item>
 }
