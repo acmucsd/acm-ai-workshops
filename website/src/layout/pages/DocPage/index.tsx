@@ -32,9 +32,9 @@ export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
         <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
         <ContentWrapper>
           <ContentContainer>
-          <MarkdownWrapper>
-            <MDXContent />
-          </MarkdownWrapper>
+            <MarkdownWrapper>
+              <MDXContent />
+            </MarkdownWrapper>
           </ContentContainer>
           <TocContainer>
             <TocDesktop toc={toc} className={tocClassName} />

@@ -5,25 +5,27 @@
 $navbar-height: navbar.$navbar-height;
 $toc-width: toc.$desktop-toc-width;
 
+.column {
+  width: 100%;
+  flex: 0 0 #{$toc-width};
+  max-width: $toc-width;
+}
+
 .tocContainer {
   @include mixins.desktop-only(flex) {
     $top: 1rem;
     $margin-bottom: 1rem;
     
-    flex: 0 0 #{$toc-width};
-    
     position: sticky;
     top: calc(#{$navbar-height} + #{$top});
-    
     max-height: calc(100vh - #{$navbar-height} - #{$top} - #{$margin-bottom});
     
-    margin-left: auto;
-    margin-bottom: $margin-bottom;
+    margin: $top 1rem $margin-bottom auto;
     border-left: 1px solid #dddddd;
     
     flex-direction: column;
     
-    overflow-y: scroll;
+    overflow-y: auto;
     @include mixins.scrollbar(4px);
   }
 

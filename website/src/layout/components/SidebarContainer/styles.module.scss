@@ -6,25 +6,22 @@ $navbar-height: navbar.$navbar-height;
 $sidebar-width: sidebar.$desktop-sidebar-width;
 
 .column {
-  position: sticky;
-  top: 0;
-  padding-top: $navbar-height;
-  
-  width: $sidebar-width;
-  height: 100%;
-  max-height: 100vh;
-  
-  display: flex;
-  flex-direction: column;
+  @include mixins.desktop-only(block) {
+    width: $sidebar-width;
+    border-right: 1px solid #dddddd; // TODO: unify colors
+    clip-path: inset(0);
+  }
   
   .container {
     @include mixins.desktop-only(flex) {
-      flex-grow: 1;
-      border-right: 1px solid #dddddd; // TODO: unify colors
-      clip-path: inset(0);
+      position: sticky;
+      top: $navbar-height;
+      width: 100%;
+      height: 100%;
+      max-height: calc(100vh - #{$navbar-height});
       flex-direction: column;
-  
-      overflow-x: hidden;
+
+      overflow: hidden auto;
       @include mixins.scrollbar(4px);
     }
   } 
