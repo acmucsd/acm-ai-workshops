@@ -10,9 +10,9 @@ import Link from 'next/link';
 
 import CodeBlock from './CodeBlock';
 
-import type { MDXRemoteProps } from 'next-mdx-remote';
+import type { ComponentMap } from "mdx-bundler/client";
 
-const MDXComponents: MDXRemoteProps['components'] = {
+const MDXComponents: ComponentMap = {
   code: (props: any) => {
     const { children } = props;
 
