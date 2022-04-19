@@ -57,22 +57,22 @@ export const bundle = async <Frontmatter>({ source, cwd, baseUrl, slug }: Option
 
       return options
     },
-    esbuildOptions: (options) => {
-      options.loader = {
-        ...(options.loader ?? {}),
-        ".png": 'file',
-        ".jpg": 'file',
-        ".gif": 'file',
-      }
+    // esbuildOptions: (options) => {
+    //   options.loader = {
+    //     ...(options.loader ?? {}),
+    //     ".png": 'file',
+    //     ".jpg": 'file',
+    //     ".gif": 'file',
+    //   }
 
-      // write assets locally to `~/public/static/content/[...slug]`,
-      // and they will correspondingly be served at /static/content/[...slug]
-      options.outdir = slug ? path.join(process.cwd(), 'public', 'static', 'content', ...slug) : undefined
-      options.publicPath = slug ? `/static/content${baseUrl}/${slug.join('/')}` : undefined
-      options.write = true
+    //   // write assets locally to `~/public/static/content/[...slug]`,
+    //   // and they will correspondingly be served at /static/content/[...slug]
+    //   options.outdir = slug ? path.join(process.cwd(), 'public', 'static', 'content', ...slug) : undefined
+    //   options.publicPath = slug ? `/static/content${baseUrl}/${slug.join('/')}` : undefined
+    //   options.write = true
 
-      return options
-    },
+    //   return options
+    // },
   });
 
   if (res.errors.length > 0) { console.error(res.errors.map(({ detail }) => detail)); }
