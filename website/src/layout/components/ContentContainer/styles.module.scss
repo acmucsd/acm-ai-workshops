@@ -11,7 +11,7 @@ $toc-width: toc.$desktop-toc-width;
   padding: 1rem;
   margin: 0 auto;
   width: calc(100% - #{$toc-width});
-  max-width: 1024px; // TODO: pick less arbitrary value
+  max-width: 1200px; // TODO: pick less arbitrary value
 
   @include mixins.desktop() {
     padding: 1rem 2rem;
