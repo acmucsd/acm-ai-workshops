@@ -54,6 +54,11 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
+// better pre and table styles
+pre, table {
+  overflow: auto;
+}
+
 // root stacking context
 #__next {
   isolation: isolate;

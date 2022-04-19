@@ -15,7 +15,7 @@ export type PipelineConfig = {
   baseUrl?: string,
   globMatch?: FsTreeOptions['globMatch'],
   toMd?: FsTreeOptions['toMd'],
-  getTitle?: FsTreeOptions['getTitle'], // TODO: make a decent default title extractor
+  getTitleAndDescription?: FsTreeOptions['getTitleAndDescription'],
   stripExtensionFromSlug?: FsTreeOptions['stripExtensionFromSlug'],
 }
 
@@ -30,7 +30,7 @@ export const createPipeline = ({
   baseUrl = '',
   globMatch,
   toMd,
-  getTitle,
+  getTitleAndDescription,
   stripExtensionFromSlug,
 }: PipelineConfig) => ({
   getStaticProps: async (...slug: string[]) => {
@@ -43,7 +43,7 @@ export const createPipeline = ({
     return { entry, sidebar }
   },
   getStaticPaths: async () => {
-    const tree = await getFsTree({ basePath, globMatch, toMd, getTitle, stripExtensionFromSlug });
+    const tree = await getFsTree({ basePath, globMatch, toMd, getTitleAndDescription, stripExtensionFromSlug });
     const entries = await collectPathsFromFsTree(tree);
 
     const paths = entries.map(({ slug }) => ({ params: { slug } }));
@@ -55,4 +55,4 @@ export const createPipeline = ({
 
     return { paths }
   }
-})
+}) as const

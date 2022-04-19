@@ -1,5 +1,5 @@
 import { getSidebar } from '@/lib/helpers/sidebar'
-import { workshopsConfig } from '@/lib/pipelines/workshops'
+import { workshopsConfig } from '@/lib/pipeline/workshops'
 import type { SidebarItem as SidebarItemType } from '@/lib/helpers/sidebar'
 
 import Layout from '@/layouts/Layout'
@@ -7,10 +7,9 @@ import Layout from '@/layouts/Layout'
 import s from '@/sections/index/styles.module.scss'
 
 import type { GetStaticProps, NextPage } from 'next'
+import type { WithSidebar } from '@/layouts/pages/types'
 
-interface HomePageProps {
-  sidebar: SidebarItemType[]
-}
+interface HomePageProps extends WithSidebar {}
 
 const Home: NextPage<HomePageProps> = ({ sidebar }) => {
 

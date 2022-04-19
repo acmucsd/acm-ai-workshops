@@ -51,9 +51,9 @@ $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg
 
 .arrow {
   margin: 0 0 0 0.1rem;
-  cursor: pointer;
   align-items: center;
-
+  cursor: pointer;
+  
   &::before {
     content: '';
     background: $arrow-icon 50% / 2rem 2rem;
@@ -66,10 +66,6 @@ $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg
   &.collapsed::before {
     transform: rotate(90deg);
   }
-}
-
-.active {
-  color: colors.$red;
 }
 
 /* desktop sidebar */

@@ -1,0 +1,31 @@
+@use "@/styles/colors";
+
+/* markdown styles */
+.markdown {
+
+  // inline code
+  code {
+    vertical-align: middle;
+    padding: 0.1rem 0.25rem;
+    border-radius: 0.25rem;
+    background-color: #ddd; // TODO: standardize colors
+  }
+
+  // code blocks
+  pre {
+    border-radius: 0.5rem;
+
+    code {
+      padding: unset;
+      border-radius: unset;
+      background-color: unset;
+    }
+  }
+
+  /* apply these styles only in markdown "content" (i.e. articles) */ 
+  &.content {
+    > * {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -150,7 +150,7 @@ type CollapsibleElementType = React.ElementType<
 * with JS
 */
 function getSSRStyle(collapsed: boolean) {
-  if (canUseDOM) {
+  if (!canUseDOM) {
     return undefined;
   }
   return collapsed ? CollapsedStyles : ExpandedStyles;

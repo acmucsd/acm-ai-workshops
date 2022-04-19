@@ -4,7 +4,7 @@ import { promisify } from 'util';
 import globCb from 'glob';
 
 import { slugify } from '@/utils/slugify';
-import { extractTitleFromMdString } from "./extractMdTitle";
+import { extractTitleDescriptionFromMdString } from "./extractMdTitleDescription";
 
 const glob = promisify(globCb);
 
@@ -15,6 +15,7 @@ interface VEntryCommon {
 export interface VFile extends VEntryCommon {
   type: 'file';
   title: string;
+  description: string;
   md: string;
 }
 export interface VDir extends VEntryCommon {
@@ -25,16 +26,18 @@ export type VEntry = VFile | VDir;
 
 const trees: Map<string, VDir> = new Map();
 
-export type ToMdFunction = (contents: string) => Promise<string>
-export type GetTitleFunction = ({ contents, md, filepath }: { contents: string, md: string, filepath: string[] }) => string
-
 export type Options = {
   basePath: string
+  
+  // glob string for testing files to include. this glob is called from `basePath`
   globMatch?: string
+
   // transform file contents into md format
-  toMd?: ToMdFunction
-  // extract title from the document, whether it's from the original file contents or converted markdown
-  getTitle?: GetTitleFunction
+  toMd?: (contents: string) => Promise<string>
+  
+  // extract title and description as html from the document, whether it's from the original file contents or converted markdown
+  getTitleAndDescription?: ({ contents, md, filepath }: { contents: string, md: string, filepath: string[] }) => Promise<{ title: string, description: string }>
+
   stripExtensionFromSlug?: boolean
 }
 
@@ -52,7 +55,13 @@ export const getFsTree = async ({
   basePath,
   globMatch = '**/*.(md|mdx)',
   toMd = async (contents: string) => contents,
-  getTitle = ({ md, filepath }) => extractTitleFromMdString(md) ?? path.parse(filepath[filepath.length - 1]).name,
+  getTitleAndDescription = async ({ md, filepath }) => {
+    const { title, description } = await extractTitleDescriptionFromMdString(md);
+    return {
+      title: title ?? path.parse(filepath[filepath.length - 1]).name,
+      description: description ?? '',
+    }
+  },
   stripExtensionFromSlug = true,
 }: Options) => {
   if (trees.has(basePath)) {
@@ -71,12 +80,13 @@ export const getFsTree = async ({
   const createVFile = async (fsPath: string[], slug: string[]) => {
     const contents = await readFile(path.join(basePath, ...fsPath), 'utf-8');
     const md = await toMd(contents);
-    const title = getTitle({ contents, md, filepath: fsPath });
+    const { title, description } = await getTitleAndDescription({ contents, md, filepath: fsPath });
     return {
       type: 'file',
       fsPath,
       slug,
       title,
+      description,
       md,
     } as VFile;
   }
@@ -84,18 +94,16 @@ export const getFsTree = async ({
   // collect all notebook paths
   const notebookPaths = await glob(globMatch, { cwd: basePath, ignore: 'website/*' })
 
-  // this await reduce is to basically sequentially construct all the subpaths 
-  //  despite calling async functions inside
   // for each filepath...
-  await notebookPaths.reduce(async (promise, filepath) => {
+  for (const filepath of notebookPaths) {
     const relPath = path.relative(basePath, filepath);
     const dirs = relPath.split(path.sep).slice(1); // skip the first index, which is always "."
     
-    await promise;
-    
-    // start at root
+    // start at tree root
     let m = root;
     const fsPath = [], slugPath = [];
+
+    // and construct the branch to the filepath
     for (let i=0; i < dirs.length; ++i) {
       const d = dirs[i];
       const slug = (stripExtensionFromSlug && i === dirs.length - 1)
@@ -118,7 +126,7 @@ export const getFsTree = async ({
         m = m.items[slug] as VDir;
       }
     }
-  }, Promise.resolve());
+  }
 
   // cache the tree
   trees.set(basePath, root);
@@ -160,9 +168,10 @@ export const collectPathsFromFsTree = async (tree: VDir) => {
   return paths;
 }
 
-// TODO: could maybe abstract this? because it's basically just a deep get
 /**
  * given a tree and a slug array, gets the entry in the tree associated with the slug
+ * @todo maybe abstract this? because it's basically just a deep get
+ * 
  * @param tree the tree to get the entry from
  * @param slug the slug to get the entry for
  * @returns the entry associated with the given slug

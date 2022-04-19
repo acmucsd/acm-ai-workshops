@@ -1,4 +1,5 @@
 import { unified } from "unified";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkStringify from "remark-stringify/lib";
 
@@ -12,6 +13,7 @@ import { nbParse } from "./nbParse";
 export const notebookToMd = async (contents: string) => {
   const md = await unified()
     .use(nbParse)
+    .use(remarkGfm)
     .use(remarkMath)
     .use(remarkStringify)
     .process(contents);

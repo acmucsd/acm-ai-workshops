@@ -16,6 +16,7 @@ import s from "./styles.module.scss";
 
 import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 import type { SidebarProps } from ".";
+import { canUseDOM } from "@/utils/environment";
 
 interface SidebarItemProps extends Omit<SidebarProps, 'items'>, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   item: SidebarItemType
@@ -32,18 +33,19 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
   const { items, label, href } = item as SidebarCategoryType;
 
   const isActive = isActiveSidebarItem(item, activePath);
-  const { collapsed, toggleCollapsed } = useCollapsible(!isActive);
+  const { collapsed, toggleCollapsed } = useCollapsible(!canUseDOM ? true : !isActive);
 
   return (
     <li>
       <div className={s.category}>
-        {/* given we have sidebar, could instead just make these buttons that collapse the category maybe? */}
+        {/* TODO: given we have sidebar, could instead just make these buttons that collapse the category maybe? */}
         <Link href={href}><a
           className={c(s.link, isActive && s.active)}
+          // TODO: fix SSR error here
           aria-expanded={!collapsed}
-        >
-          {label}
-        </a></Link>
+          // we construct the label from our locally sourced files so we can assume it's safe
+          dangerouslySetInnerHTML={{ __html: label }}
+        /></Link>
         <button
           className={c(s.arrow, collapsed && s.collapsed)}
           aria-label={`toggle the sidebar category '${label}'`}
@@ -71,7 +73,7 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
 }
 
 const SidebarDoc = ({ item, activePath, ...props }: SidebarItemProps) => {
-  const { href, title } = item as SidebarDocType;
+  const { href, label } = item as SidebarDocType;
   const isActive = isActiveSidebarItem(item, activePath);
 
   return (
@@ -81,10 +83,10 @@ const SidebarDoc = ({ item, activePath, ...props }: SidebarItemProps) => {
           s.link,
           isActive && s.active,
         )}
+        // we construct the label from our locally sourced files so we can assume it's safe
+        dangerouslySetInnerHTML={{ __html: label }}
         {...props}
-      >
-        {title}
-      </a></Link>
+      /></Link>
     </li>
   )
 }

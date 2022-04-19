@@ -8,15 +8,15 @@ import type {
   VFile,
 } from "./fs-tree";
 
-export type SidebarDoc = {
-  type: 'doc';
-  href: string;
-  title: string;
-}
-export type SidebarCategory = {
-  type: 'category';
+type SidebarItemCommon = {
   href: string;
   label: string;
+}
+export type SidebarDoc = SidebarItemCommon & {
+  type: 'doc';
+}
+export type SidebarCategory = SidebarItemCommon & {
+  type: 'category';
   items: SidebarItem[];
 }
 export type SidebarItem = SidebarDoc | SidebarCategory
@@ -27,6 +27,14 @@ const sidebars: Map<SidebarsCacheKey, SidebarItem[]> = new Map();
 type Options = FsTreeOptions & {
   baseUrl?: string
 }
+
+/**
+ * constructs the sidebar for a given FS tree
+ * @param opts options for constructing the sidebar
+ * @param opts.baseUrl the base url for all links in the constructed sidebar
+ * @see {@link getFsTree} for details on the other options
+ * @returns an array of possibly nested sidebar items
+ */
 export const getSidebar = async ({ baseUrl = '', ...opts }: Options) => {
   const key: SidebarsCacheKey = `${baseUrl}$$${opts.basePath}`
   if (sidebars.has(key)) {
@@ -36,13 +44,13 @@ export const getSidebar = async ({ baseUrl = '', ...opts }: Options) => {
   const tree = await getFsTree(opts);
 
   const buildSidebar = (obj: VEntry): SidebarItem => {
-    // base case - a "leaf" (ie a file). directly extract the slug and title
+    // base case - a "leaf" (ie a file)
     if (isVFile(obj)) {
       const { slug, title } = obj as VFile;
       const href = slugToHref(slug, baseUrl);
       const label = getSidebarDocLabel({ slug, title })
 
-      const doc: SidebarDoc = { type: 'doc', href, title };
+      const doc: SidebarDoc = { type: 'doc', href, label };
       return doc;
     }
 

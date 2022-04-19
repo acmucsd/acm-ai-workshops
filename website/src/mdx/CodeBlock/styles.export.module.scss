@@ -1,0 +1,7 @@
+@use "./styles.module.scss" as *;
+
+:export {
+  @each $k, $v in $prism-css-vars {
+    #{$k}: #{$v};
+  }
+}

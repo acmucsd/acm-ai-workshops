@@ -2,86 +2,170 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * LICENSE-docusaurus file in the root directory of the website source tree.
  */
 
+@use "sass:map";
 @use "@/styles/mixins";
 
-.codeBlockContainer {
-  --pre-padding: 1rem;
-  --code-font-size: 90%;
-  --global-radius: 0.4rem;
-  --leading: 1.25rem;
-  --global-shadow-lw: 0 1px 2px 0 rgba(0,0,0,0.1);
-  --color-emphasis-300: #606770;
-  --color-white: #fff;
+// the names of the css variables used - these are exported to then be referred to when binding styles to the code block container
+$prism-css-vars: (
+  prismBackgroundColor: --prism-background-color,
+  prismColor: --prism-color,
+);
 
-  margin-bottom: var(--leading);
-  border-radius: var(--global-radius);
-  box-shadow: var(--global-shadow-lw);
-  overflow: hidden;
-}
+$prismBackgroundColor: map.get($prism-css-vars, prismBackgroundColor);
+$prismColor: map.get($prism-css-vars, prismColor);
 
-.codeBlockContent {
-  position: relative;
-  /*rtl:ignore*/
-  direction: ltr;
-}
+$padding: 1rem;
+$border-color: #dadde1;
 
-.codeBlockTitle {
-  border-bottom: 1px solid var(--color-emphasis-300);
-  font-size: var(--code-font-size);
-  font-weight: 500;
-  padding: 0.75rem var(--pre-padding);
-}
+/* standalone code block -- Element */
 
-.codeBlock {
-  margin: 0;
+.standalone {
   padding: 0;
-  border-radius: 0;
-  
-  overflow: auto;
   @include mixins.scrollbar(4px);
 }
 
-.cleanBtn {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  font-family: inherit;
-  padding: 0;
+/* code block container */
+ 
+.codeBlockContainer {
+  background: var(#{$prismBackgroundColor});
+  color: var(#{$prismColor});
+  margin-bottom: 1.25rem;
+  box-shadow: 0px 1px 2px hsl(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+ 
+  .title {
+    border-bottom: 1px solid $border-color; // TODO: colors
+    font-size: 90%;
+    font-weight: 500;
+    padding: 0.75rem $padding;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  .content {
+    position: relative;
+    direction: ltr;
+    border-radius: inherit;
+    
+    .codeBlock {
+      margin: 0;
+      padding: 0;
+      background: var(#{$prismBackgroundColor});
+      color: var(#{$prismColor});
+  
+      @include mixins.scrollbar(4px);
+    }
+  }
+
+  .title + .content .codeBlock {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .lines {
+    font: inherit;
+    float: left;
+    min-width: 100%;
+    padding: $padding;
+  
+    &.numbered {
+      display: table;
+      padding: $padding 0;
+    }
+
+    @media print {
+      white-space: pre-wrap;
+    }
+  }
+
+  .line {
+    display: table-row;
+    counter-increment: line-count;
+  }
+  
+  .lineNumber {
+    display: table-cell;
+    text-align: right;
+    width: 1%;
+    position: sticky;
+    left: 0;
+    padding: 0 $padding;
+    background: $prismBackgroundColor;
+  }
+  
+  .lineNumber::before {
+    content: counter(line-count);
+    opacity: 0.4;
+  }
+  
+  .lineContent {
+    padding-right: $padding;
+  }
 }
 
 .copyButton {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: var(--global-radius);
-  color: var(--color-white);
-  opacity: 0;
-  user-select: none;
-  padding: 0.4rem 0.5rem;
   position: absolute;
-  right: calc(var(--pre-padding) / 2);
-  top: calc(var(--pre-padding) / 2);
+  right: calc(#{$padding} / 2);
+  top: calc(#{$padding} / 2);
+  background: var(#{$prismBackgroundColor});
+  color: var(#{$prismColor});
+  border: 1px solid $border-color;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  display: flex;
+  font-family: inherit;
+  cursor: pointer;
+  
+  opacity: 0;
   transition: opacity 200ms ease-in-out;
-}
-
-.codeBlockTitle:hover + .codeBlockContent .copyButton,
-.codeBlockContent:hover > .copyButton,
-.copyButton:focus {
-  opacity: 1;
-}
-
-.codeBlockLines {
-  font: inherit;
-  /*rtl:ignore*/
-  float: left;
-  min-width: 100%;
-  padding: var(--pre-padding);
-}
-
-@media print {
-  .codeBlockLines {
-    white-space: pre-wrap;
+  
+  .codeBlockContainer:hover & {
+    opacity: 0.4;
   }
+
+  &:focus-visible, &:hover, .codeBlockContainer &.copied {
+    opacity: 1;
+  }
+  
+  
+  .icons {
+    position: relative;
+    width: 1.125rem;
+    height: 1.125rem;
+
+    .copyIcon, .successIcon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      fill: currentColor;
+      opacity: inherit;
+      width: inherit;
+      height: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .successIcon {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.33);
+      opacity: 0;
+      color: #00d600;
+    }
+  }
+
+  &.copied {
+    .copyIcon {
+      transform: scale(0.33);
+      opacity: 0;
+    }
+
+    .successIcon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      transition-delay: 0.075s;
+    }
+  }  
 }

@@ -1,4 +1,5 @@
 import { unified } from "unified";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 
@@ -43,6 +44,7 @@ export const fromNotebook = (doc: string) => {
       case 'markdown':
         const root = unified()
           .use(remarkParse)
+          .use(remarkGfm)
           .use(remarkMath)
           .parse(sourceStr)
         ;

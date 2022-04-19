@@ -1,4 +1,5 @@
 import { serialize } from "next-mdx-remote/serialize";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
@@ -9,7 +10,7 @@ import rehypeKatex from "rehype-katex";
 export const serializeMdx = async (contents: string) => {
   return await serialize(contents, {
     mdxOptions: {
-      remarkPlugins: [remarkMath],
+      remarkPlugins: [remarkGfm, remarkMath],
       rehypePlugins: [rehypeKatex],
     },
   });

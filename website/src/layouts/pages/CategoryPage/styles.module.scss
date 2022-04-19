@@ -1,0 +1,38 @@
+$gap: 2rem;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px , 1fr)); // TODO
+  gap: $gap;
+}
+
+.card {
+  $border-color: #eeeeee; // TODO: unify colors
+  $shadow-color: hsla(0deg 0% 0% / 20%); // TODO: unify colors
+  
+  border: 1px solid $border-color;
+  border-radius: 1rem;
+  padding: 2rem;
+  
+  transition: box-shadow 400ms ease 0s;
+  box-shadow: 0 2px 4px $shadow-color;
+  &:hover {
+    box-shadow: 0 4px 8px $shadow-color;
+  }
+
+  .truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    flex: 1 1 0;
+    color: #808080; // TODO
+    font-size: 0.8rem;
+  }
+}

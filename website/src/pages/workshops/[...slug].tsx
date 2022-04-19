@@ -1,57 +1,32 @@
-import { createPipeline } from "@/lib/pipelines";
-import { workshopsConfig } from "@/lib/pipelines/workshops";
+import { createPipeline } from "@/lib/pipeline";
+import { workshopsConfig } from "@/lib/pipeline/workshops";
 import { serializeMdx } from "@/lib/unified/serializeMdx";
 import { slugToHref } from "@/utils/slugToHref";
 import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar"
 
 import { useRouter } from "next/router";
 
-import WorkshopIndexPage from "@/layouts/pages/WorkshopIndexPage";
-import NotebookPage from "@/layouts/pages/NotebookPage";
+import CategoryPage from "@/layouts/pages/CategoryPage";
+import DocPage from "@/layouts/pages/DocPage";
 import Layout from "@/layouts/Layout";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
+import type { Category, CategoryPageProps, CommonPageProps, Doc, DocPageProps, PageProps } from "@/layouts/pages/types";
 
-interface CommonWorkshopPageProps {
-  breadcrumb: string[];
-}
-
-export interface NotebookPageProps extends CommonWorkshopPageProps {
-  type: 'notebook';
-  title: string;
-  source: MDXRemoteSerializeResult<Record<string, unknown>>;
-}
-
-export interface IndexPageProps extends CommonWorkshopPageProps {
-  type: 'index';
-  items: Array<{
-    type: WorkshopsPageType;
-    title: string;
-    href: string;
-    description: string;
-  }>
-}
-
-export type WorkshopsPageProps = (NotebookPageProps | IndexPageProps) & {
-  sidebar: SidebarItemType[]
-}
-type WorkshopsPageType = WorkshopsPageProps['type']
-
-const Workshop: NextPage<WorkshopsPageProps> = ({ type, sidebar, ...props }) => {
+const Workshop: NextPage<PageProps> = ({ type, sidebar, ...props }) => {
   const router = useRouter();
 
   switch (type) {
-    case 'notebook':
+    case 'doc':
       return (
         <Layout sidebar={sidebar} path={router.asPath}>
-          <NotebookPage {...props as NotebookPageProps} />
+          <DocPage {...props as DocPageProps} />
         </Layout>
       );
-    case 'index':
+    case 'category':
       return (
         <Layout sidebar={sidebar} path={router.asPath}>
-          <WorkshopIndexPage {...props as IndexPageProps} />
+          <CategoryPage {...props as CategoryPageProps} />
         </Layout>
       );
   }
@@ -73,19 +48,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
               switch (entry.type) {
                 case 'file':
                   return {
-                    type: 'notebook',
+                    type: 'doc',
                     title: entry.title,
-                    description: '', // TODO
-                  }
+                    description: entry.description,
+                  } as Doc
                 case 'directory':
                   const numItems = Object.keys(entry.items).length;
                   return {
-                    type: 'index',
+                    type: 'category',
                     title: entry.fsPath[entry.fsPath.length - 1],
                     description: numItems === 1
                       ? `${numItems} item`
                       : `${numItems} items`,
-                  }
+                  } as Category
               }
             })();
             const href = slugToHref(entry.slug, workshopsConfig.baseUrl);
@@ -99,17 +74,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           })
         ;
         return {
-          type: 'index',
+          type: 'category',
           items: flattenedItems,
-        } as Omit<IndexPageProps, keyof CommonWorkshopPageProps>;
+        } as Omit<CategoryPageProps, keyof CommonPageProps>;
       
       case 'file':
         const mdx = await serializeMdx(entry.md);
         return {
-          type: 'notebook',
+          type: 'doc',
           title: entry.title,
           source: mdx,
-        } as Omit<NotebookPageProps, keyof CommonWorkshopPageProps>
+        } as Omit<DocPageProps, keyof CommonPageProps>
     }
   })();
 

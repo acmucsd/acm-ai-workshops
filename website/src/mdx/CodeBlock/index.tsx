@@ -5,96 +5,52 @@
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
 
-// taken from https://github.com/facebook/docusaurus/tree/main/packages/docusaurus-theme-classic/src/theme/CodeBlock
+import { Children, isValidElement } from 'react';
+import { useIsBrowser } from '@/hooks/useIsBrowser';
+import ElementContent from './Element';
+import StringContent from './String';
+ 
+import type { ReactNode } from 'react';
+import type { PrismTheme } from 'prism-react-renderer';
 
-import React, { useRef, useState } from 'react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import c from 'clsx';
-import copy from 'copy-text-to-clipboard';
-
-import s from './styles.module.scss';
-
-// we can change this theme tbh. could also look into making a custom one too
-import theme from 'prism-react-renderer/themes/vsLight';
-
-const CodeBlock = (props: any): JSX.Element => {
-  const {
-    children,
-    metastring,
-    title,
-    className: languageClassName,
-  } = props;
-
-  const [showCopied, setShowCopied] = useState(false);
-  const button = useRef(null);
-  const handleCopyCode = () => {
-    copy(code);
-    setShowCopied(true);
-
-    setTimeout(() => setShowCopied(false), 2000);
-  };
-
-  const content = Array.isArray(children)
-    ? children.join('')
-    : (children as string) ?? '';
-  const code = content.replace(/\n$/, '');
-
-  const language = languageClassName?.replace(/language-/, '');
-
-  return (
-    <Highlight
-      {...defaultProps}
-      theme={theme}
-      code={code}
-      language={language}
-    >
-      {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <div className={s.codeBlockContainer}>
-          {title && (
-            <div style={style} className={s.codeBlockTitle}>
-              {title}
-            </div>
-          )}
-          <div className={c(s.codeBlockContent, language)}>
-            <pre
-              /* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */
-              tabIndex={0}
-              className={c(className, s.codeBlock, 'thin-scrollbar')}
-              style={style}>
-              <code className={s.codeBlockLines}>
-                {tokens.map((line, i) => {
-                  if (line.length === 1 && line[0].content === '\n') {
-                    line[0].content = '';
-                  }
-
-                  const lineProps = getLineProps({line, key: i});
-
-                  return (
-                    <span key={i} {...lineProps}>
-                      {line.map((token, key) => (
-                        <span key={key} {...getTokenProps({token, key})} />
-                      ))}
-                      <br />
-                    </span>
-                  );
-                })}
-              </code>
-            </pre>
-
-            <button
-              ref={button}
-              type="button"
-              aria-label={'Copy code to clipboard'}
-              className={c(s.copyButton, s.cleanBtn)}
-              onClick={handleCopyCode}>
-              {showCopied ? 'Copied' : 'Copy'}
-            </button>
-          </div>
-        </div>
-      )}
-    </Highlight>
-  )
+export interface CodeBlockProps {
+  children: ReactNode;
+  className?: string;
+  metastring?: string;
+  title?: string;
+  language?: string;
+  showLineNumbers?: boolean;
+  theme?: PrismTheme
 }
 
-export default CodeBlock;
+/**
+* Best attempt to make the children a plain string so it is copyable. If there
+* are react elements, we will not be able to copy the content, and it will
+* return `children` as-is; otherwise, it concatenates the string children
+* together.
+*/
+function maybeStringifyChildren(children: ReactNode): ReactNode {
+  if (Children.toArray(children).some((el) => isValidElement(el))) {
+    return children;
+  }
+  // The children is now guaranteed to be one/more plain strings
+  return Array.isArray(children) ? children.join('') : (children as string);
+}
 
+export default function CodeBlock({
+  children: rawChildren,
+  ...props
+}: CodeBlockProps): JSX.Element {
+  // The Prism theme on SSR is always the default theme but the site theme can
+  // be in a different mode. React hydration doesn't update DOM styles that come
+  // from SSR. Hence force a re-render after mounting to apply the current
+  // relevant styles.
+  const isBrowser = useIsBrowser();
+  const children = maybeStringifyChildren(rawChildren);
+  const CodeBlockComponent = typeof children === 'string' ? StringContent : ElementContent;
+  return (
+    <CodeBlockComponent key={String(isBrowser)} {...props}>
+      {children as string}
+    </CodeBlockComponent>
+  );
+}
