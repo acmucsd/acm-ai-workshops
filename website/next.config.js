@@ -30,8 +30,8 @@ const withTypedCssModules = (config) => {
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  webpack (config) {
-    config = withTypedCssModules(config)
-    return config
-  }
+  // webpack (config) {
+  //   config = withTypedCssModules(config)
+  //   return config
+  // }
 }
