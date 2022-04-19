@@ -19,12 +19,12 @@ interface CodeBlockContainerProps<T extends 'div' | 'pre'>  {
   theme: PrismTheme
 }
 
-export default function CodeBlockContainer<T extends 'div' | 'pre'>({
+const CodeBlockContainer = <T extends 'div' | 'pre'>({
   as: As,
   theme,
   className,
   ...props
-}: CodeBlockContainerProps<T> & ComponentProps<T>): JSX.Element {
+}: CodeBlockContainerProps<T> & ComponentProps<T>): JSX.Element => {
   const prismCssVariables = getPrismCssVariables(theme);
   return (
     <As
@@ -35,3 +35,5 @@ export default function CodeBlockContainer<T extends 'div' | 'pre'>({
     />
   );
 }
+
+export default CodeBlockContainer;

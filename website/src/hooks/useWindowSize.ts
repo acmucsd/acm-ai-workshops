@@ -48,7 +48,7 @@ export const useWindowSize = (): WindowSize => {
   });
 
   useEffect(() => {
-    function updateWindowSize() {
+    const updateWindowSize = () => {
       setWindowSize(getWindowSize());
     }
 

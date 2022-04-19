@@ -22,12 +22,12 @@ interface CodeBlockLineProps {
   getTokenProps: PrismRenderProps['getTokenProps'];
 }
 
-export default function CodeBlockLine({
+const CodeBlockLine = ({
   line,
   showLineNumbers,
   getLineProps,
   getTokenProps,
-}: CodeBlockLineProps): JSX.Element {
+}: CodeBlockLineProps): JSX.Element => {
   if (line.length === 1 && line[0]!.content === '\n') { line[0]!.content = ''; }
 
   const lineProps = getLineProps({ line, ...(showLineNumbers && { className: s.line }) });
@@ -49,3 +49,5 @@ export default function CodeBlockLine({
     </span>
   );
 }
+
+export default CodeBlockLine;

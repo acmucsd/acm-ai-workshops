@@ -3,22 +3,10 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
     active: string;
-    arrow: string;
-    category: string;
-    collapsed: string;
-    contentContainer: string;
-    contentWrapper: string;
-    desktop: string;
-    hidden: string;
+    heading: string;
     items: string;
-    left: string;
     link: string;
-    logo: string;
-    navItem: string;
-    navbar: string;
-    right: string;
-    sidebarContainer: string;
-    wrapper: string;
+    nav: string;
   }
 }
 

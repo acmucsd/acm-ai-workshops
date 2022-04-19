@@ -17,11 +17,11 @@ import type { CodeBlockProps } from '.';
 // <pre> tags in markdown map to CodeBlocks. They may contain JSX children. When
 // the children is not a simple string, we just return a styled block without
 // actually highlighting.
-export default function CodeBlockJSX({
+const CodeBlockJSX = ({
   theme = lightTheme,
   children,
   className,
-}: CodeBlockProps): JSX.Element {
+}: CodeBlockProps): JSX.Element => {
   return (
     <Container
       as="pre"
@@ -33,3 +33,5 @@ export default function CodeBlockJSX({
     </Container>
   );
 }
+
+export default CodeBlockJSX;

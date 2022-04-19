@@ -29,7 +29,7 @@ export interface CodeBlockProps {
 * return `children` as-is; otherwise, it concatenates the string children
 * together.
 */
-function maybeStringifyChildren(children: ReactNode): ReactNode {
+const maybeStringifyChildren = (children: ReactNode): ReactNode => {
   if (Children.toArray(children).some((el) => isValidElement(el))) {
     return children;
   }
@@ -37,10 +37,7 @@ function maybeStringifyChildren(children: ReactNode): ReactNode {
   return Array.isArray(children) ? children.join('') : (children as string);
 }
 
-export default function CodeBlock({
-  children: rawChildren,
-  ...props
-}: CodeBlockProps): JSX.Element {
+const CodeBlock = ({ children: rawChildren, ...props }: CodeBlockProps): JSX.Element => {
   // The Prism theme on SSR is always the default theme but the site theme can
   // be in a different mode. React hydration doesn't update DOM styles that come
   // from SSR. Hence force a re-render after mounting to apply the current
@@ -54,3 +51,5 @@ export default function CodeBlock({
     </CodeBlockComponent>
   );
 }
+
+export default CodeBlock;

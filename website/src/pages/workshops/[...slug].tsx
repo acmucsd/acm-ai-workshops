@@ -1,33 +1,23 @@
+import path from "path";
+import { bundle } from "@/lib/unified/bundle";
 import { createPipeline } from "@/lib/pipeline";
 import { workshopsConfig } from "@/lib/pipeline/workshops";
-import { serializeMdx } from "@/lib/unified/serializeMdx";
 import { slugToHref } from "@/utils/slugToHref";
 
 import { useRouter } from "next/router";
 
-import CategoryPage from "@/layouts/pages/CategoryPage";
-import DocPage from "@/layouts/pages/DocPage";
-import Layout from "@/layouts/Layout";
+import CategoryPage from "@/layout/pages/CategoryPage";
+import DocPage from "@/layout/pages/DocPage";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { Category, CategoryPageProps, CommonPageProps, Doc, DocPageProps, PageProps } from "@/layouts/pages/types";
+import type { Category, CategoryPageProps, CommonPageProps, Doc, DocPageProps, PageProps } from "@/layout/pages/types";
 
-const Workshop: NextPage<PageProps> = ({ type, sidebar, ...props }) => {
-  const router = useRouter();
-
+const Workshop: NextPage<PageProps> = ({ type, ...props }) => {
   switch (type) {
     case 'doc':
-      return (
-        <Layout sidebar={sidebar} path={router.asPath}>
-          <DocPage {...props as DocPageProps} />
-        </Layout>
-      );
+      return <DocPage {...props as DocPageProps} />
     case 'category':
-      return (
-        <Layout sidebar={sidebar} path={router.asPath}>
-          <CategoryPage {...props as CategoryPageProps} />
-        </Layout>
-      );
+      return <CategoryPage {...props as CategoryPageProps} />
   }
 };
 
@@ -37,7 +27,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string[] };
 
   const { entry, sidebar } = await createPipeline(workshopsConfig).getStaticProps(...slug);
-
+  
   const uniqueProps = await (async () => {
     switch (entry.type) {
       case 'directory':
@@ -78,11 +68,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } as Omit<CategoryPageProps, keyof CommonPageProps>;
       
       case 'file':
-        const mdx = await serializeMdx(entry.md);
+        // const mdx = await serializeMdx(entry.md);
+        const { code } = await bundle({ source: entry.md, cwd: path.join(workshopsConfig.root_filepath, ...entry.fsPath), baseUrl: workshopsConfig.baseUrl ?? '/', slug: entry.slug })
         return {
           type: 'doc',
           title: entry.title,
-          source: mdx,
+          // source: mdx,
+          code,
         } as Omit<DocPageProps, keyof CommonPageProps>
     }
   })();

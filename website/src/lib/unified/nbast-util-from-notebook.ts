@@ -1,8 +1,9 @@
 import { unified } from "unified";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import remarkParse from "remark-parse";
+import remarkParse from "remark-parse/lib";
 
+import type { Parent } from "mdast";
 import type { Cell, JupyterNotebook } from "@/lib/types/notebook";
 
 /**
@@ -48,7 +49,7 @@ export const fromNotebook = (doc: string) => {
           .use(remarkMath)
           .parse(sourceStr)
         ;
-        ast.children.push(...root.children);
+        ast.children.push(...(root as Parent).children);
         break
       case 'raw':
         break

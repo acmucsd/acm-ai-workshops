@@ -1,0 +1,6 @@
+@use "@/styles/utils";
+@use "./styles.module.scss" as *;
+
+:export {
+  navbarHeight: utils.strip-units($navbar-height);
+}

@@ -5,22 +5,35 @@ import { slugToHref } from "@/utils/slugToHref";
 
 import { useRouter } from "next/router";
 
-import Layout from "@/layouts/Layout";
-import CategoryPage from "@/layouts/pages/CategoryPage";
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
+import CategoryItemsGrid from "@/layout/components/CategoryItemsGrid";
+import ContentContainer from "@/layout/components/ContentContainer";
+import ContentWrapper from "@/layout/components/ContentWrapper";
+import MainWrapper from "@/layout/components/MainWrapper";
+import SidebarContainer from "@/layout/components/SidebarContainer";
 
 import s from "@/sections/workshops/styles.module.scss"
 
 import type { GetStaticProps, NextPage } from "next";
-import type { Category, CategoryPageProps, Doc, PageProps } from "@/layouts/pages/types";
+import type { Category, CategoryPageProps, Doc } from "@/layout/pages/types";
 
-const WorkshopsRootPage: NextPage<PageProps> = ({ sidebar, ...props }) => {
+const WorkshopsRootPage: NextPage<Exclude<CategoryPageProps, 'path'>> = ({ sidebar, items, ...props }) => {
   const router = useRouter();
 
   return (
-    <Layout sidebar={sidebar} path={router.asPath}>
-      <h1 className={s.title}>ACM AI Workshops</h1>
-      <CategoryPage {...props as CategoryPageProps} />
-    </Layout>
+    <>
+      <Navbar />
+      <MainWrapper>
+        <SidebarContainer><Sidebar items={sidebar} activePath={router.asPath} /></SidebarContainer>
+        <ContentWrapper>
+          <ContentContainer>
+            <h1 className={s.title}>ACM AI Workshops</h1>
+            <CategoryItemsGrid items={items} />
+          </ContentContainer>
+        </ContentWrapper>
+      </MainWrapper>
+    </>
   );
 };
 

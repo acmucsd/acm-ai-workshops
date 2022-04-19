@@ -4,7 +4,7 @@ $navbar-height: 76px;
 
 .navbar {
   z-index: 10;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   height: $navbar-height;

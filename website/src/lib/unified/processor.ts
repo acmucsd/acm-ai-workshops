@@ -12,10 +12,10 @@ import { nbParse } from "./nbParse";
  */
 export const notebookToMd = async (contents: string) => {
   const md = await unified()
-    .use(nbParse)
-    .use(remarkGfm)
-    .use(remarkMath)
-    .use(remarkStringify)
+    .use(nbParse)         // parse notebook as md
+    .use(remarkGfm)       // recognize strikethroughs and stuff
+    .use(remarkMath)      // recognize math
+    .use(remarkStringify) // stringify to markdown string
     .process(contents);
   return md;
 }

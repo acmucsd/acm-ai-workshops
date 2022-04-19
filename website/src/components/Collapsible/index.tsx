@@ -26,7 +26,7 @@ const DefaultAnimationEasing = 'ease-in-out';
 /**
 * This hook is a very thin wrapper around a `useState`.
 */
-export function useCollapsible(initialState: boolean | (() => boolean) = false) {
+export const useCollapsible = (initialState: boolean | (() => boolean) = false) => {
   const [collapsed, setCollapsed] = useState(initialState ?? false);
 
   const toggleCollapsed = useCallback(() => {
@@ -52,7 +52,7 @@ const ExpandedStyles = {
   height: 'auto',
 } as const;
 
-function applyCollapsedStyle(el: HTMLElement, collapsed: boolean) {
+const applyCollapsedStyle = (el: HTMLElement, collapsed: boolean) => {
   const collapsedStyles = collapsed ? CollapsedStyles : ExpandedStyles;
   el.style.display = collapsedStyles.display;
   el.style.overflow = collapsedStyles.overflow;
@@ -65,7 +65,7 @@ is good for a large number of items.
 https://material.io/archive/guidelines/motion/duration-easing.html#duration-easing-dynamic-durations
 https://github.com/mui-org/material-ui/blob/e724d98eba018e55e1a684236a2037e24bcf050c/packages/material-ui/src/styles/createTransitions.js#L40-L43
 */
-function getAutoHeightDuration(height: number) {
+const getAutoHeightDuration = (height: number) => {
   const constant = height / 36;
   return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10);
 }
@@ -75,7 +75,7 @@ type CollapsibleAnimationConfig = {
   easing?: string;
 };
 
-function useCollapseAnimation({
+const useCollapseAnimation = ({
   collapsibleRef,
   collapsed,
   animation,
@@ -83,13 +83,13 @@ function useCollapseAnimation({
   collapsibleRef: RefObject<HTMLElement>;
   collapsed: boolean;
   animation?: CollapsibleAnimationConfig;
-}) {
+}) => {
   const mounted = useRef(false);
 
   useEffect(() => {
     const el = collapsibleRef.current!;
 
-    function getTransitionStyles() {
+    const getTransitionStyles = () => {
       const height = el.scrollHeight;
       const duration = animation?.duration ?? getAutoHeightDuration(height);
       const easing = animation?.easing ?? DefaultAnimationEasing;
@@ -99,7 +99,7 @@ function useCollapseAnimation({
       };
     }
 
-    function applyTransitionStyles() {
+    const applyTransitionStyles = () => {
       const transitionStyles = getTransitionStyles();
       el.style.transition = transitionStyles.transition;
       el.style.height = transitionStyles.height;
@@ -114,7 +114,7 @@ function useCollapseAnimation({
 
     el.style.willChange = 'height';
 
-    function startAnimation() {
+    const startAnimation = () => {
       const animationFrame = requestAnimationFrame(() => {
         // When collapsing
         if (collapsed) {
@@ -149,7 +149,7 @@ type CollapsibleElementType = React.ElementType<
 * Prevent hydration layout shift before animations are handled imperatively
 * with JS
 */
-function getSSRStyle(collapsed: boolean) {
+const getSSRStyle = (collapsed: boolean) => {
   if (!canUseDOM) {
     return undefined;
   }
@@ -181,7 +181,7 @@ type CollapsibleBaseProps = {
   disableSSRStyle?: boolean;
 };
 
-function CollapsibleBase({
+const CollapsibleBase = ({
   as: As = 'div',
   collapsed,
   children,
@@ -189,7 +189,7 @@ function CollapsibleBase({
   onCollapseTransitionEnd,
   className,
   disableSSRStyle,
-}: CollapsibleBaseProps) {
+}: CollapsibleBaseProps) => {
   // any because TS is a pain for HTML element refs, see https://twitter.com/sebastienlorber/status/1412784677795110914
   const collapsibleRef = useRef<any>(null);
 
@@ -215,7 +215,7 @@ function CollapsibleBase({
   );
 }
 
-function CollapsibleLazy({collapsed, ...props}: CollapsibleBaseProps) {
+const CollapsibleLazy = ({collapsed, ...props}: CollapsibleBaseProps) => {
   const [mounted, setMounted] = useState(!collapsed);
 
   useIsomorphicLayoutEffect(() => {
@@ -252,7 +252,9 @@ type CollapsibleProps = CollapsibleBaseProps & {
 * component will be invisible (zero height) when collapsed. Doesn't provide
 * interactivity by itself: collapse state is toggled through props.
 */
-export default function Collapsible({lazy, ...props}: CollapsibleProps): JSX.Element {
+const Collapsible = ({lazy, ...props}: CollapsibleProps): JSX.Element => {
   const Comp = lazy ? CollapsibleLazy : CollapsibleBase;
   return <Comp {...props} />;
 }
+
+export default Collapsible;

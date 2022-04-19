@@ -1,0 +1,55 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE-docusaurus file in the root directory of the website source tree.
+ */
+
+@use "@/styles/mixins";
+@use "@/styles/colors";
+
+$desktop-toc-width: 200px;
+
+.items {
+  &, ul {
+    list-style-type: none;
+    li {
+      margin-left: 0.5rem;
+    }
+  }
+
+  // override markdown list left padding
+  &#{&} ul {
+    padding-left: 0.5rem;
+  }
+
+  .link {
+    position: relative;
+    font-weight: 400;
+    font-size: 0.875rem;
+    
+    &.active {
+      color: colors.$red;
+    }
+
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
+    
+    transition: color 400ms ease,
+      opacity 400ms ease;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* desktop styles */
+
+.nav {
+  .heading {
+    font-size: 1rem;
+  }
+}

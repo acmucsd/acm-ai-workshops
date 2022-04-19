@@ -1,0 +1,17 @@
+@use "@/styles/mixins";
+@use "@/components/Navbar/styles.module" as navbar;
+@use "@/components/Sidebar/styles.module" as sidebar;
+
+$navbar-height: navbar.$navbar-height;
+$sidebar-width: sidebar.$desktop-sidebar-width;
+
+.contentContainer {
+  padding: 2rem;
+  margin: $navbar-height auto 0;
+  width: 100%;
+  max-width: 1200px - $sidebar-width; // TODO: pick less arbitrary value
+
+  @include mixins.desktop() {
+    padding: 1rem;
+  }
+}

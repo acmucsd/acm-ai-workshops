@@ -12,7 +12,7 @@ import type { Options as FsTreeOptions } from "@/lib/helpers/fs-tree";
 export type PipelineConfig = {
   serde_file: string,
   root_filepath: FsTreeOptions['basePath'],
-  baseUrl?: string,
+  baseUrl?: `/${string}`,
   globMatch?: FsTreeOptions['globMatch'],
   toMd?: FsTreeOptions['toMd'],
   getTitleAndDescription?: FsTreeOptions['getTitleAndDescription'],
@@ -27,7 +27,7 @@ export type PipelineConfig = {
 export const createPipeline = ({
   serde_file,
   root_filepath: basePath,
-  baseUrl = '',
+  baseUrl = '/',
   globMatch,
   toMd,
   getTitleAndDescription,

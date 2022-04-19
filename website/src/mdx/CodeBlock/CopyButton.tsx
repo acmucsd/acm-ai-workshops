@@ -15,7 +15,7 @@ interface CopyButtonProps {
   code: string;
 }
 
- export default function CopyButton({ code }: CopyButtonProps): JSX.Element {
+ const CopyButton = ({ code }: CopyButtonProps): JSX.Element => {
    const [isCopied, setIsCopied] = useState(false);
    const copyTimeout = useRef<number | undefined>(undefined);
    const handleCopyCode = useCallback(() => {
@@ -46,3 +46,5 @@ interface CopyButtonProps {
      </button>
    );
  }
+
+ export default CopyButton;

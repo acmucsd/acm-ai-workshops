@@ -25,7 +25,7 @@ type SidebarsCacheKey = `${string}$$${string}`
 const sidebars: Map<SidebarsCacheKey, SidebarItem[]> = new Map();
 
 type Options = FsTreeOptions & {
-  baseUrl?: string
+  baseUrl?: `/${string}`
 }
 
 /**
@@ -35,7 +35,7 @@ type Options = FsTreeOptions & {
  * @see {@link getFsTree} for details on the other options
  * @returns an array of possibly nested sidebar items
  */
-export const getSidebar = async ({ baseUrl = '', ...opts }: Options) => {
+export const getSidebar = async ({ baseUrl = '/', ...opts }: Options) => {
   const key: SidebarsCacheKey = `${baseUrl}$$${opts.basePath}`
   if (sidebars.has(key)) {
     return sidebars.get(key);

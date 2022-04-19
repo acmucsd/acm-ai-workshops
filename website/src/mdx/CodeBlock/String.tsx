@@ -24,7 +24,7 @@ interface CodeBlockStringProps extends Omit<CodeBlockProps, 'children'> {
   children: string;
 }
 
-export default function CodeBlockString({
+const CodeBlockString = ({
   children,
   className: blockClassName = '',
   metastring,
@@ -32,7 +32,7 @@ export default function CodeBlockString({
   showLineNumbers: showLineNumbersProp,
   language: languageProp,
   theme = lightTheme,
-}: CodeBlockStringProps): JSX.Element {
+}: CodeBlockStringProps): JSX.Element => {
   const parsedLanguage = parseLanguage(blockClassName)
   const language = languageProp ?? parsedLanguage;
   
@@ -84,3 +84,5 @@ export default function CodeBlockString({
     </Container>
   );
 }
+
+export default CodeBlockString

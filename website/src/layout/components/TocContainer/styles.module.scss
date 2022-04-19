@@ -1,0 +1,34 @@
+@use "@/styles/mixins";
+@use "@/components/Navbar/styles.module" as navbar;
+@use "@/components/Toc/styles.module" as toc;
+
+$navbar-height: navbar.$navbar-height;
+$toc-width: toc.$desktop-toc-width;
+
+.tocContainer {
+  @include mixins.desktop-only(flex) {
+    $top: 1rem;
+    $margin-bottom: 1rem;
+    
+    flex: 0 0 #{$toc-width};
+    
+    position: sticky;
+    top: calc(#{$navbar-height} + #{$top});
+    
+    max-height: calc(100vh - #{$navbar-height} - #{$top} - #{$margin-bottom});
+    
+    margin-left: auto;
+    margin-bottom: $margin-bottom;
+    border-left: 1px solid #dddddd;
+    
+    flex-direction: column;
+    
+    overflow-y: scroll;
+    @include mixins.scrollbar(4px);
+  }
+
+  .toc {
+    margin-left: 2rem;
+    flex-grow: 1;
+  }
+}

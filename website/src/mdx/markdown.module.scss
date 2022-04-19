@@ -3,6 +3,14 @@
 /* markdown styles */
 .markdown {
 
+  // blockquotes
+  blockquote {
+    color: #808080;
+    border-left: 2px solid #808080;
+    padding-left: 1rem;
+    border-radius: 2px;
+  }
+
   // inline code
   code {
     vertical-align: middle;
@@ -25,7 +33,7 @@
   /* apply these styles only in markdown "content" (i.e. articles) */ 
   &.content {
     > * {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
   }
 }

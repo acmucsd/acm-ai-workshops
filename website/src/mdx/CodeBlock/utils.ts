@@ -26,7 +26,7 @@ export const parseCodeBlockTitle = (metastring?: string): string => {
   return metastring?.match(codeBlockTitleRegex)?.groups!.title ?? '';
 }
 
-export function getPrismCssVariables(prismTheme: PrismTheme): CSSProperties {
+export const getPrismCssVariables = (prismTheme: PrismTheme): CSSProperties => {
   const mapping: {[name: keyof PrismTheme['plain']]: string} = {
     color: prismColor,
     backgroundColor: prismBackgroundColor,
