@@ -1,0 +1,16 @@
+@use "@/styles/mixins";
+@use "@/components/Sidebar/vars" as sidebar;
+@use "@/components/Toc/vars" as toc;
+
+$sidebar-width: sidebar.$desktop-sidebar-width;
+$toc-width: toc.$desktop-toc-width;
+
+.contentWrapper {
+  width: 100%;
+  display: flex;
+
+  @include mixins.desktop() {
+    flex-grow: 1;
+    max-width: calc(100% - #{$sidebar-width});
+  }
+}

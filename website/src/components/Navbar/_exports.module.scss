@@ -1,0 +1,6 @@
+@use "@/styles/utils";
+@use "./vars" as *;
+
+:export {
+  navbarHeight: utils.strip-units($navbar-height);
+}

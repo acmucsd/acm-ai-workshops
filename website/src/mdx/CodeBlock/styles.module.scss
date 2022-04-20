@@ -1,0 +1,163 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE-docusaurus file in the root directory of the website source tree.
+ */
+
+@use "sass:map";
+@use "@/styles/mixins";
+@use "./vars";
+
+$padding: 1rem;
+$border-color: #dadde1;
+
+/* standalone code block -- Element */
+
+.standalone {
+  padding: 0;
+  @include mixins.scrollbar(4px);
+}
+
+/* code block container */
+ 
+.codeBlockContainer {
+  background: var(#{vars.$css-var-prism-background-color});
+  color: var(#{vars.$css-var-prism-color});
+  margin-bottom: 1.25rem;
+  box-shadow: 0px 1px 2px hsl(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+ 
+  .title {
+    border-bottom: 1px solid $border-color; // TODO: colors
+    font-size: 90%;
+    font-weight: 500;
+    padding: 0.75rem $padding;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  .content {
+    position: relative;
+    direction: ltr;
+    border-radius: inherit;
+    
+    .codeBlock {
+      margin: 0;
+      padding: 0;
+      background: var(#{vars.$css-var-prism-background-color});
+      color: var(#{vars.$css-var-prism-color});
+  
+      @include mixins.scrollbar(4px);
+    }
+  }
+
+  .title + .content .codeBlock {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .lines {
+    font: inherit;
+    float: left;
+    min-width: 100%;
+    padding: $padding;
+  
+    &.numbered {
+      display: table;
+      padding: $padding 0;
+    }
+
+    @media print {
+      white-space: pre-wrap;
+    }
+  }
+
+  .line {
+    display: table-row;
+    counter-increment: line-count;
+  }
+  
+  .lineNumber {
+    display: table-cell;
+    text-align: right;
+    width: 1%;
+    position: sticky;
+    left: 0;
+    padding: 0 $padding;
+    background: vars.$css-var-prism-background-color;
+  }
+  
+  .lineNumber::before {
+    content: counter(line-count);
+    opacity: 0.4;
+  }
+  
+  .lineContent {
+    padding-right: $padding;
+  }
+}
+
+.copyButton {
+  position: absolute;
+  right: calc(#{$padding} / 2);
+  top: calc(#{$padding} / 2);
+  background: var(#{vars.$css-var-prism-background-color});
+  color: var(#{vars.$css-var-prism-color});
+  border: 1px solid $border-color;
+  border-radius: 0.4rem;
+  padding: 0.4rem;
+  display: flex;
+  font-family: inherit;
+  cursor: pointer;
+  
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  
+  .codeBlockContainer:hover & {
+    opacity: 0.4;
+  }
+
+  &:focus-visible, &:hover, .codeBlockContainer &.copied {
+    opacity: 1;
+  }
+  
+  
+  .icons {
+    position: relative;
+    width: 1.125rem;
+    height: 1.125rem;
+
+    .copyIcon, .successIcon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      fill: currentColor;
+      opacity: inherit;
+      width: inherit;
+      height: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .successIcon {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.33);
+      opacity: 0;
+      color: #00d600;
+    }
+  }
+
+  &.copied {
+    .copyIcon {
+      transform: scale(0.33);
+      opacity: 0;
+    }
+
+    .successIcon {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+      transition-delay: 0.075s;
+    }
+  }  
+}
