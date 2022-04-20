@@ -13,8 +13,6 @@ import Sidebar from "@/components/Sidebar";
 import TocDesktop from "@/components/Toc/Desktop";
 import components from "@/mdx/components";
 
-import { toc as tocClassName } from "@/layout/components/TocContainer/styles.module.scss";
-
 import type { DocPageProps } from "@/layout/pages/types";
 
 export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
@@ -37,7 +35,7 @@ export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
             </MarkdownWrapper>
           </ContentContainer>
           <TocContainer>
-            <TocDesktop toc={toc} className={tocClassName} />
+            <TocDesktop toc={toc} />
           </TocContainer>
         </ContentWrapper>
       </MainWrapper>

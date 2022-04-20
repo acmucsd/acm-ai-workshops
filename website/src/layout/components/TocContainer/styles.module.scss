@@ -20,17 +20,13 @@ $toc-width: toc.$desktop-toc-width;
     top: calc(#{$navbar-height} + #{$top});
     max-height: calc(100vh - #{$navbar-height} - #{$top} - #{$margin-bottom});
     
-    margin: $top 1rem $margin-bottom auto;
+    margin: $top auto $margin-bottom 0;
+    padding-left: 1rem;
     border-left: 1px solid #dddddd;
     
     flex-direction: column;
     
     overflow-y: auto;
     @include mixins.scrollbar(4px);
-  }
-
-  .toc {
-    margin-left: 2rem;
-    flex-grow: 1;
   }
 }
