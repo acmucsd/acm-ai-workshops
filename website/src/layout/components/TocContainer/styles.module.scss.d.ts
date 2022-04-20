@@ -13,6 +13,7 @@ declare namespace StylesModuleScssNamespace {
     navItem: string;
     navbar: string;
     right: string;
+    toc: string;
     tocContainer: string;
   }
 }

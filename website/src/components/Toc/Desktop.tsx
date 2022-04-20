@@ -44,7 +44,7 @@ export const TocDesktopItems = ({
   linkActiveClassName,
 }: TocProps) => (
   <Toc
-    className={c(markdown, s.items, className)}
+    className={c(markdown, s.toc, s.items, className)}
     toc={toc}
     minLevel={minLevel}
     maxLevel={maxLevel}

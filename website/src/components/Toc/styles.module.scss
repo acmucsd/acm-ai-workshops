@@ -52,4 +52,11 @@ $desktop-toc-width: 200px;
   .heading {
     font-size: 1rem;
   }
+
+  // don't offset first layer
+  .toc {
+    > li {
+      margin-left: 0;
+    }
+  }
 }

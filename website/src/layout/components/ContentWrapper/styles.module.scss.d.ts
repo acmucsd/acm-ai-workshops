@@ -11,6 +11,7 @@ declare namespace StylesModuleScssNamespace {
     items: string;
     link: string;
     nav: string;
+    toc: string;
   }
 }
 
