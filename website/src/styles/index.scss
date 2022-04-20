@@ -1,5 +1,4 @@
 @use "./mixins";
-@use "@/components/Navbar/styles.module.scss" as navbar;
 
 @import "./reset";
 @import "./katex-0.15.2/katex.min.css";
@@ -7,10 +6,6 @@
 html {
   @include mixins.scrollbar();
   scroll-behavior: smooth;
-}
-
-* {
-  scroll-margin-top: navbar.$navbar-height;
 }
 
 body {

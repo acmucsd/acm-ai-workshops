@@ -1,4 +1,7 @@
 @use "@/styles/colors";
+@use "@/components/Navbar/styles.module" as navbar;
+
+$navbar-height: navbar.$navbar-height;
 
 /* markdown styles */
 .markdown {
@@ -33,19 +36,27 @@
   /* apply these styles only in markdown "content" (i.e. articles) */ 
   &.content {
 
-    // heading margins
-    h1, h2, h3, h4, h5, h6 {
-      margin: 2em 0 1em;
+    // don't let target be covered by navbar
+    * {
+      scroll-margin-top: $navbar-height;
     }
 
-    // don't add margin to first child (the whole markdown container has top margin already)
-    > *:first-child {
-      margin-top: 0;
+    // heading margins
+    h1, h2, h3, h4, h5, h6 {
+      $heading-margin-top: 2em;
+
+      margin: $heading-margin-top 0 1em;
+      scroll-margin-top: calc(#{$navbar-height} + #{$heading-margin-top});
     }
 
     // block margins
     > * {
-      margin-bottom: 1rem;
+      margin: 1rem;
+
+      // don't add margin to first child (the whole markdown container has top margin already)
+      &:first-child {
+        margin-top: 0;
+      }
     }
   }
 }
