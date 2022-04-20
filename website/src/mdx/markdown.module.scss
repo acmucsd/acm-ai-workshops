@@ -32,6 +32,18 @@
 
   /* apply these styles only in markdown "content" (i.e. articles) */ 
   &.content {
+
+    // heading margins
+    h1, h2, h3, h4, h5, h6 {
+      margin: 2em 0 1em;
+    }
+
+    // don't add margin to first child (the whole markdown container has top margin already)
+    > *:first-child {
+      margin-top: 0;
+    }
+
+    // block margins
     > * {
       margin-bottom: 1rem;
     }

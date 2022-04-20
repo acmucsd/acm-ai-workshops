@@ -1,0 +1,6 @@
+@use "@/styles/utils";
+@use "./styles.module.scss" as *;
+
+:export {
+  linkIconSize: utils.strip-units($link-icon-size);
+};

@@ -11,6 +11,7 @@ import Link from 'next/link';
 import CodeBlock from './CodeBlock';
 
 import type { ComponentMap } from "mdx-bundler/client";
+import Heading, { getHeading } from './Heading';
 
 const MDXComponents: ComponentMap = {
   code: (props: any) => {
@@ -48,7 +49,13 @@ const MDXComponents: ComponentMap = {
           : {...props}))}
       />
     );
-  }
+  },
+  h1: getHeading('h1'),
+  h2: getHeading('h2'),
+  h3: getHeading('h3'),
+  h4: getHeading('h4'),
+  h5: getHeading('h5'),
+  h6: getHeading('h6'),
 }
 
 export default MDXComponents;
