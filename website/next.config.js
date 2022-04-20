@@ -33,5 +33,5 @@ module.exports = {
   webpack (config) {
     config = withTypedCssModules(config)
     return config
-  }
+  },
 }
