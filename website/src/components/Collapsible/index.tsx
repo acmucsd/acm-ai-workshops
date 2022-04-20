@@ -13,8 +13,10 @@ import React, {
   useRef,
   useCallback,
   useLayoutEffect,
-  RefObject,
-  ReactNode,
+  type RefObject,
+  type Dispatch,
+  type SetStateAction,
+  type ReactNode,
 } from 'react';
 
 import { canUseDOM } from '@/utils/environment';
@@ -24,9 +26,18 @@ const useIsomorphicLayoutEffect = canUseDOM ? useLayoutEffect : useEffect;
 const DefaultAnimationEasing = 'ease-in-out';
 
 /**
-* This hook is a very thin wrapper around a `useState`.
-*/
-export const useCollapsible = (initialState: boolean | (() => boolean) = false) => {
+ * This hook is a very thin wrapper around a `useState`.
+ */
+export function useCollapsible({
+  initialState,
+}: {
+  /** The initial state. Will be non-collapsed by default. */
+  initialState: boolean | (() => boolean);
+}): {
+  collapsed: boolean;
+  setCollapsed: Dispatch<SetStateAction<boolean>>;
+  toggleCollapsed: () => void;
+} {
   const [collapsed, setCollapsed] = useState(initialState ?? false);
 
   const toggleCollapsed = useCallback(() => {
@@ -52,7 +63,7 @@ const ExpandedStyles = {
   height: 'auto',
 } as const;
 
-const applyCollapsedStyle = (el: HTMLElement, collapsed: boolean) => {
+function applyCollapsedStyle(el: HTMLElement, collapsed: boolean) {
   const collapsedStyles = collapsed ? CollapsedStyles : ExpandedStyles;
   el.style.display = collapsedStyles.display;
   el.style.overflow = collapsedStyles.overflow;
@@ -64,8 +75,8 @@ Lex111: Dynamic transition duration is used in Material design, this technique
 is good for a large number of items.
 https://material.io/archive/guidelines/motion/duration-easing.html#duration-easing-dynamic-durations
 https://github.com/mui-org/material-ui/blob/e724d98eba018e55e1a684236a2037e24bcf050c/packages/material-ui/src/styles/createTransitions.js#L40-L43
-*/
-const getAutoHeightDuration = (height: number) => {
+ */
+function getAutoHeightDuration(height: number) {
   const constant = height / 36;
   return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10);
 }
@@ -75,7 +86,7 @@ type CollapsibleAnimationConfig = {
   easing?: string;
 };
 
-const useCollapseAnimation = ({
+function useCollapseAnimation({
   collapsibleRef,
   collapsed,
   animation,
@@ -83,13 +94,13 @@ const useCollapseAnimation = ({
   collapsibleRef: RefObject<HTMLElement>;
   collapsed: boolean;
   animation?: CollapsibleAnimationConfig;
-}) => {
+}) {
   const mounted = useRef(false);
 
   useEffect(() => {
     const el = collapsibleRef.current!;
 
-    const getTransitionStyles = () => {
+    function getTransitionStyles() {
       const height = el.scrollHeight;
       const duration = animation?.duration ?? getAutoHeightDuration(height);
       const easing = animation?.easing ?? DefaultAnimationEasing;
@@ -99,7 +110,7 @@ const useCollapseAnimation = ({
       };
     }
 
-    const applyTransitionStyles = () => {
+    function applyTransitionStyles() {
       const transitionStyles = getTransitionStyles();
       el.style.transition = transitionStyles.transition;
       el.style.height = transitionStyles.height;
@@ -114,7 +125,7 @@ const useCollapseAnimation = ({
 
     el.style.willChange = 'height';
 
-    const startAnimation = () => {
+    function startAnimation() {
       const animationFrame = requestAnimationFrame(() => {
         // When collapsing
         if (collapsed) {
@@ -146,11 +157,11 @@ type CollapsibleElementType = React.ElementType<
 >;
 
 /**
-* Prevent hydration layout shift before animations are handled imperatively
-* with JS
-*/
-const getSSRStyle = (collapsed: boolean) => {
-  if (!canUseDOM) {
+ * Prevent hydration layout shift before animations are handled imperatively
+ * with JS
+ */
+function getSSRStyle(collapsed: boolean) {
+  if (canUseDOM) {
     return undefined;
   }
   return collapsed ? CollapsedStyles : ExpandedStyles;
@@ -165,23 +176,23 @@ type CollapsibleBaseProps = {
   /** Configuration of animation, like `duration` and `easing` */
   animation?: CollapsibleAnimationConfig;
   /**
-  * A callback fired when the collapse transition animation ends. Receives
-  * the **new** collapsed state: e.g. when
-  * expanding, `collapsed` will be `false`. You can use this for some "cleanup"
-  * like applying new styles when the container is fully expanded.
-  */
+   * A callback fired when the collapse transition animation ends. Receives
+   * the **new** collapsed state: e.g. when
+   * expanding, `collapsed` will be `false`. You can use this for some "cleanup"
+   * like applying new styles when the container is fully expanded.
+   */
   onCollapseTransitionEnd?: (collapsed: boolean) => void;
   /** Class name for the underlying DOM element. */
   className?: string;
   /**
-  * This is mostly useful for details/summary component where ssrStyle is not
-  * needed (as details are hidden natively) and can mess up with the browser's
-  * native behavior when JS fails to load or is disabled
-  */
+   * This is mostly useful for details/summary component where ssrStyle is not
+   * needed (as details are hidden natively) and can mess up with the browser's
+   * native behavior when JS fails to load or is disabled
+   */
   disableSSRStyle?: boolean;
 };
 
-const CollapsibleBase = ({
+function CollapsibleBase({
   as: As = 'div',
   collapsed,
   children,
@@ -189,8 +200,9 @@ const CollapsibleBase = ({
   onCollapseTransitionEnd,
   className,
   disableSSRStyle,
-}: CollapsibleBaseProps) => {
+}: CollapsibleBaseProps) {
   // any because TS is a pain for HTML element refs, see https://twitter.com/sebastienlorber/status/1412784677795110914
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const collapsibleRef = useRef<any>(null);
 
   useCollapseAnimation({collapsibleRef, collapsed, animation});
@@ -215,8 +227,10 @@ const CollapsibleBase = ({
   );
 }
 
-const CollapsibleLazy = ({collapsed, ...props}: CollapsibleBaseProps) => {
+function CollapsibleLazy({collapsed, ...props}: CollapsibleBaseProps) {
   const [mounted, setMounted] = useState(!collapsed);
+  // Updated in effect so that first expansion transition can work
+  const [lazyCollapsed, setLazyCollapsed] = useState(collapsed);
 
   useIsomorphicLayoutEffect(() => {
     if (!collapsed) {
@@ -224,8 +238,6 @@ const CollapsibleLazy = ({collapsed, ...props}: CollapsibleBaseProps) => {
     }
   }, [collapsed]);
 
-  // lazyCollapsed updated in effect so that first expansion transition can work
-  const [lazyCollapsed, setLazyCollapsed] = useState(collapsed);
   useIsomorphicLayoutEffect(() => {
     if (mounted) {
       setLazyCollapsed(collapsed);
@@ -239,22 +251,20 @@ const CollapsibleLazy = ({collapsed, ...props}: CollapsibleBaseProps) => {
 
 type CollapsibleProps = CollapsibleBaseProps & {
   /**
-  * Delay rendering of the content till first expansion. Marked as required to
-  * force us to think if content should be server-rendered or not. This has
-  * perf impact since it reduces html file sizes, but could undermine SEO.
-  * @see https://github.com/facebook/docusaurus/issues/4753
-  */
+   * Delay rendering of the content till first expansion. Marked as required to
+   * force us to think if content should be server-rendered or not. This has
+   * perf impact since it reduces html file sizes, but could undermine SEO.
+   * @see https://github.com/facebook/docusaurus/issues/4753
+   */
   lazy: boolean;
 };
 
 /**
-* A headless component providing smooth and uniform collapsing behavior. The
-* component will be invisible (zero height) when collapsed. Doesn't provide
-* interactivity by itself: collapse state is toggled through props.
-*/
-const Collapsible = ({lazy, ...props}: CollapsibleProps): JSX.Element => {
+ * A headless component providing smooth and uniform collapsing behavior. The
+ * component will be invisible (zero height) when collapsed. Doesn't provide
+ * interactivity by itself: collapse state is toggled through props.
+ */
+export function Collapsible({lazy, ...props}: CollapsibleProps): JSX.Element {
   const Comp = lazy ? CollapsibleLazy : CollapsibleBase;
   return <Comp {...props} />;
 }
-
-export default Collapsible;

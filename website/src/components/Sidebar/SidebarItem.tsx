@@ -9,14 +9,14 @@ import React from "react";
 import Link from "next/link";
 import c from "clsx";
 
-import Collapsible, { useCollapsible } from "@/components/Collapsible";
+import { Collapsible, useCollapsible } from "@/components/Collapsible";
+import { canUseDOM } from "@/utils/environment";
 import SidebarItems from "./SidebarItems";
 
 import s from "./styles.module.scss";
 
 import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 import type { SidebarProps } from ".";
-import { canUseDOM } from "@/utils/environment";
 
 interface SidebarItemProps extends Omit<SidebarProps, 'items'>, React.AnchorHTMLAttributes<HTMLAnchorElement> {
   item: SidebarItemType
@@ -33,8 +33,8 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
   const { items, label, href } = item as SidebarCategoryType;
 
   const isActive = isActiveSidebarItem(item, activePath);
-  const { collapsed, toggleCollapsed } = useCollapsible(!canUseDOM ? true : !isActive);
-
+  const { collapsed, toggleCollapsed } = useCollapsible({ initialState: !canUseDOM ? true : !isActive });
+  
   return (
     <li>
       <div className={s.category}>
@@ -56,7 +56,7 @@ const SidebarCategory = ({ item, activePath, ...props }: SidebarItemProps): JSX.
         />
       </div>
       <Collapsible
-        className={s.items}
+        className={c(s.items, collapsed && s.collapsed)}
         as="ul"
         collapsed={collapsed}
         lazy

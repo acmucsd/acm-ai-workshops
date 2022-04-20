@@ -20,6 +20,11 @@ $desktop-sidebar-width: 300px;
     margin-top: 0.25rem;
     padding-left: 1rem;
   }
+
+  &.collapsed & {
+    height: 0;
+    overflow: hidden;
+  }
 }
 
 .link, .arrow, .category {
