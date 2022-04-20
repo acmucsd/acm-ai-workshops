@@ -1,14 +1,12 @@
 @use "@/styles/colors";
-
-$navbar-height: 76px;
-$logo-size: 60px;
+@use "./vars";
 
 .navbar {
   z-index: 10;
   position: sticky;
   top: 0;
   width: 100%;
-  height: $navbar-height;
+  height: vars.$navbar-height;
   background-color: colors.$white;
   border-bottom: 1px solid #dddddd;
   padding: 0.5rem 2rem;
@@ -28,8 +26,8 @@ $logo-size: 60px;
       font-weight: 700;
 
       > img {
-        width: $logo-size;
-        height: $logo-size;
+        width: vars.$logo-size;
+        height: vars.$logo-size;
       }
     }
   }

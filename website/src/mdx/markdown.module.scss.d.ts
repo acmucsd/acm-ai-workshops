@@ -2,13 +2,7 @@
 declare namespace MarkdownModuleScssNamespace {
   export interface IMarkdownModuleScss {
     content: string;
-    hidden: string;
-    left: string;
-    logo: string;
     markdown: string;
-    navItem: string;
-    navbar: string;
-    right: string;
   }
 }
 

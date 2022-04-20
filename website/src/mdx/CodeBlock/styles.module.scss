@@ -7,15 +7,7 @@
 
 @use "sass:map";
 @use "@/styles/mixins";
-
-// the names of the css variables used - these are exported to then be referred to when binding styles to the code block container
-$prism-css-vars: (
-  prismBackgroundColor: --prism-background-color,
-  prismColor: --prism-color,
-);
-
-$prismBackgroundColor: map.get($prism-css-vars, prismBackgroundColor);
-$prismColor: map.get($prism-css-vars, prismColor);
+@use "./vars";
 
 $padding: 1rem;
 $border-color: #dadde1;
@@ -30,8 +22,8 @@ $border-color: #dadde1;
 /* code block container */
  
 .codeBlockContainer {
-  background: var(#{$prismBackgroundColor});
-  color: var(#{$prismColor});
+  background: var(#{vars.$css-var-prism-background-color});
+  color: var(#{vars.$css-var-prism-color});
   margin-bottom: 1.25rem;
   box-shadow: 0px 1px 2px hsl(0 0 0 / 0.1);
   border-radius: 0.5rem;
@@ -53,8 +45,8 @@ $border-color: #dadde1;
     .codeBlock {
       margin: 0;
       padding: 0;
-      background: var(#{$prismBackgroundColor});
-      color: var(#{$prismColor});
+      background: var(#{vars.$css-var-prism-background-color});
+      color: var(#{vars.$css-var-prism-color});
   
       @include mixins.scrollbar(4px);
     }
@@ -93,7 +85,7 @@ $border-color: #dadde1;
     position: sticky;
     left: 0;
     padding: 0 $padding;
-    background: $prismBackgroundColor;
+    background: vars.$css-var-prism-background-color;
   }
   
   .lineNumber::before {
@@ -110,8 +102,8 @@ $border-color: #dadde1;
   position: absolute;
   right: calc(#{$padding} / 2);
   top: calc(#{$padding} / 2);
-  background: var(#{$prismBackgroundColor});
-  color: var(#{$prismColor});
+  background: var(#{vars.$css-var-prism-background-color});
+  color: var(#{vars.$css-var-prism-color});
   border: 1px solid $border-color;
   border-radius: 0.4rem;
   padding: 0.4rem;

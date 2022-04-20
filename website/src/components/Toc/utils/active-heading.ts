@@ -10,7 +10,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { noop } from "@/utils/noop"
 import useTocHeadingIds from "./heading-ids"
 
-import { navbarHeight as navbarHeightString } from "@/components/Navbar/styles.export.module.scss"
+import { navbarHeight as navbarHeightString } from "@/components/Navbar/_exports.module.scss"
 
 import type { TocItem } from "@/lib/unified/toc/types"
 

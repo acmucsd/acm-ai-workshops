@@ -1,6 +1,6 @@
 import c from "clsx";
 
-import { linkIconSize } from "./styles.export.module.scss";
+import { linkIconSize } from "./_exports.module.scss";
 import { heading, anchor, svg, path } from "./styles.module.scss"
 
 import type { HTMLAttributes } from "react"

@@ -1,6 +1,6 @@
 @use "@/styles/mixins";
-@use "@/components/Navbar/styles.module" as navbar;
-@use "@/components/Sidebar/styles.module" as sidebar;
+@use "@/components/Navbar/vars" as navbar;
+@use "@/components/Sidebar/vars" as sidebar;
 
 $navbar-height: navbar.$navbar-height;
 $sidebar-width: sidebar.$desktop-sidebar-width;

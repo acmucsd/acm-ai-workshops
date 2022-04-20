@@ -11,6 +11,7 @@ import c from "clsx";
 
 import { Collapsible, useCollapsible } from "@/components/Collapsible";
 import { canUseDOM } from "@/utils/environment";
+
 import SidebarItems from "./SidebarItems";
 
 import s from "./styles.module.scss";

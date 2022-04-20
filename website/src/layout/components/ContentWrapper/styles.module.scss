@@ -1,6 +1,6 @@
 @use "@/styles/mixins";
-@use "@/components/Sidebar/styles.module" as sidebar;
-@use "@/components/Toc/styles.module" as toc;
+@use "@/components/Sidebar/vars" as sidebar;
+@use "@/components/Toc/vars" as toc;
 
 $sidebar-width: sidebar.$desktop-sidebar-width;
 $toc-width: toc.$desktop-toc-width;

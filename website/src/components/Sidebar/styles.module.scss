@@ -7,8 +7,7 @@
 
 @use "@/styles/colors";
 @use "@/styles/mixins";
-
-$desktop-sidebar-width: 300px;
+@use "./vars";
 
 .items {
   list-style: none;
@@ -79,6 +78,6 @@ $arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg
 
 .desktop {
   @include mixins.desktop-only() {
-    width: $desktop-sidebar-width;
+    width: vars.$desktop-sidebar-width;
   }
 }

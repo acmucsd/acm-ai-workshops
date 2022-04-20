@@ -8,8 +8,6 @@
 @use "@/styles/mixins";
 @use "@/styles/colors";
 
-$desktop-toc-width: 200px;
-
 .items {
   &, ul {
     list-style-type: none;

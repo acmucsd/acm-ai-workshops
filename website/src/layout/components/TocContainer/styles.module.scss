@@ -1,6 +1,6 @@
 @use "@/styles/mixins";
-@use "@/components/Navbar/styles.module" as navbar;
-@use "@/components/Toc/styles.module" as toc;
+@use "@/components/Navbar/vars" as navbar;
+@use "@/components/Toc/vars" as toc;
 
 $navbar-height: navbar.$navbar-height;
 $toc-width: toc.$desktop-toc-width;

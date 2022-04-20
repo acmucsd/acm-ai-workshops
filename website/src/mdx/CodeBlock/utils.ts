@@ -5,7 +5,7 @@
  * LICENSE-docusaurus file in the root directory of this source tree.
  */
 
-import { prismColor, prismBackgroundColor } from "./styles.export.module.scss";
+import { cssVarPrismColor, cssVarPrismBackgroundColor } from "./_exports.module.scss";
 
 import type { CSSProperties } from "react";
 import type { PrismTheme } from "prism-react-renderer";
@@ -28,8 +28,8 @@ export const parseCodeBlockTitle = (metastring?: string): string => {
 
 export const getPrismCssVariables = (prismTheme: PrismTheme): CSSProperties => {
   const mapping: {[name: keyof PrismTheme['plain']]: string} = {
-    color: prismColor,
-    backgroundColor: prismBackgroundColor,
+    color: cssVarPrismColor,
+    backgroundColor: cssVarPrismBackgroundColor,
   };
 
   const properties: {[key: string]: string} = {};
