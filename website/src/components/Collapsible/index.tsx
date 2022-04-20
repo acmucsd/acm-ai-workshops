@@ -202,7 +202,6 @@ function CollapsibleBase({
   disableSSRStyle,
 }: CollapsibleBaseProps) {
   // any because TS is a pain for HTML element refs, see https://twitter.com/sebastienlorber/status/1412784677795110914
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const collapsibleRef = useRef<any>(null);
 
   useCollapseAnimation({collapsibleRef, collapsed, animation});
