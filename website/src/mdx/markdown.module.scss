@@ -51,7 +51,7 @@ $navbar-height: navbar.$navbar-height;
 
     // block margins
     > * {
-      margin: 1rem;
+      margin: 1rem 0;
 
       // don't add margin to first child (the whole markdown container has top margin already)
       &:first-child {
