@@ -7,6 +7,7 @@ export type Doc = {
   title: string;
   description?: string;
   href: string;
+  fsPath: string[];
 }
 
 export type Category = {
@@ -14,6 +15,7 @@ export type Category = {
   title: string;
   description?: string;
   href: string;
+  fsPath: string[];
 }
 
 export type Item = Doc | Category;
@@ -22,16 +24,19 @@ export interface WithSidebar {
   sidebar: SidebarItemType[];
 }
 
-export interface WithBreadcrumbs {
-  breadcrumb: string[];
-  sidebar: SidebarItemType[];
+export interface WithSlug {
+  slug: string[];
 }
 
 export interface WithPath {
   path: string;
 }
 
-export interface CommonPageProps extends WithSidebar, WithBreadcrumbs {}
+export interface WithFsPath {
+  fsPath: string[];
+}
+
+export interface CommonPageProps extends WithSidebar, WithSlug, WithFsPath { }
 
 export interface DocPageProps extends CommonPageProps {
   type: Doc['type'];

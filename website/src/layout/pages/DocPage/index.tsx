@@ -7,6 +7,8 @@ import SidebarContainer from "@/layout/components/SidebarContainer";
 import ContentWrapper from "@/layout/components/ContentWrapper";
 import ContentContainer from "@/layout/components/ContentContainer";
 import TocContainer from "@/layout/components/TocContainer";
+import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
+import OpenInColab from "@/layout/components/OpenInColab";
 import MarkdownWrapper from "@/layout/components/MarkdownWrapper";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
@@ -15,7 +17,7 @@ import components from "@/mdx/components";
 
 import type { DocPageProps } from "@/layout/pages/types";
 
-export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
+export default function DocPage ({ slug, fsPath, sidebar, code }: DocPageProps) {
   const { asPath } = useRouter();
   const { default: Component, toc } = useMemo(() => getMDXExport(code), [code])
 
@@ -30,6 +32,9 @@ export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
         <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
         <ContentWrapper>
           <ContentContainer>
+            <BeforeMarkdown>
+              <OpenInColab fsPath={fsPath} />
+            </BeforeMarkdown>
             <MarkdownWrapper>
               <MDXContent />
             </MarkdownWrapper>

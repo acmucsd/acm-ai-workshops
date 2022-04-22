@@ -4,8 +4,6 @@ import { createPipeline } from "@/lib/pipeline";
 import { workshopsConfig } from "@/lib/pipeline/workshops";
 import { slugToHref } from "@/utils/slugToHref";
 
-import { useRouter } from "next/router";
-
 import CategoryPage from "@/layout/pages/CategoryPage";
 import DocPage from "@/layout/pages/DocPage";
 
@@ -33,13 +31,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       case 'directory':
         const flattenedItems = Object.values(entry.items)
           .map((entry) => {
-            const { type, title, description } = (() => {
+            const { type, title, description, fsPath } = (() => {
               switch (entry.type) {
                 case 'file':
                   return {
                     type: 'doc',
                     title: entry.title,
                     description: entry.description,
+                    fsPath: entry.fsPath
                   } as Doc
                 case 'directory':
                   const numItems = Object.keys(entry.items).length;
@@ -49,6 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     description: numItems === 1
                       ? `${numItems} item`
                       : `${numItems} items`,
+                    fsPath: entry.fsPath,
                   } as Category
               }
             })();
@@ -56,9 +56,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
             return {
               type,
-              href,
               title,
               description,
+              href,
+              fsPath,
             }
           })
         ;
@@ -75,12 +76,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           title: entry.title,
           // source: mdx,
           code,
+          fsPath: entry.fsPath,
         } as Omit<DocPageProps, keyof CommonPageProps>
     }
   })();
 
   const props = {
-    breadcrumb: slug,
+    slug,
     sidebar,
     ...uniqueProps,
   }
