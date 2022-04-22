@@ -15,7 +15,7 @@ export default function CategoryPage ({ breadcrumb, sidebar, items }: CategoryPa
 
   return (
     <>
-      <Navbar />
+      <Navbar sidebar={sidebar} path={asPath} />
       <MainWrapper>
         <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
         <ContentWrapper>

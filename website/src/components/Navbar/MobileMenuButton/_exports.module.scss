@@ -1,0 +1,6 @@
+@use "@/styles/utils";
+@use "./vars" as *;
+
+:export {
+  iconSize: utils.strip-units($icon-size);
+}

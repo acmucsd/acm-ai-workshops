@@ -1,0 +1,35 @@
+@use "./vars";
+
+.button {
+  width: vars.$icon-size;
+  height: vars.$icon-size;
+  cursor: pointer;
+  position: relative;
+
+  .icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    .hamburgerIcon, .closeIcon {
+      position: relative;
+      transition: all 0.15s ease;
+      width: vars.$icon-size;
+      height: vars.$icon-size;
+    }
+  
+    .closeIcon {
+      transform-origin: center center;
+    }
+
+    .open {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .closed {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+}

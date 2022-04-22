@@ -14,6 +14,13 @@
   }
 }
 
+@mixin mobile-only() {
+  @content;
+  @media (min-width: breakpoints.$desktop) {
+    display: none;
+  }
+}
+
 
 @mixin scrollbar(
   $scrollbar-size: 8px,

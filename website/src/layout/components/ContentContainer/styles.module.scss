@@ -10,6 +10,10 @@ $toc-width: toc.$desktop-toc-width;
 .contentContainer {
   padding: 2rem;
   margin: 0 auto;
-  width: calc(100% - #{$toc-width});
+  width: 100%;
   max-width: 1200px; // TODO: pick less arbitrary value
+
+  @include mixins.desktop {
+    width: calc(100% - #{$toc-width});
+  }
 }

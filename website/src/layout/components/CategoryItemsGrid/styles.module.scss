@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px , 1fr)); // TODO
+  grid-template-columns: repeat(auto-fill, min(100%, minmax(360px , 1fr))); // TODO
   gap: 2rem;
 
   .card {
