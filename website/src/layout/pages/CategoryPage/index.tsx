@@ -10,7 +10,7 @@ import ContentWrapper from "@/layout/components/ContentWrapper";
 import ContentContainer from "@/layout/components/ContentContainer";
 import CategoryItemsGrid from "@/layout/components/CategoryItemsGrid";
 
-export default function CategoryPage ({ breadcrumb, sidebar, items }: CategoryPageProps) {
+export default function CategoryPage ({ slug, sidebar, items }: CategoryPageProps) {
   const { asPath } = useRouter()
 
   return (
