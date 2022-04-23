@@ -10,6 +10,7 @@ $link-padding: 0.5rem;
 
 .anchor {
   position: absolute;
+  top: 0;
   left: calc(-1 * (#{$link-icon-size} + #{2 * $link-padding}));
   height: 100%;
   padding: $link-padding;
