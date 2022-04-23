@@ -1,0 +1,66 @@
+@use "./vars";
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  visibility: hidden;
+  opacity: 0;
+  background-color: hsl(0 0% 0% / 0.1);
+  
+  &.backdropVisible {
+    visibility: visible;
+    opacity: 1; 
+  }
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: vars.$navbar-drawer-width;
+  
+  transform: translate3d(-100%, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  
+  background-color: #fff; // TODO
+  box-shadow: 0px 8px 8px hsl(0 0 0 / 0.3); // TODO
+  
+  overflow-x: hidden;
+  
+  transition: opacity 400ms ease,
+    visibility 400ms ease,
+    transform 400ms ease;
+  
+  &.show {
+    transform: translateZ(0);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .panes {
+    display: flex;
+    height: 100%;
+    
+    transition: transform 400ms ease;
+
+    &.showSecondaryPane {
+      transform: translate3d(#{-1 * vars.$navbar-drawer-width}, 0, 0);
+    }
+
+    .pane {
+      flex-shrink: 0;
+      padding: 1rem 0.5rem 0.5rem;
+      width: vars.$navbar-drawer-width;
+      overflow-x: hidden;
+
+      .switchPaneButton {
+        width: 100%;
+        padding: 0.5rem 1.5rem;
+        background-color: hsl(0 0% 0% / 0.05);
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

@@ -9,11 +9,14 @@
 
 import { useState, useEffect } from "react";
 
-import { canUseDOM } from "@/utils/environment"
+import { canUseDOM } from "@/utils/environment";
 
-type WindowSize = 'desktop' | 'mobile' | 'ssr';
+import { breakpointsDesktop as breakpointsDesktopString } from "@/styles/_exports.module.scss";
 
-const DESKTOP_SIZE = 996; // TODO: TEMPORARY HARDCODED VALUE
+export type WindowSize = 'desktop' | 'mobile' | 'ssr';
+
+const breakpointsDesktop = parseInt(breakpointsDesktopString, 10);
+const DESKTOP_SIZE = breakpointsDesktop; // TODO: TEMPORARY HARDCODED VALUE
 
 const getWindowSize = (): WindowSize => {
   if (!canUseDOM) {

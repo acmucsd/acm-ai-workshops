@@ -1,0 +1,7 @@
+@use "@/styles/utils";
+
+@use "@/styles/breakpoints";
+
+:export {
+  breakpointsDesktop: utils.strip-units(breakpoints.$desktop);
+};

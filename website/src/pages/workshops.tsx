@@ -23,7 +23,7 @@ const WorkshopsRootPage: NextPage<Exclude<CategoryPageProps, 'path'>> = ({ sideb
 
   return (
     <>
-      <Navbar />
+      <Navbar sidebar={sidebar} path={router.asPath} />
       <MainWrapper>
         <SidebarContainer><Sidebar items={sidebar} activePath={router.asPath} /></SidebarContainer>
         <ContentWrapper>

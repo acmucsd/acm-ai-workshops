@@ -1,3 +1,4 @@
+@use "@/styles/mixins";
 @use "@/styles/colors";
 @use "./vars";
 
@@ -10,9 +11,13 @@
   background-color: colors.$white;
   border-bottom: 1px solid #dddddd;
   padding: 0.5rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .left {
     display: flex;
@@ -33,14 +38,12 @@
   }
 
   .right {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-
-    &.hidden {
-      display: none;
+    @include mixins.desktop-only {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
     }
 
     .navItem {
@@ -49,4 +52,15 @@
       text-decoration: none;
     }
   }
+
+  .mobileMenuButton {
+    @include mixins.mobile-only();
+  }
+}
+
+.mobileNavbarIcons {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

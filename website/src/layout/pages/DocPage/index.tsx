@@ -25,7 +25,7 @@ export default function DocPage ({ breadcrumb, sidebar, code  }: DocPageProps) {
 
   return (
     <>
-      <Navbar />
+      <Navbar sidebar={sidebar} path={asPath} />
       <MainWrapper>
         <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
         <ContentWrapper>

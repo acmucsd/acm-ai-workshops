@@ -20,7 +20,7 @@ const Home: NextPage<HomePageProps> = ({ sidebar }) => {
 
   return (
     <>
-      <Navbar />
+      <Navbar sidebar={sidebar} path="" />
       <MainWrapper>
         {/* use dummy path of empty string, so nothing is the active path */}
         <SidebarContainer><Sidebar items={sidebar} activePath="" /></SidebarContainer>

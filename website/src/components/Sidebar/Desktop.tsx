@@ -16,8 +16,8 @@ import type { SidebarProps } from ".";
 
 const DesktopSidebar = ({ items, activePath }: SidebarProps): JSX.Element => {
   return (
-    <nav className={c(markdown, s.desktop)}>
-      <ul className={s.items}>
+    <nav className={s.desktop}>
+      <ul className={c(s.items, markdown)}>
         <SidebarItems items={items} activePath={activePath} />
       </ul>
     </nav>
