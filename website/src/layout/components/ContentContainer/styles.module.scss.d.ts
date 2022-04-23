@@ -2,6 +2,7 @@
 declare namespace StylesModuleScssNamespace {
   export interface IStylesModuleScss {
     contentContainer: string;
+    tocExists: string;
   }
 }
 

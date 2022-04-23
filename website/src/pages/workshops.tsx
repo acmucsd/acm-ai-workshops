@@ -12,6 +12,7 @@ import ContentContainer from "@/layout/components/ContentContainer";
 import ContentWrapper from "@/layout/components/ContentWrapper";
 import MainWrapper from "@/layout/components/MainWrapper";
 import SidebarContainer from "@/layout/components/SidebarContainer";
+import PageProvider from "@/layout/context/Page";
 
 import s from "@/sections/workshops/styles.module.scss"
 
@@ -22,7 +23,7 @@ const WorkshopsRootPage: NextPage<Exclude<CategoryPageProps, 'path'>> = ({ sideb
   const router = useRouter();
 
   return (
-    <>
+    <PageProvider sidebar={sidebar}>
       <Navbar sidebar={sidebar} path={router.asPath} />
       <MainWrapper>
         <SidebarContainer><Sidebar items={sidebar} activePath={router.asPath} /></SidebarContainer>
@@ -33,7 +34,7 @@ const WorkshopsRootPage: NextPage<Exclude<CategoryPageProps, 'path'>> = ({ sideb
           </ContentContainer>
         </ContentWrapper>
       </MainWrapper>
-    </>
+    </PageProvider>
   );
 };
 
