@@ -2,6 +2,9 @@ import { useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
 import { getMDXExport } from "mdx-bundler/client"
 
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
+import TocDesktop from "@/components/Toc/Desktop";
 import MainWrapper from "@/layout/components/MainWrapper";
 import SidebarContainer from "@/layout/components/SidebarContainer";
 import ContentWrapper from "@/layout/components/ContentWrapper";
@@ -10,9 +13,7 @@ import TocContainer from "@/layout/components/TocContainer";
 import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
 import OpenInColab from "@/layout/components/OpenInColab";
 import MarkdownWrapper from "@/layout/components/MarkdownWrapper";
-import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/Sidebar";
-import TocDesktop from "@/components/Toc/Desktop";
+import PageProvider from "@/layout/context/Page";
 import components from "@/mdx/components";
 
 import type { DocPageProps } from "@/layout/pages/types";
@@ -26,10 +27,12 @@ export default function DocPage ({ slug, fsPath, sidebar, code }: DocPageProps) 
   ), [Component])
 
   return (
-    <>
+    <PageProvider sidebar={sidebar} toc={toc}>
       <Navbar sidebar={sidebar} path={asPath} />
       <MainWrapper>
-        <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
+        <SidebarContainer>
+          <Sidebar items={sidebar} activePath={asPath} />
+        </SidebarContainer>
         <ContentWrapper>
           <ContentContainer>
             <BeforeMarkdown>
@@ -44,6 +47,6 @@ export default function DocPage ({ slug, fsPath, sidebar, code }: DocPageProps) 
           </TocContainer>
         </ContentWrapper>
       </MainWrapper>
-    </>
+    </PageProvider>
   )
 }

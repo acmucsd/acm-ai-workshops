@@ -2,12 +2,13 @@ import { getSidebar } from '@/lib/helpers/sidebar'
 import { workshopsConfig } from '@/lib/pipeline/workshops'
 import type { SidebarItem as SidebarItemType } from '@/lib/helpers/sidebar'
 
+import Navbar from '@/components/Navbar'
+import Sidebar from '@/components/Sidebar'
 import MainWrapper from '@/layout/components/MainWrapper'
 import SidebarContainer from '@/layout/components/SidebarContainer'
 import ContentWrapper from '@/layout/components/ContentWrapper'
 import ContentContainer from '@/layout/components/ContentContainer'
-import Navbar from '@/components/Navbar'
-import Sidebar from '@/components/Sidebar'
+import PageProvider from '@/layout/context/Page'
 
 import s from '@/sections/index/styles.module.scss'
 
@@ -19,7 +20,7 @@ interface HomePageProps extends WithSidebar {}
 const Home: NextPage<HomePageProps> = ({ sidebar }) => {
 
   return (
-    <>
+    <PageProvider sidebar={sidebar}>
       <Navbar sidebar={sidebar} path="" />
       <MainWrapper>
         {/* use dummy path of empty string, so nothing is the active path */}
@@ -32,7 +33,7 @@ const Home: NextPage<HomePageProps> = ({ sidebar }) => {
           </ContentContainer>
         </ContentWrapper>
       </MainWrapper>
-    </>
+    </PageProvider>
   )
 }
 

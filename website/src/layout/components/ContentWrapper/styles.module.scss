@@ -10,7 +10,11 @@ $toc-width: toc.$desktop-toc-width;
   display: flex;
 
   @include mixins.desktop() {
-    flex-grow: 1;
-    max-width: calc(100% - #{$sidebar-width});
+    flex-grow: 1;    
+    max-width: 100%;
+
+    &.hasSidebar {
+      max-width: calc(100% - #{$sidebar-width});
+    }
   }
 }

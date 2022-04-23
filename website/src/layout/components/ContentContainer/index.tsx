@@ -1,3 +1,7 @@
+import c from "clsx";
+
+import { usePageContext } from "@/layout/context/Page";
+
 import s from "./styles.module.scss";
 
 import type { ReactNode } from "react";
@@ -7,8 +11,10 @@ interface ContentContainerProps {
 }
 
 export default function ContentContainer ({ children }: ContentContainerProps) {
+  const { toc } = usePageContext()
+
   return (
-    <div className={s.contentContainer}>
+    <div className={c(s.contentContainer, !!toc && s.tocExists)}>
       {children}
     </div>
   )
