@@ -1,0 +1,10 @@
+@use "sass:math";
+@use "sass:meta";
+
+// strips units from a number
+@function strip-units($v) {
+  @if meta.type-of($v) == 'number' and not math.is-unitless($v) {
+    @return math.div($v, ($v * 0 + 1));
+  }
+  @return $v;
+}

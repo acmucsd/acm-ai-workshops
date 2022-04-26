@@ -1,0 +1,36 @@
+@use "@/styles/colors";
+
+$link-icon-size: 16px;
+
+$link-padding: 0.5rem;
+
+.heading {
+  position: relative;
+}
+
+.anchor {
+  position: absolute;
+  top: 0;
+  left: calc(-1 * (#{$link-icon-size} + #{2 * $link-padding}));
+  height: 100%;
+  padding: $link-padding;
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  
+  opacity: 0;
+  transition: opacity 200ms;
+
+  .heading:hover &, &:hover {
+    opacity: 1;
+  }
+  
+  &:hover .path {
+    fill: colors.$red;
+  }
+
+  .svg {
+    width: $link-icon-size;
+    height: $link-icon-size;
+  }
+}

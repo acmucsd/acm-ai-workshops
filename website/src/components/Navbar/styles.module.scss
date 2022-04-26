@@ -1,0 +1,66 @@
+@use "@/styles/mixins";
+@use "@/styles/colors";
+@use "./vars";
+
+.navbar {
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: vars.$navbar-height;
+  background-color: colors.$white;
+  border-bottom: 1px solid #dddddd;
+  padding: 0.5rem 2rem;
+  
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 700;
+
+      > img {
+        width: vars.$logo-size;
+        height: vars.$logo-size;
+      }
+    }
+  }
+
+  .right {
+    @include mixins.desktop-only {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .navItem {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+  }
+
+  .mobileMenuButton {
+    @include mixins.mobile-only();
+  }
+}
+
+.mobileNavbarIcons {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,6 @@
+@use "./vars" as *;
+
+:export {
+  cssVarPrismBackgroundColor: $css-var-prism-background-color;
+  cssVarPrismColor: $css-var-prism-color;
+};

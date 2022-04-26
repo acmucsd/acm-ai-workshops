@@ -1,0 +1,28 @@
+@use "@/styles/mixins";
+@use "@/components/Navbar/vars" as navbar;
+@use "@/components/Sidebar/vars" as sidebar;
+
+$navbar-height: navbar.$navbar-height;
+$sidebar-width: sidebar.$desktop-sidebar-width;
+
+.column {
+  @include mixins.desktop-only(block) {
+    width: $sidebar-width;
+    border-right: 1px solid #dddddd; // TODO: unify colors
+    clip-path: inset(0);
+  }
+  
+  .container {
+    @include mixins.desktop-only(flex) {
+      position: sticky;
+      top: $navbar-height;
+      width: 100%;
+      height: 100%;
+      max-height: calc(100vh - #{$navbar-height});
+      flex-direction: column;
+
+      overflow: hidden auto;
+      @include mixins.scrollbar(4px);
+    }
+  } 
+}

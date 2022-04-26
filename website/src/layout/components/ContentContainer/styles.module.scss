@@ -1,0 +1,21 @@
+@use "@/styles/mixins";
+@use "@/components/Navbar/vars" as navbar;
+@use "@/components/Sidebar/vars" as sidebar;
+@use "@/components/Toc/vars" as toc;
+
+$navbar-height: navbar.$navbar-height;
+$sidebar-width: sidebar.$desktop-sidebar-width;
+$toc-width: toc.$desktop-toc-width;
+
+.contentContainer {
+  padding: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px; // TODO: pick less arbitrary value
+
+  @include mixins.desktop {
+    &.tocExists {
+      width: calc(100% - #{$toc-width});
+    }
+  }
+}

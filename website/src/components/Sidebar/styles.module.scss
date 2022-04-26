@@ -1,0 +1,83 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE-docusaurus file in the root directory of the website source tree.
+ */
+
+@use "@/styles/colors";
+@use "@/styles/mixins";
+@use "./vars";
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & & {
+    flex: 0 0 100%;
+    margin-top: 0.25rem;
+    padding-left: 1rem;
+  }
+
+  &.collapsed & {
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+.link, .arrow, .category {
+  border-radius: 0.25rem;
+  transition: background-color 200ms ease;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.link, .arrow {
+  display: flex;
+  padding: 0.375rem 1rem;
+}
+
+.link {
+  flex: 1;
+
+  &.active {
+    color: colors.$red;
+  }
+}
+
+$arrow-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.5)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
+
+.arrow {
+  margin: 0 0 0 0.1rem;
+  align-items: center;
+  cursor: pointer;
+  
+  &::before {
+    content: '';
+    background: $arrow-icon 50% / 2rem 2rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: rotate(180deg);
+    transition: transform 200ms linear;
+  }
+
+  &.collapsed::before {
+    transform: rotate(90deg);
+  }
+}
+
+/* desktop sidebar */
+
+.desktop {
+  @include mixins.desktop-only() {
+    width: vars.$desktop-sidebar-width;
+  }
+}
