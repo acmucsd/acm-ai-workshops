@@ -75,4 +75,6 @@ Meeting notes kept on 1 rolling document located [here](https://docs.google.com/
 
 # 6. Author Info
 
-- Vincent Tu:            [LinkedIn](https://www.linkedin.com/in/vincent-tu-422b18208/) | [GitHub](https://github.com/alckasoc)
+- Vincent Tu: [LinkedIn](https://www.linkedin.com/in/vincent-tu-422b18208/) | [GitHub](https://github.com/alckasoc)
+- Arth Shukla: [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
+- Jackie Piepkrn: [LinkedIn](https://www.linkedin.com/in/jackie-piepkorn-70295418a/)
