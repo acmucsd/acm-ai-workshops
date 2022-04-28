@@ -28,6 +28,5 @@ Have you ever wondered how Siri learns your interests, or how Twitter filters ha
 
 Workshop 1 consists of 3 components:
 - [Presentation](https://docs.google.com/presentation/d/1stDp_maSnhklXEt5F_Rh0f4vD9sEnW3Ru6aXIgcfDwg/edit#slide=id.p)
-- [Rule-based Classification & Taking Apart Dataset]() notebook
-- [Bag of Words Classifier]() notebook
+- [Master Notebook](https://colab.research.google.com/drive/1wZ7_5kuLhA-xmueU40lJqiNJyJrf4XFX?usp=sharing)
 
