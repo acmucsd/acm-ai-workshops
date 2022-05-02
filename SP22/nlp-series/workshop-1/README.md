@@ -28,6 +28,5 @@ Have you ever wondered how Siri learns your interests, or how Twitter filters ha
 
 Workshop 1 consists of 3 components:
 - [Presentation](https://docs.google.com/presentation/d/1stDp_maSnhklXEt5F_Rh0f4vD9sEnW3Ru6aXIgcfDwg/edit#slide=id.p)
-- [Rule-based Classification & Taking Apart Dataset]() notebook
-- [Bag of Words Classifier]() notebook
-
+- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
+- [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
