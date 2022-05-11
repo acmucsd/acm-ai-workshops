@@ -17,7 +17,11 @@ The official ACM AI NLP Workshop Series - Workshop 1 repository.
 ```bash
 workshop-1
    | -- README.md
-   | -- ...
+   | -- Figures
+   | -- Dataset
+   | -- Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb
+   | -- Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb
+   | -- NLP_Workshop_1_-_Basics_of_NLP.pptx
 
 ```
 
