@@ -27,7 +27,8 @@ workshop-1
         | -- NLPW2_Fig3a.png
         | -- NLPW2_Fig3b.png
     | -- presentation-resources
-        | -- 
+        | -- NLP_Workshop_2_-_RNN_for_Multi-Classification.pptx
+        | -- ws2_summary_graphic.pdf
     | -- Interactive_Notebook_NLP_Series_Workshop_2_RNNs.ipynb
     | -- Main_Notebook_NLP_Series_Workshop_2_RNNs.ipynb
     | -- NLP_Workshop_2_-_RNN_for_Multi-Classification.pptx
