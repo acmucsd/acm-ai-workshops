@@ -16,8 +16,19 @@ The official ACM AI NLP Workshop Series - Workshop 1 repository.
 
 ```bash
 workshop-1
-   | -- README.md
-   | -- ...
+    | -- dataset
+        | -- twitter-sentiment-analysis-hatred-speech.zip
+    | -- figures
+        | -- NLPW1_Fig1a.png
+        | -- NLPW1_Fig1b.png
+        | -- NLPW1_Fig2.png
+        | -- NLPW1_Fig3.png
+    | -- presentation-resources
+        | -- NLP_Workshop_1_-_Basics_of_NLP.pptx
+        | -- ws1_summary_graphic.pdf
+    | -- Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb
+    | -- Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb
+    | -- README.md
 
 ```
 
@@ -26,7 +37,10 @@ workshop-1
 Have you ever wondered how Siri learns your interests, or how Twitter filters hate speech? ACM AI’s Natural Language Processing (NLP) Workshop series is a series of interactive, in-person demos covering the ins and outs of NLP!  In our first workshop, we’ll learn the uses and practice the basics of NLP through interactive Colab notebooks that you can bring home to experiment with. By the end, you’ll know how to apply the models you learn to classify any text you want.
 
 
-Workshop 1 consists of 3 components:
-- [Presentation](https://docs.google.com/presentation/d/1stDp_maSnhklXEt5F_Rh0f4vD9sEnW3Ru6aXIgcfDwg/edit#slide=id.p)
+Workshop 1 consists of 4 components:
+- [Presentation](./presentation-resources/NLP_Workshop_1_-_Basics_of_NLP.pptx)
 - [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
 - [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
+- [Summary Graphic](./presentation-resources/ws1_summary_graphic.pdf)
+
+Figures by Arth Shukla

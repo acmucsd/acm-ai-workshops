@@ -45,9 +45,13 @@ NLP-SERIES
    | README.md
 ```
 
-# 2. Dataset
+# 2. Datasets
 
-- [Twitter Sentiment Analysis Hatred Speech](https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech) by arkhoshghalb is the dataset we use across all 3 workshops.
+## 2.1 Workshop 1
+- [Twitter Sentiment Analysis Hatred Speech](https://www.kaggle.com/datasets/arkhoshghalb/twitter-sentiment-analysis-hatred-speech) by arkhoshghalb
+
+## 2.2 Workshop 2
+- [Emotions Dataset for NLP](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp) by Praveen
 
 # 3. Getting Started
 
@@ -75,6 +79,6 @@ Meeting notes kept on 1 rolling document located [here](https://docs.google.com/
 
 # 6. Author Info
 
-- Vincent Tu: [LinkedIn](https://www.linkedin.com/in/vincent-tu-422b18208/) | [GitHub](https://github.com/alckasoc)
 - Arth Shukla: [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
+- Vincent Tu: [LinkedIn](https://www.linkedin.com/in/vincent-tu-422b18208/) | [GitHub](https://github.com/alckasoc)
 - Jackie Piepkrn: [LinkedIn](https://www.linkedin.com/in/jackie-piepkorn-70295418a/)
