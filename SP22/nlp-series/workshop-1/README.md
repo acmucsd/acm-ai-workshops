@@ -42,5 +42,3 @@ Workshop 1 consists of 4 components:
 - [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
 - [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
 - [Summary Graphic](./presentation-resources/ws1_summary_graphic.pdf)
-
-Figures by Arth Shukla
