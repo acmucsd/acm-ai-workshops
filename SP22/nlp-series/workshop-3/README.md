@@ -15,7 +15,7 @@ The official ACM AI NLP Workshop Series - Workshop 2 repository.
 # 1. File Directory Structure
 
 ```bash
-workshop-1
+workshop-3
     | -- dataset
         | -- 
     | -- figures
