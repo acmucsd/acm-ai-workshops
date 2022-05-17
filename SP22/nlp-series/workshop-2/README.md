@@ -44,4 +44,4 @@ Workshop 2 consists of 3 components:
 - [Presentation](./presentation-resources/NLP_Workshop_2_-_RNN_for_Multi-Classification.pptx)
 - [Main Notebook](./Main_Notebook_NLP_Series_Workshop_2_RNNs.ipynb)
 - [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_2_RNNs.ipynb)
-- [Summary Graphic](./presentation-resources/)
+- [Summary Graphic](./presentation-resources/ws2_summary_graphic.pdf)
