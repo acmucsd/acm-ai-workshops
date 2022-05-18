@@ -38,7 +38,7 @@ workshop-2
 
 This workshop is about Recurrent Neural Networks for NLP for detecting emotions in a multi-class dataset. This workshop is self-contained from the first and covers RNNs from the ground up!
 
-Workshop 2 consists of 3 components:
+Workshop 2 consists of 4 components:
 - [Presentation](./presentation-resources/NLP_Workshop_2_-_RNN_for_Multi-Classification.pptx)
 - [Main Notebook](./Main_Notebook_NLP_Series_Workshop_2_RNNs.ipynb)
 - [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_2_RNNs.ipynb)

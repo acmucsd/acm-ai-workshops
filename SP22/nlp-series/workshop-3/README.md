@@ -38,10 +38,11 @@ workshop-3
 
 # 2. Getting Started
 
+Language Translation is a ubiquitous topic of Modern Natural Language Processing, and the AI that powers language translation is critical to creating a world where we can break down communication barriers between communities that speak different languages.
 
+By the end of this workshop, the reader will have a working Language Translation model similar to Google Translate! 
 
-Workshop 2 consists of 3 components:
-- [Presentation](./presentation-resources/)
+Workshop 3 consists of 3 components:
+- [Presentation](./presentation-resources/NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx)
 - [Main Notebook](./Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb)
-- [Interactive Notebook](Interactive_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb)
 - [Summary Graphic](./presentation-resources/ws3_summary_graphic.pdf)
