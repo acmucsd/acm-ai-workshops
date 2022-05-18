@@ -17,13 +17,20 @@ The official ACM AI NLP Workshop Series - Workshop 2 repository.
 ```bash
 workshop-3
     | -- dataset
-        | -- 
+        | -- fra-eng.zip
     | -- figures
-        | -- NLPW3_Figxx.png
+        | -- NLPW3_Fig1.png
+        | -- NLPW3_Fig2.png
+        | -- NLPW3_Fig3.png
+        | -- NLPW3_Fig4a.png
+        | -- NLPW3_Fig4b.png
+        | -- NLPW3_Fig4c.png
+        | -- NLPW3_Fig5a.png
+        | -- NLPW3_Fig5b.png
+        | -- NLPW3_Fig5c.png
     | -- presentation-resources
-        | -- .pptx
+        | -- NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx
         | -- ws3_summary_graphic.pdf
-    | -- Interactive_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb
     | -- Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb
     | -- README.md
 

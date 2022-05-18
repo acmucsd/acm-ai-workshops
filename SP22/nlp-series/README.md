@@ -25,11 +25,7 @@ The official ACM AI NLP Workshop Series repository.
 # 1. File Directory Structure
 
 ```bash
-NLP-SERIES
-   | -- Meeting-Notes
-   |        | -- 4/15 
-   |        | -- ...
-   |
+nlp-series
    | -- workshop-1
    |        | -- README.md
    |        | ...
@@ -53,19 +49,24 @@ NLP-SERIES
 ## 2.2 Workshop 2
 - [Emotions Dataset for NLP](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp) by Praveen
 
+## 2.3 Workshop 3
+- [English to French Translations](http://www.manythings.org/anki/fra-eng.zip)
+
 # 3. Getting Started
 
 ## 3.1. Workshop 1 Basics of NLP
 
 Have you ever wondered how Siri learns your interests, or how Twitter filters hate speech? ACM AI’s Natural Language Processing (NLP) Workshop series is a series of interactive, in-person demos covering the ins and outs of NLP!  In our first workshop, we’ll learn the uses and practice the basics of NLP through interactive Colab notebooks that you can bring home to experiment with. By the end, you’ll know how to apply the models you learn to classify any text you want.
 
-## 3.2. Workshop 2 More Advanced NLP Models 
+## 3.2. Workshop 2 RNN for Multiclassification
 
-[Insert description & other important README information here.]
+This workshop is about Recurrent Neural Networks for NLP for detecting emotions in a multi-class dataset. This workshop is self-contained from the first and covers RNNs from the ground up!
 
-## 3.3. Workshop 3 Transformers
+## 3.3. Workshop 3 Seq2Seq for Machine Translation
 
-[Insert description & other important README information here.]
+Language Translation is a ubiquitous topic of Modern Natural Language Processing, and the AI that powers language translation is critical to creating a world where we can break down communication barriers between communities that speak different languages.
+
+By the end of this workshop, you'll have a working Language Translation model similar to Google Translate!
 
 # 4. Resources
 
