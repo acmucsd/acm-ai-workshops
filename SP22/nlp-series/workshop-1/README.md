@@ -15,6 +15,8 @@ The official ACM AI NLP Workshop Series - Workshop 1 repository.
 
 # 1. Workshop Recording
 
+<a href="https://youtu.be/vTGxaUOArd8" target="_blank">text</a>
+
 <div align="center">
 <a href="https://youtu.be/vTGxaUOArd8" target="_blank">
 <img
