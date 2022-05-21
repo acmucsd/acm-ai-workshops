@@ -1,7 +1,6 @@
 ![Header for Workshop 3: Seq 2 Seq for Translation](./NLP_Main_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 3: Seq 2 Seq for Translation](./NLP_Main_Header_Dark.png#gh-dark-mode-only)
 
-# NLP Workshop Series
 The official ACM AI NLP Workshop Series repository.
 
 ## Table of Contents:
