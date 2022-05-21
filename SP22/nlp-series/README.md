@@ -8,9 +8,30 @@ The official ACM AI NLP Workshop Series repository.
 <div class="alert alert-block alert-info">
 <ol>
     <li><a href="#1-file-directory-structure">File Directory Structure</a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
-    <li><a href=""></a></li>
+    <li>
+        <a href="#2-datasets">Datasets</a>
+        <ul type="none">
+            <li><a href="#21-workshop-1">2.1 Workshop 1</a></li>
+            <li><a href="#22-workshop-2">2.2 Workshop 2</a></li>
+            <li><a href="#23-workshop-3">2.3 Workshop 3</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#3-getting-started">Getting Started</a>
+        <ul type="none">
+            <li><a href="#31-workshop-1-basics-of-nlp">3.1 Workshop 1: Basics of NLP</a></li>
+            <li><a href="#32-workshop-2-rnns-for-multiclassification">3.2 Workshop 2: RNNs for Multiclassification</a></li>
+            <li><a href="#33-workshop-3-seq2seq-for-machine-translation">3.3 Workshop 3: Seq2Seq for Machine Translation</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#4-resources">Resources</a>
+        <ul type="none">
+            <li><a href="#41-workshop-1">4.1 Workshop 1</a></li>
+            <li><a href="#42-workshop-2">4.2 Workshop 2</a></li>
+            <li><a href="#43-workshop-3">4.3 Workshop 3</a></li>
+        </ul>
+    </li>
     <li><a href="#5-author-info">Author Info</a></li>
 </ol>
 </div>
@@ -19,19 +40,16 @@ The official ACM AI NLP Workshop Series repository.
 
 ```bash
 nlp-series
-   | -- workshop-1
-   |        | -- README.md
-   |        | ...
-   |
-   | -- workshop-2
-   |        | -- README.md
-   |        | ...
-   |
-   | -- workshop-3
-   |        | -- README.md
-   |        | ...
-   | 
-   | README.md
+    | -- workshop-1
+    |        | -- [Workshop 1 Resources]
+    |
+    | -- workshop-2
+    |        | -- [Workshop 2 Resources]
+    |
+    | -- workshop-3
+    |        | -- [Workshop 3 Resources]
+    | 
+    | -- README.md
 ```
 
 # 2. Datasets
@@ -43,7 +61,7 @@ nlp-series
 - [Emotions Dataset for NLP](https://www.kaggle.com/datasets/praveengovi/emotions-dataset-for-nlp) by Praveen
 
 ## 2.3 Workshop 3
-- [English to French Translations](http://www.manythings.org/anki/fra-eng.zip) from the Tatoeba Project
+- [English to French Translations](http://www.manythings.org/anki) from the Tatoeba Project
 
 
 # 3. Getting Started
@@ -52,7 +70,7 @@ nlp-series
 
 Have you ever wondered how Siri learns your interests, or how Twitter filters hate speech? ACM AI’s Natural Language Processing (NLP) Workshop series is a series of interactive, in-person demos covering the ins and outs of NLP!  In our first workshop, we’ll learn the uses and practice the basics of NLP through interactive Colab notebooks that you can bring home to experiment with. By the end, you’ll know how to apply the models you learn to classify any text you want.
 
-## 3.2. Workshop 2: RNN for Multiclassification
+## 3.2. Workshop 2: RNNs for Multiclassification
 
 This workshop is about Recurrent Neural Networks for NLP for detecting emotions in a multi-class dataset. This workshop is self-contained from the first and covers RNNs from the ground up!
 
