@@ -1,6 +1,8 @@
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Dark.png#gh-dark-mode-only)
 
+<hr>
+
 The official ACM AI NLP Workshop Series - Workshop 1 repository.
 
 # Table of Contents:
