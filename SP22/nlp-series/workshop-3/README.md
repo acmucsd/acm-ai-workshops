@@ -1,18 +1,35 @@
 [If possible, insert some sort of preview or teaser to reel in your audience!]
 
-# NLP Workshop Series - Workshop 1
-The official ACM AI NLP Workshop Series - Workshop 2 repository.
+# NLP Workshop Series - Workshop 3
+The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
 ## Table of Contents:
 
 <div class="alert alert-block alert-info">
-<ul>
-    <li>1. <a href="#1.-file-directory-structure">File Directory Structure</a></li>
-    <li>2. <a href="#2.-getting-started">Getting Started</a></li>
+<ol>
+    <li><a href="#1-workshop-recording">Workshop Recording</a></li>
+    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
+    <li><a href="#3-getting-started">Getting Started</a></li>
 </ul>
 </div>
 
-# 1. File Directory Structure
+# 1. Workshop Recording
+
+*Will be added as soon as uploaded to YouTube*
+
+<!--
+<div align="center">
+<a href="YT Video Link">
+<img
+    src="YT Max Res Thumbnail Link"
+    alt="Screen reader-compatible alt text"
+    width="500px"
+/>
+</a>
+</div>
+-->
+
+# 2. File Directory Structure
 
 ```bash
 workshop-3
@@ -36,13 +53,13 @@ workshop-3
 
 ```
 
-# 2. Getting Started
+# 3. Getting Started
 
 Language Translation is a ubiquitous topic of Modern Natural Language Processing, and the AI that powers language translation is critical to creating a world where we can break down communication barriers between communities that speak different languages.
 
-By the end of this workshop, the reader will have a working Language Translation model similar to Google Translate! 
+By the end of this workshop, the reader will have a working Language Translation model similar to Google Translate!
 
 Workshop 3 consists of 3 components:
-- [Presentation](./presentation-resources/NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx)
-- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb)
-- [Summary Graphic](./presentation-resources/ws3_summary_graphic.pdf)
+- [Presentation](./presentation-resources/NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx) used during the workshop.
+- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb) with completed code and explanations.
+- [Summary Graphic](./presentation-resources/ws3_summary_graphic.pdf) to summarize key points of the workshop.

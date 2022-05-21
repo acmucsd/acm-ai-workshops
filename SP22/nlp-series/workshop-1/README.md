@@ -6,13 +6,26 @@ The official ACM AI NLP Workshop Series - Workshop 1 repository.
 ## Table of Contents:
 
 <div class="alert alert-block alert-info">
-<ul>
-    <li>1. <a href="#1.-file-directory-structure">File Directory Structure</a></li>
-    <li>2. <a href="#2.-getting-started">Getting Started</a></li>
+<ol>
+    <li><a href="#1-workshop-recording">Workshop Recording</a></li>
+    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
+    <li><a href="#3-getting-started">Getting Started</a></li>
 </ul>
 </div>
 
-# 1. File Directory Structure
+# 1. Workshop Recording
+
+<div align="center">
+<a href="https://youtu.be/vTGxaUOArd8">
+<img
+    src="https://i.ytimg.com/vi/vTGxaUOArd8/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==\u0026rs=AOn4CLAi9Z6xz-NdZBtrblK3oLdpNVDP1A"
+    alt="Thumbnail for N L P Workshop 1 Intro to N L P and Text Classification"
+    width="500px"
+/>
+</a>
+</div>
+
+# 2. File Directory Structure
 
 ```bash
 workshop-1
@@ -32,13 +45,13 @@ workshop-1
 
 ```
 
-# 2. Getting Started
+# 3. Getting Started
 
 Have you ever wondered how Siri learns your interests, or how Twitter filters hate speech? ACM AI’s Natural Language Processing (NLP) Workshop series is a series of interactive, in-person demos covering the ins and outs of NLP!  In our first workshop, we’ll learn the uses and practice the basics of NLP through interactive Colab notebooks that you can bring home to experiment with. By the end, you’ll know how to apply the models you learn to classify any text you want.
 
 
 Workshop 1 consists of 4 components:
-- [Presentation](./presentation-resources/NLP_Workshop_1_-_Basics_of_NLP.pptx)
-- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
-- [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb)
-- [Summary Graphic](./presentation-resources/ws1_summary_graphic.pdf)
+- [Presentation](./presentation-resources/NLP_Workshop_1_-_Basics_of_NLP.pptx) used during the workshop.
+- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb) with completed code and explanations.
+- [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb) with questions and exercises for the reader.
+- [Summary Graphic](./presentation-resources/ws1_summary_graphic.pdf) to summarize key points of the workshop.
