@@ -1,9 +1,8 @@
-[If possible, insert some sort of preview or teaser to reel in your audience!]
+<img src="./figures/NLPW1_Header.png" alt="Header for Workshop 1 Intro to N L P" />
 
-# NLP Workshop Series - Workshop 1
 The official ACM AI NLP Workshop Series - Workshop 1 repository.
 
-## Table of Contents:
+# Table of Contents:
 
 <div class="alert alert-block alert-info">
 <ol>

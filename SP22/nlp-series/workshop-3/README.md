@@ -1,9 +1,8 @@
-[If possible, insert some sort of preview or teaser to reel in your audience!]
+<img src="./figures/NLPW3_Header.png" alt="Header for Workshop 3: Seq 2 Seq for Translation" />
 
-# NLP Workshop Series - Workshop 3
 The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
-## Table of Contents:
+# Table of Contents:
 
 <div class="alert alert-block alert-info">
 <ol>

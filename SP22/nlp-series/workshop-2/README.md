@@ -1,9 +1,8 @@
-[If possible, insert some sort of preview or teaser to reel in your audience!]
+<img src="./figures/NLPW2_Header.png" alt="Header for Workshop 2: R N Ns for Multiclassification" />
 
-# NLP Workshop Series - Workshop 2
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
 
-## Table of Contents:
+# Table of Contents:
 
 <div class="alert alert-block alert-info">
 <ol>
