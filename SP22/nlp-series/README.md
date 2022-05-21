@@ -1,4 +1,4 @@
-[insert some sort of preview or teaser to reel in your audience!]
+![Header for Workshop 3: Seq 2 Seq for Translation](./NLP_Main_Header_Light.png#gh-light-mode-only)
 
 # NLP Workshop Series
 The official ACM AI NLP Workshop Series repository.
