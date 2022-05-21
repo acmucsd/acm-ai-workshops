@@ -36,6 +36,8 @@ workshop-1
         | -- NLPW1_Fig1b.png
         | -- NLPW1_Fig2.png
         | -- NLPW1_Fig3.png
+        | -- NLPW1_Header_Dark.png
+        | -- NLPW1_Header_Light.png
     | -- presentation-resources
         | -- NLP_Workshop_1_-_Basics_of_NLP.pptx
         | -- ws1_summary_graphic.pdf

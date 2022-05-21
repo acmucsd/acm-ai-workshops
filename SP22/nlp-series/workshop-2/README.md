@@ -1,4 +1,5 @@
 ![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Light.png#gh-light-mode-only)
+![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
 
@@ -41,6 +42,8 @@ workshop-2
         | -- NLPW2_Fig2.png
         | -- NLPW2_Fig3a.png
         | -- NLPW2_Fig3b.png
+        | -- NLPW2_Header_Dark.png
+        | -- NLPW2_Header_Light.png
     | -- presentation-resources
         | -- NLP_Workshop_2_-_RNN_for_Multi-Classification.pptx
         | -- ws2_summary_graphic.pdf

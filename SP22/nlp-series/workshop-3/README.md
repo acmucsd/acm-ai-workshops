@@ -1,4 +1,5 @@
 ![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Light.png#gh-light-mode-only)
+![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
@@ -44,6 +45,8 @@ workshop-3
         | -- NLPW3_Fig5a.png
         | -- NLPW3_Fig5b.png
         | -- NLPW3_Fig5c.png
+        | -- NLPW3_Header_Dark.png
+        | -- NLPW3_Header_Light.png
     | -- presentation-resources
         | -- NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx
         | -- ws3_summary_graphic.pdf
