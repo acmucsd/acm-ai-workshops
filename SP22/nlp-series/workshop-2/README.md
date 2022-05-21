@@ -1,9 +1,4 @@
-<iframe
-    src="https://www.twitch.tv/videos/1481498476"
-    height="400"
-    width="800"
-    allowfullscreen>
-</iframe>
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
 
 # NLP Workshop Series - Workshop 1
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
