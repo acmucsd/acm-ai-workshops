@@ -1,4 +1,9 @@
-[If possible, insert some sort of preview or teaser to reel in your audience!]
+<iframe
+    src="https://www.twitch.tv/videos/1481498476"
+    height="400"
+    width="800"
+    allowfullscreen>
+</iframe>
 
 # NLP Workshop Series - Workshop 1
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
