@@ -18,7 +18,7 @@ The official ACM AI NLP Workshop Series - Workshop 2 repository.
 *Will be added as soon as uploaded to YouTube*
 
 <!--
-<div align="center">
+<div align="center" target="_blank">
 <a href="YT Video Link">
 <img
     src="YT Max Res Thumbnail Link"
