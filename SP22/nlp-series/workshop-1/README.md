@@ -1,4 +1,4 @@
-<img src="./figures/NLPW1_Header.png" alt="Header for Workshop 1 Intro to N L P" />
+![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 1 repository.
 

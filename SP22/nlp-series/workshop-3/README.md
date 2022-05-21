@@ -1,4 +1,4 @@
-<img src="./figures/NLPW3_Header.png" alt="Header for Workshop 3: Seq 2 Seq for Translation" />
+![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
