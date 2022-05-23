@@ -54,6 +54,6 @@ Have you ever wondered how Siri learns your interests, or how Twitter filters ha
 
 Workshop 1 consists of 4 components:
 - [Presentation](./presentation-resources/NLP_Workshop_1_-_Basics_of_NLP.pptx) used during the workshop.
-- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb) with completed code and explanations.
-- [Interactive Notebook](./Interactive_Notebook_NLP_Series_Workshop_1_Rule_Based_+_Bag_of_Words.ipynb) with questions and exercises for the reader.
+- [Main Notebook](./NLP_WS1_Main.ipynb) with completed code and explanations.
+- [Interactive Notebook](./NLP_WS1_Interactive.ipynb) with questions and exercises for the reader.
 - [Summary Graphic](./presentation-resources/ws1_summary_graphic.pdf) to summarize key points of the workshop.

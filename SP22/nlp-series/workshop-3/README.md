@@ -60,5 +60,5 @@ By the end of this workshop, the reader will have a working Language Translation
 
 Workshop 3 consists of 3 components:
 - [Presentation](./presentation-resources/NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx) used during the workshop.
-- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb) with completed code and explanations.
+- [Main Notebook](./NLP_WS3_Main.ipynb) with completed code and explanations.
 - [Summary Graphic](./presentation-resources/ws3_summary_graphic.pdf) to summarize key points of the workshop.
