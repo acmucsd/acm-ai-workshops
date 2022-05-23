@@ -41,7 +41,7 @@ The official ACM AI <!-- Your Series Name --> repository.
     <li>
         <a href="#2-getting-started">Getting Started</a>
         <ul type="none">
-            <li><a href="#21-workshop-1-basics-of-nlp">2.1 Workshop 1</a></li>
+            <li><a href="#21-workshop-1">2.1 Workshop 1</a></li>
         </ul>
     </li>
     <li>
