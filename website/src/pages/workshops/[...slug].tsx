@@ -1,5 +1,4 @@
-import path from "path";
-import { bundle } from "@/lib/unified/bundle";
+import { extractToc } from "@/lib/helpers/toc";
 import { createPipeline } from "@/lib/pipeline";
 import { workshopsConfig } from "@/lib/pipeline/workshops";
 import { slugToHref } from "@/utils/slugToHref";
@@ -41,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                     fsPath: entry.fsPath
                   } as Doc
                 case 'directory':
-                  const numItems = Object.keys(entry.items).length;
+                  const numItems = entry.numLeaves;
                   return {
                     type: 'category',
                     title: entry.fsPath[entry.fsPath.length - 1],
@@ -69,13 +68,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         } as Omit<CategoryPageProps, keyof CommonPageProps>;
       
       case 'file':
-        // const mdx = await serializeMdx(entry.md);
-        const { code } = await bundle({ source: entry.md, cwd: path.join(workshopsConfig.root_filepath, ...entry.fsPath), baseUrl: workshopsConfig.baseUrl ?? '/', slug: entry.slug })
+        const toc = await extractToc(entry.md)
         return {
           type: 'doc',
           title: entry.title,
-          // source: mdx,
-          code,
+          source: entry.md,
+          toc,
           fsPath: entry.fsPath,
         } as Omit<DocPageProps, keyof CommonPageProps>
     }

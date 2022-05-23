@@ -1,6 +1,4 @@
-import { useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
-import { getMDXExport } from "mdx-bundler/client"
 
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
@@ -13,18 +11,15 @@ import TocContainer from "@/layout/components/TocContainer";
 import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
 import OpenInColab from "@/layout/components/OpenInColab";
 import MarkdownWrapper from "@/layout/components/MarkdownWrapper";
+import { useMarkdown } from "@/layout/components/Markdown/useMarkdown";
 import PageProvider from "@/layout/context/Page";
-import components from "@/mdx/components";
 
 import type { DocPageProps } from "@/layout/pages/types";
 
-export default function DocPage ({ slug, fsPath, sidebar, code }: DocPageProps) {
+export default function DocPage ({ source, slug, fsPath, sidebar, toc }: DocPageProps) {
   const { asPath } = useRouter();
-  const { default: Component, toc } = useMemo(() => getMDXExport(code), [code])
 
-  const MDXContent = useCallback((props) => (
-    <Component components={components} {...props} />
-  ), [Component])
+  const { markdownReactElement, MarkdownComponent } = useMarkdown(source)
 
   return (
     <PageProvider sidebar={sidebar} toc={toc}>
@@ -39,7 +34,7 @@ export default function DocPage ({ slug, fsPath, sidebar, code }: DocPageProps) 
               <OpenInColab fsPath={fsPath} />
             </BeforeMarkdown>
             <MarkdownWrapper>
-              <MDXContent />
+              <MarkdownComponent fallback={<h1>Loading...</h1>} />
             </MarkdownWrapper>
           </ContentContainer>
           <TocContainer>

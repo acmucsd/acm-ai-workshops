@@ -41,6 +41,15 @@ $navbar-height: navbar.$navbar-height;
       scroll-margin-top: $navbar-height;
     }
 
+    // anchor link styles
+    a {
+      color: colors.$red;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     // heading margins
     h1, h2, h3, h4, h5, h6 {
       $heading-margin-top: 2em;

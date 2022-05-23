@@ -21,7 +21,6 @@ The official ACM AI NLP Workshop Series - Workshop 2 repository.
     src="https://i.ytimg.com/vi/A8Plt878Vyo/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG"
     alt="Thumbnail for N L P Workshop 2, Recurrent Neural Nets for N L P"
     width="500px"
-    style="height:260px;object-fit:cover;"
 />
 </a>
 </div>
