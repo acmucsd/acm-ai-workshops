@@ -15,19 +15,16 @@ The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
 # 1. Workshop Recording
 
-*Will be added as soon as uploaded to YouTube*
-
-<!--
 <div align="center">
-<a href="YT Video Link">
+<a href="https://www.youtube.com/watch?v=AvWhHTifw4I&ab_channel=ACMatUCSanDiego">
 <img
-    src="YT Max Res Thumbnail Link"
-    alt="Screen reader-compatible alt text"
+    src="https://i.ytimg.com/vi/AvWhHTifw4I/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg"
+    alt="Thumbnail for N L P Workshop 3, Machine Translation with R N Ns"
     width="500px"
 />
 </a>
 </div>
--->
+
 
 # 2. File Directory Structure
 
