@@ -1,6 +1,6 @@
 import c from "clsx";
 
-import { markdown, content } from "@/mdx/markdown.module.scss";
+import { markdown, content } from "@/markdown/markdown.module.scss";
 
 import type { ReactNode } from "react";
 

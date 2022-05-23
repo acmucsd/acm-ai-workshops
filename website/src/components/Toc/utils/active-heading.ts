@@ -5,14 +5,14 @@
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
 
-import { useEffect, useMemo, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 
 import { noop } from "@/utils/noop"
-import useTocHeadingIds from "./heading-ids"
+import { tocHeadingIds } from "./heading-ids"
 
 import { navbarHeight as navbarHeightString } from "@/components/Navbar/_exports.module.scss"
 
-import type { TocItem } from "@/lib/unified/toc/types"
+import type { TocItem } from "@/lib/helpers/toc/types"
 
 const navbarHeight = parseInt(navbarHeightString, 10);
 
@@ -32,19 +32,19 @@ const isInViewportTopHalf = (boundingRect: DOMRect, threshold: number) => {
   return boundingRect.top > threshold && boundingRect.bottom < window.innerHeight / 3
 }
 
-const useAnchors = (toc: TocItem[]) => {
-  const headingIds = useTocHeadingIds(toc)
-  
-  const [anchors, setAnchors] = useState<HTMLElement[]>([]);
+const startsWithDigitRegex = /^\d/
 
-  useEffect(() => {
-    const headingIdsSelector = headingIds.map((id) => `#${id}`).join(',');
-    setAnchors(headingIdsSelector
-      ? Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[]
-      : []
-    );
-  }, [headingIds]);
-  
+const getAnchors = (toc: TocItem[]) => {
+  const headingIds = tocHeadingIds(toc)
+  const headingIdsSelector = headingIds.map((id) => startsWithDigitRegex.test(id?.[0])
+    ? `#\\3${id[0]} ${id.slice(1)}` // if id starts with digit, we have to escape them and add a space, eg "1a" -> "\31 a"
+    : `#${id}`
+  ).join(',')
+
+  const anchors = headingIdsSelector
+  ? Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[]
+  : []
+
   return anchors
 }
 
@@ -106,8 +106,6 @@ export type TocHighlightConfig = {
 const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
   const lastActiveLinkRef = useRef<HTMLAnchorElement | undefined>(undefined)
 
-  const anchors = useAnchors(toc)
-
   const cancelScroll = useRef<() => void>(noop)
 
   useEffect(() => {
@@ -140,6 +138,7 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
 
     const updateActiveLink = () => {
       const links = getLinks(linkClassName)
+      const anchors = getAnchors(toc)
       const activeAnchor = getActiveAnchor(anchors, { anchorTopOffset: navbarHeight })
 
       links.forEach((link) => {
@@ -166,7 +165,7 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
       document.removeEventListener('scroll', updateActiveLink)
       document.removeEventListener('resize', updateActiveLink)
     }
-  }, [config, anchors])
+  }, [config])
 }
 
 export default useActiveTocItem

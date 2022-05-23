@@ -9,7 +9,7 @@ import useTocFilter from "./utils/filter-headings"
 import useActiveTocItem from "./utils/active-heading"
 
 import type { FC, MouseEventHandler } from "react"
-import type { HeadingLevel, TocItem } from "@/lib/unified/toc/types"
+import type { HeadingLevel, TocItem } from "@/lib/helpers/toc/types"
 
 export interface TocProps {
   toc: TocItem[]

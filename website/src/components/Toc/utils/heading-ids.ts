@@ -7,7 +7,7 @@
 
 import { useMemo } from "react"
 
-import type { TocItem } from "@/lib/unified/toc/types"
+import type { TocItem } from "@/lib/helpers/toc/types"
 
 export const tocHeadingIds = (toc: TocItem[]): string[] => {
   return toc.length === 0 ? [] : toc.flatMap(({ id, children }) => ([

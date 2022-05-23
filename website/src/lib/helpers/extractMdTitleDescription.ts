@@ -3,7 +3,7 @@ import { math } from "micromark-extension-math";
 import { gfm } from "micromark-extension-gfm";
 import { mathFromMarkdown } from "mdast-util-math";
 import { gfmFromMarkdown } from "mdast-util-gfm";
-import { toValue } from "@/lib/unified/toc/utils";
+import { toValue } from "@/lib/helpers/toc/utils";
 
 export const extractTitleDescriptionFromMdString = async (md: string) => {
 

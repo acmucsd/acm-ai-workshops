@@ -9,7 +9,7 @@ import c from "clsx"
 
 import Toc from "."
 
-import { markdown } from "@/mdx/markdown.module.scss"
+import { markdown } from "@/markdown/markdown.module.scss"
 import s from "./styles.module.scss"
 
 import type { TocProps } from "../Toc"
