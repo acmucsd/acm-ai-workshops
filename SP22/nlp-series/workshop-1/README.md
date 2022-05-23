@@ -19,7 +19,7 @@ The official ACM AI NLP Workshop Series - Workshop 1 repository.
 <a href="https://youtu.be/vTGxaUOArd8">
 <img
     src="https://i.ytimg.com/vi/vTGxaUOArd8/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==\u0026rs=AOn4CLAi9Z6xz-NdZBtrblK3oLdpNVDP1A"
-    alt="Thumbnail for N L P Workshop 1 Intro to N L P and Text Classification"
+    alt="Thumbnail for N L P Workshop 1, Intro to N L P and Text Classification"
     width="500px"
 />
 </a>
