@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 
 import type { ReactNode } from "react";
-import type { TocItem } from "@/lib/unified/toc/types";
+import type { TocItem } from "@/lib/helpers/toc/types";
 import { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
 
 type PageData = {

@@ -38,9 +38,9 @@ export const fromNotebook = (doc: string) => {
         // TODO
         const { outputs } = cell;
 
-        // cell.outputs.forEach((outputDict) => {
-        //
-        // });
+        cell.outputs.forEach((outputDict) => {
+          // TODO
+        });
         break
       case 'markdown':
         const root = unified()

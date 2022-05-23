@@ -21,6 +21,7 @@ export interface VFile extends VEntryCommon {
 export interface VDir extends VEntryCommon {
   type: 'directory';
   items: Record<string, VEntry>;
+  numLeaves: number;              // the total number of "leaves" i.e. workshops contained possibly nestsed inside the directory
 }
 export type VEntry = VFile | VDir;
 
@@ -68,13 +69,14 @@ export const getFsTree = async ({
     return trees.get(basePath) as VDir;
   }
 
-  const root: VDir = { type: 'directory', items: {}, slug: [], fsPath: [] };
+  const root: VDir = { type: 'directory', items: {}, slug: [], fsPath: [], numLeaves: 0 };
 
   const createVDir = (fsPath: string[], slug: string[]): VDir => ({
     type: 'directory',
     fsPath,
     slug,
     items: {},
+    numLeaves: 0,
   });
 
   const createVFile = async (fsPath: string[], slug: string[]) => {
@@ -123,6 +125,7 @@ export const getFsTree = async ({
         if (!m.items.hasOwnProperty(slug)) {
           m.items[slug] = createVDir([...fsPath], [...slugPath]);
         }
+        ++(m.items[slug] as VDir).numLeaves;
         m = m.items[slug] as VDir;
       }
     }

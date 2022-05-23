@@ -7,7 +7,7 @@
 
 import { useMemo } from "react"
 
-import type { HeadingLevel, TocItem } from "@/lib/unified/toc/types"
+import type { HeadingLevel, TocItem } from "@/lib/helpers/toc/types"
 
 interface FilterTocProps {
   toc: TocItem[]
