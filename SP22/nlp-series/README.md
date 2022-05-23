@@ -48,7 +48,6 @@ nlp-series
     |
     | -- workshop-3
     |        | -- [Workshop 3 Resources]
-    | 
     | -- NLP_Main_Header_Dark.png
     | -- NLP_Main_Header_Light.png
     | -- README.md
