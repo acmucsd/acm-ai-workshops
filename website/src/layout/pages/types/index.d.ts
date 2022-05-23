@@ -1,6 +1,7 @@
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
+import { TocItem } from "@/lib/helpers/toc/types";
 
 export type Doc = {
   type: 'doc';
@@ -36,12 +37,16 @@ export interface WithFsPath {
   fsPath: string[];
 }
 
-export interface CommonPageProps extends WithSidebar, WithSlug, WithFsPath { }
+export interface WithToc {
+  toc: TocItem[];
+}
+
+export interface CommonPageProps extends WithSidebar, WithSlug, WithFsPath, WithToc { }
 
 export interface DocPageProps extends CommonPageProps {
   type: Doc['type'];
   title: string;
-  code: string;
+  source: string;
 }
 
 export interface CategoryPageProps extends CommonPageProps {

@@ -9,7 +9,7 @@ import c from "clsx";
 
 import SidebarItems from "./SidebarItems";
 
-import { markdown } from "@/mdx/markdown.module.scss";
+import { markdown } from "@/markdown/markdown.module.scss";
 import s from "./styles.module.scss";
 
 import type { SidebarProps } from ".";

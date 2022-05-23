@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async () => {
           href,
         } as Doc
       case 'directory':
-        const numItems = Object.keys(entry.items).length;
+        const numItems = entry.numLeaves;
         return {
           type: 'category',
           title: entry.fsPath[entry.fsPath.length - 1],
