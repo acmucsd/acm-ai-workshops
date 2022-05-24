@@ -1,7 +1,9 @@
+import { join } from "path";
 import { extractToc } from "@/lib/helpers/toc";
 import { createPipeline } from "@/lib/pipeline";
 import { workshopsConfig } from "@/lib/pipeline/workshops";
 import { slugToHref } from "@/utils/slugToHref";
+import { bundle } from "@/lib/bundle";
 
 import CategoryPage from "@/layout/pages/CategoryPage";
 import DocPage from "@/layout/pages/DocPage";
@@ -30,35 +32,24 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       case 'directory':
         const flattenedItems = Object.values(entry.items)
           .map((entry) => {
-            const { type, title, description, fsPath } = (() => {
-              switch (entry.type) {
-                case 'file':
-                  return {
-                    type: 'doc',
-                    title: entry.title,
-                    description: entry.description,
-                    fsPath: entry.fsPath
-                  } as Doc
-                case 'directory':
-                  const numItems = entry.numLeaves;
-                  return {
-                    type: 'category',
-                    title: entry.fsPath[entry.fsPath.length - 1],
-                    description: numItems === 1
-                      ? `${numItems} item`
-                      : `${numItems} items`,
-                    fsPath: entry.fsPath,
-                  } as Category
-              }
-            })();
             const href = slugToHref(entry.slug, workshopsConfig.baseUrl);
-
-            return {
-              type,
-              title,
-              description,
-              href,
-              fsPath,
+            switch (entry.type) {
+              case 'file':
+                return {
+                  type: 'doc',
+                  title: entry.title,
+                  description: entry.description,
+                  fsPath: entry.fsPath,
+                  href,
+                }
+              case 'directory':
+                return {
+                  type: 'category',
+                  title: entry.title,
+                  description: entry.description,
+                  fsPath: entry.fsPath,
+                  href,
+                }
             }
           })
         ;
@@ -69,10 +60,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       
       case 'file':
         const toc = await extractToc(entry.md)
+        const { code } = await bundle({
+          source: entry.md,
+          cwd: join(workshopsConfig.root_filepath, ...entry.fsPath),
+          baseUrl: workshopsConfig.baseUrl ?? '/',
+          slug: entry.slug,
+        })
         return {
           type: 'doc',
           title: entry.title,
-          source: entry.md,
+          source: code,
           toc,
           fsPath: entry.fsPath,
         } as Omit<DocPageProps, keyof CommonPageProps>

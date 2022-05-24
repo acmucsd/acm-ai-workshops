@@ -4,18 +4,18 @@ import { promisify } from 'util';
 import globCb from 'glob';
 
 import { slugify } from '@/utils/slugify';
-import { extractTitleDescriptionFromMdString } from "./extractMdTitleDescription";
+import { extractTitleAndDescriptionFromMdString, extractTitleAndDescriptionFromNotebook } from "./extractTitleAndDescription";
 
 const glob = promisify(globCb);
 
 interface VEntryCommon {
   slug: string[];
   fsPath: string[];
+  title: string;
+  description: string;
 }
 export interface VFile extends VEntryCommon {
   type: 'file';
-  title: string;
-  description: string;
   md: string;
 }
 export interface VDir extends VEntryCommon {
@@ -56,8 +56,8 @@ export const getFsTree = async ({
   basePath,
   globMatch = '**/*.(md|mdx)',
   toMd = async (contents: string) => contents,
-  getTitleAndDescription = async ({ md, filepath }) => {
-    const { title, description } = await extractTitleDescriptionFromMdString(md);
+  getTitleAndDescription = async ({ contents, md, filepath }) => {
+    const { title, description } = await extractTitleAndDescriptionFromNotebook(contents);
     return {
       title: title ?? path.parse(filepath[filepath.length - 1]).name,
       description: description ?? '',
@@ -69,12 +69,14 @@ export const getFsTree = async ({
     return trees.get(basePath) as VDir;
   }
 
-  const root: VDir = { type: 'directory', items: {}, slug: [], fsPath: [], numLeaves: 0 };
+  const root: VDir = { type: 'directory', items: {}, slug: [], fsPath: [], title: '', description: '', numLeaves: 0 };
 
   const createVDir = (fsPath: string[], slug: string[]): VDir => ({
     type: 'directory',
     fsPath,
     slug,
+    title: fsPath[fsPath.length - 1],
+    description: '',
     items: {},
     numLeaves: 0,
   });
@@ -126,6 +128,9 @@ export const getFsTree = async ({
           m.items[slug] = createVDir([...fsPath], [...slugPath]);
         }
         ++(m.items[slug] as VDir).numLeaves;
+        m.items[slug].description = (m.items[slug] as VDir).numLeaves === 1
+          ? `${(m.items[slug] as VDir).numLeaves} item`
+          : `${(m.items[slug] as VDir).numLeaves} items`
         m = m.items[slug] as VDir;
       }
     }

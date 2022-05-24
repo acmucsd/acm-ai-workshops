@@ -1,7 +1,7 @@
 import remarkGfm from "remark-gfm"
 import remarkMath from "remark-math"
 import { unified } from "unified"
-import remarkHeadingIds from "@/lib/unified/heading-ids"
+import remarkHeadingIds from "@/lib/unified/remark-heading-ids"
 import remarkParse from "remark-parse/lib"
 import remarkStringify from "remark-stringify"
 import search from "./search"
