@@ -5,15 +5,15 @@
  * LICENSE-docusaurus file in the root directory of the website source tree.
  */
 
-import { isValidElement } from "react";
+import React, { isValidElement } from 'react';
 import Link from 'next/link';
 
 import CodeBlock from './CodeBlock';
-import { getHeading } from './Heading';
 
-import type { ReactNode } from "react";
+import type { ComponentMap } from "mdx-bundler/client";
+import Heading, { getHeading } from './Heading';
 
-const MDXComponents: Record<string, ReactNode> = {
+const MDXComponents: ComponentMap = {
   code: (props: any) => {
     const { children } = props;
 

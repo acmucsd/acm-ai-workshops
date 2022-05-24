@@ -11,15 +11,15 @@ import TocContainer from "@/layout/components/TocContainer";
 import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
 import OpenInColab from "@/layout/components/OpenInColab";
 import MarkdownWrapper from "@/layout/components/MarkdownWrapper";
-import { useMarkdown } from "@/layout/components/Markdown/useMarkdown";
 import PageProvider from "@/layout/context/Page";
 
 import type { DocPageProps } from "@/layout/pages/types";
+import { useMDX } from "@/layout/components/MDX/useMDX";
 
 export default function DocPage ({ source, slug, fsPath, sidebar, toc }: DocPageProps) {
   const { asPath } = useRouter();
 
-  const { markdownReactElement, MarkdownComponent } = useMarkdown(source)
+  const { MDXComponent } = useMDX({ source })
 
   return (
     <PageProvider sidebar={sidebar} toc={toc}>
@@ -34,7 +34,7 @@ export default function DocPage ({ source, slug, fsPath, sidebar, toc }: DocPage
               <OpenInColab fsPath={fsPath} />
             </BeforeMarkdown>
             <MarkdownWrapper>
-              <MarkdownComponent fallback={<h1>Loading...</h1>} />
+              <MDXComponent />
             </MarkdownWrapper>
           </ContentContainer>
           <TocContainer>
