@@ -1,0 +1,38 @@
+@use "@/styles/colors";
+
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  padding: 0.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+
+  transition: color 400ms ease;
+  &:hover {
+    color: colors.$red;
+
+    & .svg {
+      fill: colors.$red;
+    }
+  }
+
+  .label, .svg {
+    flex: 0 0 auto;
+  }
+
+  .svg {
+    width: 1em;
+    height: 1em;
+
+    fill: currentColor;
+    transition: fill 400ms ease;
+  }
+}

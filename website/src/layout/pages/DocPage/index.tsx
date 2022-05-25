@@ -9,7 +9,7 @@ import ContentWrapper from "@/layout/components/ContentWrapper";
 import ContentContainer from "@/layout/components/ContentContainer";
 import TocContainer from "@/layout/components/TocContainer";
 import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
-import OpenInColab from "@/layout/components/OpenInColab";
+import OpenElsewhereLinks from "@/layout/components/OpenElsewhereLinks";
 import MarkdownWrapper from "@/layout/components/MarkdownWrapper";
 import PageProvider from "@/layout/context/Page";
 
@@ -31,7 +31,7 @@ export default function DocPage ({ source, slug, fsPath, sidebar, toc }: DocPage
         <ContentWrapper>
           <ContentContainer>
             <BeforeMarkdown>
-              <OpenInColab fsPath={fsPath} />
+              <OpenElsewhereLinks fsPath={fsPath} />
             </BeforeMarkdown>
             <MarkdownWrapper>
               <MDXComponent />
