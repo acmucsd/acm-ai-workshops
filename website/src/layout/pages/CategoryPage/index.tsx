@@ -10,8 +10,10 @@ import CategoryItemsGrid from "@/layout/components/CategoryItemsGrid";
 import PageProvider from "@/layout/context/Page";
 
 import type { CategoryPageProps } from "@/layout/pages/types";
+import BeforeMarkdown from "@/layout/components/BeforeMarkdown";
+import OpenInGithub from "@/layout/components/OpenElsewhereLinks/OpenInGithub";
 
-export default function CategoryPage ({ slug, sidebar, items }: CategoryPageProps) {
+export default function CategoryPage ({ slug, sidebar, items, fsPath }: CategoryPageProps) {
   const { asPath } = useRouter()
 
   return (
@@ -21,6 +23,9 @@ export default function CategoryPage ({ slug, sidebar, items }: CategoryPageProp
         <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
         <ContentWrapper>
           <ContentContainer>
+            <BeforeMarkdown>
+              <OpenInGithub fsPath={fsPath} />
+            </BeforeMarkdown>
             <CategoryItemsGrid items={items} />
           </ContentContainer>
         </ContentWrapper>

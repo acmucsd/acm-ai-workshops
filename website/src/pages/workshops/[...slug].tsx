@@ -56,6 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return {
           type: 'category',
           items: flattenedItems,
+          fsPath: entry.fsPath,
         } as Omit<CategoryPageProps, keyof CommonPageProps>;
       
       case 'file':
