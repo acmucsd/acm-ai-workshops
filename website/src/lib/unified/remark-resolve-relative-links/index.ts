@@ -14,9 +14,7 @@ const remarkResolveRelativeLinks: Plugin<[Options]> = ({ resolver }) => {
     const visitor = (link: Link) => {
       // only handle relative links
       if (!relativeLinkRegex.test(link.url)) { return }
-      console.log('old', link.url)
       link.url = resolver(link.url)
-      console.log('new', link.url)
     }
 
     visit(ast, 'link', visitor)
