@@ -15,11 +15,7 @@
 
 The official ACM AI <!-- Your Workshop Name --> repository.
 
-## Table of Contents:
-
 <!-- 
-    SECTION: Table of Contents
-    ---------
     Mandatory Sections:
         - File Directory Structure
         - Workshop Recording
@@ -38,20 +34,6 @@ The official ACM AI <!-- Your Workshop Name --> repository.
               things like datasets used in a notebook
         - Anything else you'd like, but try not to be redundant!
 -->
-
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-workshop-video">Workshop Video</a></li>
-    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
-    <li>
-        <a href="#3-getting-started">Getting Started</a>
-    </li>
-    <li>
-        <a href="#4-resources">Resources</a>
-    </li>
-    <li><a href="#5-author-info">Author Info</a></li>
-</ol>
-</div>
 
 <!-- 
     SECTION: Workshop Video

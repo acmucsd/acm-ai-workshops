@@ -15,8 +15,6 @@
 
 The official ACM AI <!-- Your Series Name --> - Workshop <!-- # --> repository.
 
-## Table of Contents:
-
 <!-- 
     SECTION: Table of Contents
     ---------
@@ -38,16 +36,6 @@ The official ACM AI <!-- Your Series Name --> - Workshop <!-- # --> repository.
             - Make sure it's not already in the main series README or
               another section
 -->
-
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-workshop-video">Workshop Video</a></li>
-    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
-    <li>
-        <a href="#3-getting-started">Getting Started</a>
-    </li>
-</ol>
-</div>
 
 <!-- 
     SECTION: Workshop Video

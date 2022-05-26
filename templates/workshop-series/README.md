@@ -15,8 +15,6 @@
 
 The official ACM AI <!-- Your Series Name --> repository.
 
-## Table of Contents:
-
 <!-- 
     SECTION: Table of Contents
     ---------
@@ -34,25 +32,6 @@ The official ACM AI <!-- Your Series Name --> repository.
               things like datasets used in a notebook
         - Anything else you'd like, but try not to be redundant!
 -->
-
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-file-directory-structure">File Directory Structure</a></li>
-    <li>
-        <a href="#2-getting-started">Getting Started</a>
-        <ul type="none">
-            <li><a href="#21-workshop-1">2.1 Workshop 1</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#3-resources">Resources</a>
-        <ul type="none">
-            <li><a href="#31-workshop-1">3.1 Workshop 1</a></li>
-        </ul>
-    </li>
-    <li><a href="#4-author-info">Author Info</a></li>
-</ol>
-</div>
 
 <!-- 
     SECTION: File Directory Structure
