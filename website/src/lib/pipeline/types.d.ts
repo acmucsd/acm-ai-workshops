@@ -11,8 +11,8 @@ export type PipelineConfig = {
   // the base url for data obtaiend with this config. this should be unique between configs
   baseUrl?: BaseUrl
   
-  // glob string for testing files to include. this glob is called from `root_filepath`
-  globMatch?: string
+  // glob for testing files to include. this glob is called from `root_filepath`
+  globMatch?: GlobMatch
   
   file?: {
     // how to transform file contents into md format
@@ -45,6 +45,8 @@ export type PipelineConfig = {
 }
 
 export type BaseUrl = `/${string}`
+
+export type GlobMatch = string | { include: string, exclude: string | string[] }
 
 // function describing how to convert some file contents into a Markdown string
 export type ToMdConverter = (contents: string) => Promise<string>

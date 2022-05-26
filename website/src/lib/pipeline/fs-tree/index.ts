@@ -8,13 +8,13 @@ import { walk } from "./walk";
 import { dirFallbackTitleAndDescription, fileFallbackTitleAndDescription } from "@/lib/pipeline/defaults/title-and-description";
 
 import type { FsDir, FsFile } from "./types";
-import type { DirFileResolver, TitleAndDescriptionExtractor, ToMdConverter } from "@/lib/pipeline/types";
+import type { DirFileResolver, GlobMatch, TitleAndDescriptionExtractor, ToMdConverter } from "@/lib/pipeline/types";
 
 const trees: Map<string, FsDir> = new Map();
 
 export type Options = {
   basePath: string
-  globMatch: string
+  globMatch: GlobMatch
   file: {
     toMd: ToMdConverter
     getTitleAndDescription: TitleAndDescriptionExtractor
@@ -34,10 +34,10 @@ export type Options = {
  */
 export const getFsTree = async ({
   basePath,
-  globMatch = '**/*.(md|mdx)',
+  globMatch,
   file,
   dir,
-  stripExtensionFromSlug = true,
+  stripExtensionFromSlug,
 }: Options) => {
   if (trees.has(basePath)) {
     return trees.get(basePath) as FsDir;
@@ -70,7 +70,11 @@ export const getFsTree = async ({
   }
 
   // collect all notebook paths
-  const notebookPaths = await glob(globMatch, { cwd: basePath, ignore: 'website/*' })
+  const [globInclude, globExclude] = typeof globMatch === 'string'
+    ? [globMatch, []]
+    : [globMatch.include, Array.isArray(globMatch.exclude) ? globMatch.exclude : [globMatch.exclude]]
+  
+  const notebookPaths = await glob(globInclude, { cwd: basePath, ignore: ['website/*', 'internal/*', ...globExclude] })
 
   // for each filepath...
   for (const filepath of notebookPaths) {
