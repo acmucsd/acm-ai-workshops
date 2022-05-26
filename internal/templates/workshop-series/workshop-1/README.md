@@ -1,3 +1,14 @@
+---
+title: "Title of Workshop 1"
+description: "Short description of Workshop 1."
+---
+
+<!-- 
+    The above is REQUIRED YAML Frontmatter so the README can be rendered 
+    in the ACM Wiki. DO NOT move the frontmatter from its location. 
+    It is also ESSENTIAL to fill out; make it good!
+-->
+
 <!-- 
     If you have any questions about this template, feel free to ask
     your Director for help!

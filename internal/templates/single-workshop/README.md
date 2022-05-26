@@ -1,8 +1,18 @@
+---
+title: "Title of Workshop"
+description: "Short description of the workshop."
+---
+
+<!-- 
+    The above is REQUIRED YAML Frontmatter so the README can be rendered 
+    in the ACM Wiki. DO NOT move the frontmatter from its location. 
+    It is also ESSENTIAL to fill out; make it good!
+-->
+
 <!-- 
     If you have any questions about this template, feel free to ask
     your Director for help!
 -->
-
 
 <!-- 
     SECTION: Header
@@ -39,7 +49,8 @@ The official ACM AI <!-- Your Workshop Name --> repository.
     SECTION: Workshop Video
     ---------
     Most, if not all, workshops should have recordings. Once the recording
-    is posted to the ACMUCSD YT channel (https://www.youtube.com/channel/UCyjPATFqc3FwOiuqJ2UG1Eg), replace the text with an <img> element.
+    is posted to the ACMUCSD YT channel (https://www.youtube.com/channel/UCyjPATFqc3FwOiuqJ2UG1Eg), 
+    replace the text with an <img> element.
 -->
 
 # 1. Workshop Video
