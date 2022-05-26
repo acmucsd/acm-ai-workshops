@@ -1,14 +1,16 @@
-import { fromNotebook } from './nbast-util-from-notebook';
+import { fromIpynb } from '@/lib/unified/nbast-util-from-ipynb';
 
 import type { Plugin } from 'unified';
 
 /**
  * unified plugin to convert ipynb files into an mdx syntax tree
  */
-export const nbParse: Plugin = function () {
+const nbParse: Plugin = function () {
   const parser = (doc: string) => {
-    return fromNotebook(doc);
+    return fromIpynb(doc);
   };
 
   Object.assign(this, { Parser: parser });
 }
+
+export default nbParse;

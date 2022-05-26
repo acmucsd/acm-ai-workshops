@@ -2,9 +2,8 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE-docusaurus file in the root directory of the website source tree.
+ * license/docusaurus file in the root directory of the website source tree.
  */
-
 
 import escapeHtml from "escape-html"
 import { toString } from "mdast-util-to-string"

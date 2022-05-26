@@ -1,7 +1,7 @@
 import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-import type { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
-import { TocItem } from "@/lib/helpers/toc/types";
+import type { SidebarItem as SidebarItemType } from "@/lib/pipeline/sidebar";
+import { TocItem } from "@/lib/pipeline/toc/types";
 
 export type Doc = {
   type: 'doc';
@@ -12,7 +12,7 @@ export type Doc = {
 }
 
 export type Category = {
-  type: Doc['category'];
+  type: 'category';
   title: string;
   description?: string;
   href: string;
@@ -49,9 +49,19 @@ export interface DocPageProps extends CommonPageProps {
   source: string;
 }
 
-export interface CategoryPageProps extends CommonPageProps {
-  type: 'category';
-  items: Array<Item>
+export interface CommonCategoryPageProps extends WithSidebar, WithSlug, WithFsPath {
+  type: Category['type'];
 }
+export interface CategoryIndexPageProps extends CommonCategoryPageProps {
+  subtype: 'index';
+  items: Item[];
+}
+export interface CategoryReadmePageProps extends CommonCategoryPageProps, WithToc {
+  subtype: 'readme';
+  source: string;
+}
+export type CategoryPageProps =
+  | CategoryIndexPageProps
+  | CategoryReadmePageProps
 
 export type PageProps = DocPageProps | CategoryPageProps;

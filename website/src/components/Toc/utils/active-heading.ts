@@ -2,17 +2,17 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE-docusaurus file in the root directory of the website source tree.
+ * license/docusaurus file in the root directory of the website source tree.
  */
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { noop } from "@/utils/noop"
 import { tocHeadingIds } from "./heading-ids"
 
 import { navbarHeight as navbarHeightString } from "@/components/Navbar/_exports.module.scss"
 
-import type { TocItem } from "@/lib/helpers/toc/types"
+import type { TocItem } from "@/lib/pipeline/toc/types"
 
 const navbarHeight = parseInt(navbarHeightString, 10);
 
@@ -44,6 +44,24 @@ const getAnchors = (toc: TocItem[]) => {
   const anchors = headingIdsSelector
   ? Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[]
   : []
+
+  return anchors
+}
+
+const useAnchors = (toc: TocItem[]) => {
+  const [anchors, setAnchors] = useState<HTMLElement[]>([])
+  
+  useEffect(() => {
+    const headingIds = tocHeadingIds(toc)
+    const headingIdsSelector = headingIds.map((id) => startsWithDigitRegex.test(id?.[0])
+      ? `#\\3${id[0]} ${id.slice(1)}` // if id starts with digit, we have to escape them and add a space, eg "1a" -> "\31 a"
+      : `#${id}`
+    ).join(',')
+    setAnchors(headingIdsSelector
+      ? Array.from(document.querySelectorAll(headingIdsSelector)) as HTMLElement[]
+      : []
+    )
+  }, [toc])
 
   return anchors
 }
@@ -108,6 +126,8 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
 
   const cancelScroll = useRef<() => void>(noop)
 
+  const anchors = useAnchors(toc)
+
   useEffect(() => {
     // no-op, highlighting is disabled
     if (!config) { return noop }
@@ -138,7 +158,6 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
 
     const updateActiveLink = () => {
       const links = getLinks(linkClassName)
-      const anchors = getAnchors(toc)
       const activeAnchor = getActiveAnchor(anchors, { anchorTopOffset: navbarHeight })
 
       links.forEach((link) => {
@@ -165,7 +184,7 @@ const useActiveTocItem = (toc: TocItem[], config?: TocHighlightConfig) => {
       document.removeEventListener('scroll', updateActiveLink)
       document.removeEventListener('resize', updateActiveLink)
     }
-  }, [config])
+  }, [config, anchors])
 }
 
 export default useActiveTocItem

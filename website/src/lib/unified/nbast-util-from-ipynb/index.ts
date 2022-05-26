@@ -1,10 +1,10 @@
 import { unified } from "unified";
+import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import remarkParse from "remark-parse/lib";
 
 import type { Parent } from "mdast";
-import type { Cell, JupyterNotebook } from "@/lib/types/notebook";
+import type { Cell, JupyterNotebook } from "./types/notebook";
 
 /**
  * converts an ipynb file into a syntax tree,
@@ -13,12 +13,12 @@ import type { Cell, JupyterNotebook } from "@/lib/types/notebook";
  * @param doc: ipynb file contents
  * @returns the mdx syntax tree created from the ipynb file
  */
-export const fromNotebook = (doc: string) => {
-  const notebookJson = JSON.parse(doc) as JupyterNotebook;
+export const fromIpynb = (doc: string) => {
+  const ipynb = JSON.parse(doc) as JupyterNotebook;
 
-  const language = notebookJson?.metadata?.language_info?.name ?? 'python';
+  const language = ipynb?.metadata?.language_info?.name ?? 'python';
 
-  const { cells } = notebookJson;
+  const { cells } = ipynb;
 
   // construct the ast
   let ast = { type: 'root', children: [] as any[] };
@@ -31,7 +31,7 @@ export const fromNotebook = (doc: string) => {
     // TODO: handle outputs for code cells
     // TODO: show/hide source and outputs for each cell
     switch (cell_type) {
-      case 'code':
+      case 'code': {
         
         ast.children.push({ type: 'code', lang: language, value: sourceStr });
         
@@ -42,7 +42,8 @@ export const fromNotebook = (doc: string) => {
           // TODO
         });
         break
-      case 'markdown':
+      }
+      case 'markdown': {
         const root = unified()
           .use(remarkParse)
           .use(remarkGfm)
@@ -51,8 +52,10 @@ export const fromNotebook = (doc: string) => {
         ;
         ast.children.push(...(root as Parent).children);
         break
-      case 'raw':
+      }
+      case 'raw': {
         break
+      }
     }
   })
   return ast;

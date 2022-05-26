@@ -1,58 +1,43 @@
-import {
-  collectPathsFromFsTree,
-  getEntryFromSlug,
-  getFsTree,
-  setTree,
-} from "@/lib/helpers/fs-tree";
+import { getFsTree, setTree } from "@/lib/pipeline/fs-tree"
+import { collectPathsFromFsTree } from "@/lib/pipeline/fs-tree/collect-paths-from-fs-tree"
+import { getEntryFromSlug } from "@/lib/pipeline/fs-tree/get-entry-from-slug"
+import { getSidebar } from "@/lib/pipeline/sidebar"
+
 import { des, ser } from "@/lib/helpers/serde";
-import { getSidebar } from "@/lib/helpers/sidebar";
 
-import type { Options as FsTreeOptions } from "@/lib/helpers/fs-tree";
-
-export type PipelineConfig = {
-  serde_file: string,
-  root_filepath: FsTreeOptions['basePath'],
-  baseUrl?: `/${string}`,
-  globMatch?: FsTreeOptions['globMatch'],
-  toMd?: FsTreeOptions['toMd'],
-  getTitleAndDescription?: FsTreeOptions['getTitleAndDescription'],
-  stripExtensionFromSlug?: FsTreeOptions['stripExtensionFromSlug'],
-}
+import type { PipelineConfig } from "./types"
+import { validateConfig } from "./validate-config";
 
 /**
  * Creates functions to run in `getStaticPaths` and `getStaticProps` given a pipeline config
  * @param cfg the pipeline config
  * @returns two pipeline functions, one to run in `getStaticPaths` and one in `getStaticProps`
  */
-export const createPipeline = ({
-  serde_file,
-  root_filepath: basePath,
-  baseUrl = '/',
-  globMatch,
-  toMd,
-  getTitleAndDescription,
-  stripExtensionFromSlug,
-}: PipelineConfig) => ({
-  getStaticProps: async (...slug: string[]) => {
-    const tree = des(serde_file)
-    setTree(basePath, tree);
-    const entry = getEntryFromSlug(tree, ...slug);
-    
-    const sidebar = await getSidebar({ baseUrl, basePath });
+export const createPipeline = (config: PipelineConfig) => {
+  const { serde_file, basePath, baseUrl, globMatch, file, dir, stripExtensionFromSlug } = validateConfig(config)
 
-    return { entry, sidebar }
-  },
-  getStaticPaths: async () => {
-    const tree = await getFsTree({ basePath, globMatch, toMd, getTitleAndDescription, stripExtensionFromSlug });
-    const entries = await collectPathsFromFsTree(tree);
+  return {
+    getStaticProps: async (...slug: string[]) => {
+      const tree = des(serde_file)
+      setTree(basePath, tree);
+      const entry = getEntryFromSlug(tree, ...slug);
+      
+      const sidebar = await getSidebar({ baseUrl, basePath, globMatch, file, dir, stripExtensionFromSlug });
 
-    const paths = entries.map(({ slug }) => ({ params: { slug } }));
+      return { entry, sidebar, fileToMd: file.toMd, dirToMd: dir.toMd }
+    },
+    getStaticPaths: async () => {
+      const tree = await getFsTree({ basePath, globMatch, file, dir, stripExtensionFromSlug });
+      const entries = await collectPathsFromFsTree(tree);
 
-    // because next doesnt support passing props from getstaticpaths to getstaticprops:
-    // workaround by creating temp file, writing necessary data there,
-    // and reading it back in getStaticProps
-    ser(tree, serde_file);
+      const paths = entries.map(({ slug }) => ({ params: { slug } }));
 
-    return { paths }
-  }
-}) as const
+      // because next doesnt support passing props from getstaticpaths to getstaticprops:
+      // workaround by creating temp file, writing necessary data there,
+      // and reading it back in getStaticProps
+      ser(tree, serde_file);
+
+      return { paths }
+    }
+  } as const
+}

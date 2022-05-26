@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import Link from "next/link"
 
-import { getGithubSlug } from "@/helpers/github"
+import { getGithubSlug } from "../utils/github"
 
 import s from "../styles.module.scss"
 

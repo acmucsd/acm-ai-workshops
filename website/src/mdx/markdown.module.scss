@@ -58,6 +58,17 @@ $navbar-height: navbar.$navbar-height;
       scroll-margin-top: calc(#{$navbar-height} + #{$heading-margin-top});
     }
 
+    // lists
+    ol, ul {
+      padding-left: 1em;
+
+      li {
+        &::marker {
+          font-size: 1em;
+        }
+      }
+    }
+
     // block margins
     > * {
       margin: 1rem 0;
