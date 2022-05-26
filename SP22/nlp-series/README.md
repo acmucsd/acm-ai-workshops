@@ -3,39 +3,6 @@
 
 The official ACM AI NLP Workshop Series repository.
 
-## Table of Contents:
-
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-file-directory-structure">File Directory Structure</a></li>
-    <li>
-        <a href="#2-datasets">Datasets</a>
-        <ul type="none">
-            <li><a href="#21-workshop-1">2.1 Workshop 1</a></li>
-            <li><a href="#22-workshop-2">2.2 Workshop 2</a></li>
-            <li><a href="#23-workshop-3">2.3 Workshop 3</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#3-getting-started">Getting Started</a>
-        <ul type="none">
-            <li><a href="#31-workshop-1-basics-of-nlp">3.1 Workshop 1: Basics of NLP</a></li>
-            <li><a href="#32-workshop-2-rnns-for-multiclassification">3.2 Workshop 2: RNNs for Multiclassification</a></li>
-            <li><a href="#33-workshop-3-seq2seq-for-machine-translation">3.3 Workshop 3: Seq2Seq for Machine Translation</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#4-resources">Resources</a>
-        <ul type="none">
-            <li><a href="#41-workshop-1">4.1 Workshop 1</a></li>
-            <li><a href="#42-workshop-2">4.2 Workshop 2</a></li>
-            <li><a href="#43-workshop-3">4.3 Workshop 3</a></li>
-        </ul>
-    </li>
-    <li><a href="#5-author-info">Author Info</a></li>
-</ol>
-</div>
-
 # 1. File Directory Structure
 
 ```bash

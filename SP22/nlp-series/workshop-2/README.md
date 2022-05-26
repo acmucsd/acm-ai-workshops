@@ -3,16 +3,6 @@
 
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
 
-# Table of Contents:
-
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-workshop-recording">Workshop Recording</a></li>
-    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
-    <li><a href="#3-getting-started">Getting Started</a></li>
-</ul>
-</div>
-
 # 1. Workshop Recording
 
 <div align="center">
