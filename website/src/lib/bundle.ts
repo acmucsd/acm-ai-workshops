@@ -12,6 +12,7 @@ import astDebug from "./unified/ast-debug";
 // kinda hacky
 import type { BundleMDX } from "mdx-bundler/dist/types";
 import remarkFrontmatter from "remark-frontmatter";
+import { PluggableList } from "unified";
 
 // https://www.alaycock.co.uk/2021/03/mdx-bundler#esbuild-executable
 const fixEsbuildPath = () => {
@@ -37,8 +38,10 @@ type Options<Frontmatter> = Required<Pick<BundleMDX<Frontmatter>, 'source' | 'cw
   baseUrl: `/${string}`
   slug: string[]
   type?: 'notebook' | 'readme'
+  remarkPlugins?: PluggableList
+  rehypePlugins?: PluggableList
 }
-export const bundle = async <Frontmatter>({ source, cwd, baseUrl, slug, type = 'notebook' }: Options<Frontmatter>) => {
+export const bundle = async <Frontmatter>({ source, cwd, baseUrl, slug, type = 'notebook', remarkPlugins = [], rehypePlugins = [] }: Options<Frontmatter>) => {
   fixEsbuildPath();
   const res = await bundleMDX({
     source,
@@ -53,11 +56,13 @@ export const bundle = async <Frontmatter>({ source, cwd, baseUrl, slug, type = '
         ...(type === 'readme'
           ? [remarkMdxGhImages]
           : []
-        )
+        ),
+        ...remarkPlugins,
       ]
       options.rehypePlugins = [
         ...(options.rehypePlugins ?? []),
         rehypeKatex,
+        ...rehypePlugins,
       ]
 
       return options

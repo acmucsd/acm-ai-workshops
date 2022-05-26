@@ -1,4 +1,5 @@
 import { join } from "path";
+import { join as joinPosix } from "path/posix"
 import { readFile } from "fs/promises"
 
 import { extractToc } from "@/lib/pipeline/toc";
@@ -12,6 +13,8 @@ import DocPage from "@/layout/pages/DocPage";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { CategoryIndexPageProps, CategoryPageProps, CategoryReadmePageProps, CommonPageProps, DocPageProps, PageProps } from "@/layout/pages/types";
+import remarkResolveRelativeLinks from "@/lib/unified/remark-resolve-relative-links";
+import { getGithubSlug } from "@/layout/components/OpenElsewhereLinks/utils/github";
 
 const Workshop: NextPage<PageProps> = ({ type, ...props }) => {
   switch (type) {
@@ -65,6 +68,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             baseUrl: workshopsConfig.baseUrl ?? '/',
             slug: entry.slug,
             type: 'readme',
+            remarkPlugins: [
+              [remarkResolveRelativeLinks, { resolver: (url: string) => `https://github.com/${joinPosix(getGithubSlug(entry.fsPath), url)}` }],
+            ],
           })
 
           return {
@@ -85,6 +91,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           cwd: join(workshopsConfig.root_filepath, ...entry.fsPath),
           baseUrl: workshopsConfig.baseUrl ?? '/',
           slug: entry.slug,
+          remarkPlugins: [
+            [remarkResolveRelativeLinks, { resolver: (url: string) => `https://github.com/${joinPosix(getGithubSlug(entry.fsPath), url)}` }],
+          ],
         })
         return {
           type: 'doc',
