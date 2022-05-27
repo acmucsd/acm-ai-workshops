@@ -1,9 +1,14 @@
+---
+title: "Workshop 2: RNNs for Multiclassification"
+description: "Follow us in learning about recurrent neural networks and how to use them in NLP to detect emotions from text"
+---
+
 ![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 2 repository.
 
-# 1. Workshop Recording
+## 1. Workshop Recording
 
 <div align="center">
 <a href="https://www.youtube.com/watch?v=A8Plt878Vyo&ab_channel=ACMatUCSanDiego">
@@ -16,7 +21,7 @@ The official ACM AI NLP Workshop Series - Workshop 2 repository.
 </div>
 
 
-# 2. File Directory Structure
+## 2. File Directory Structure
 
 ```bash
 workshop-2
@@ -40,7 +45,7 @@ workshop-2
 
 ```
 
-# 3. Getting Started
+## 3. Getting Started
 
 This workshop is about Recurrent Neural Networks for NLP for detecting emotions in a multi-class dataset. This workshop is self-contained from the first and covers RNNs from the ground up!
 

@@ -3,14 +3,16 @@ import c from "clsx";
 
 import s from "./styles.module.scss";
 
-import type { CategoryPageProps, Item } from "@/layout/pages/types"
+import type { Item } from "@/layout/pages/types"
 
 const itemEmojis: Record<Item['type'], string> = {
   doc: '📄️',
   category: '📁',
 }
 
-interface CategoryGridProps extends Pick<CategoryPageProps, 'items'> {}
+interface CategoryGridProps {
+  items: Item[]
+}
 
 export default function CategoryGrid ({ items }: CategoryGridProps) {
   return (

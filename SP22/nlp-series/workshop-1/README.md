@@ -1,21 +1,26 @@
+---
+title: "Workshop 1: Intro to NLP"
+description: "Learn about the basics of NLP and practice using them!"
+---
+
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 1 repository.
 
-# 1. Workshop Recording
+## 1. Workshop Recording
 
 <div align="center">
-<a href="https://youtu.be/vTGxaUOArd8">
-<img
-    src="https://i.ytimg.com/vi/vTGxaUOArd8/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==\u0026rs=AOn4CLAi9Z6xz-NdZBtrblK3oLdpNVDP1A"
-    alt="Thumbnail for N L P Workshop 1, Intro to N L P and Text Classification"
-    width="500px"
-/>
-</a>
+    <a href="https://youtu.be/vTGxaUOArd8">
+        <img
+            src="https://i.ytimg.com/vi/vTGxaUOArd8/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==\u0026rs=AOn4CLAi9Z6xz-NdZBtrblK3oLdpNVDP1A"
+            alt="Thumbnail for N L P Workshop 1, Intro to N L P and Text Classification"
+            width="500px"
+        />
+    </a>
 </div>
 
-# 2. File Directory Structure
+## 2. File Directory Structure
 
 ```bash
 workshop-1
@@ -37,10 +42,9 @@ workshop-1
 
 ```
 
-# 3. Getting Started
+## 3. Getting Started
 
 Have you ever wondered how Siri learns your interests, or how Twitter filters hate speech? ACM AI’s Natural Language Processing (NLP) Workshop series is a series of interactive, in-person demos covering the ins and outs of NLP!  In our first workshop, we’ll learn the uses and practice the basics of NLP through interactive Colab notebooks that you can bring home to experiment with. By the end, you’ll know how to apply the models you learn to classify any text you want.
-
 
 Workshop 1 consists of 4 components:
 - [Presentation](./presentation-resources/NLP_Workshop_1_-_Basics_of_NLP.pptx) used during the workshop.

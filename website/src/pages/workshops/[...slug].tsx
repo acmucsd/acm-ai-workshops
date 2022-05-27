@@ -1,7 +1,9 @@
-import { join } from "path";
-import { extractToc } from "@/lib/helpers/toc";
+import { join, relative, sep } from "path";
+import { readFile } from "fs/promises"
+
+import { extractToc } from "@/lib/pipeline/toc";
 import { createPipeline } from "@/lib/pipeline";
-import { workshopsConfig } from "@/lib/pipeline/workshops";
+import { workshopsConfig } from "@/lib/pipeline/configs/workshops";
 import { slugToHref } from "@/utils/slugToHref";
 import { bundle } from "@/lib/bundle";
 
@@ -9,7 +11,10 @@ import CategoryPage from "@/layout/pages/CategoryPage";
 import DocPage from "@/layout/pages/DocPage";
 
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import type { Category, CategoryPageProps, CommonPageProps, Doc, DocPageProps, PageProps } from "@/layout/pages/types";
+import type { CategoryIndexPageProps, CategoryPageProps, CategoryReadmePageProps, CommonPageProps, DocPageProps, PageProps } from "@/layout/pages/types";
+import remarkResolveRelativeLinks from "@/lib/unified/remark-resolve-relative-links";
+import { getGithubSlug } from "@/layout/components/OpenElsewhereLinks/utils/github";
+import { validateConfig } from "@/lib/pipeline/validate-config";
 
 const Workshop: NextPage<PageProps> = ({ type, ...props }) => {
   switch (type) {
@@ -25,47 +30,76 @@ export default Workshop;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string[] };
 
-  const { entry, sidebar } = await createPipeline(workshopsConfig).getStaticProps(...slug);
+  const config = validateConfig(workshopsConfig)
+  const { entry, sidebar, fileToMd, dirToMd } = await createPipeline(workshopsConfig).getStaticProps(...slug);
   
   const uniqueProps = await (async () => {
     switch (entry.type) {
-      case 'directory':
-        const flattenedItems = Object.values(entry.items)
-          .map((entry) => {
-            const href = slugToHref(entry.slug, workshopsConfig.baseUrl);
-            switch (entry.type) {
-              case 'file':
-                return {
-                  type: 'doc',
-                  title: entry.title,
-                  description: entry.description,
-                  fsPath: entry.fsPath,
-                  href,
-                }
-              case 'directory':
-                return {
-                  type: 'category',
-                  title: entry.title,
-                  description: entry.description,
-                  fsPath: entry.fsPath,
-                  href,
-                }
-            }
+      // category page
+      case 'directory': {
+        const commonCategoryProps = { type: 'category', fsPath: entry.fsPath } as const
+        // no README -> will render a grid of its children
+        if (entry.fullPathToFile === undefined) {
+          const flattenedItems = Object.values(entry.items)
+            .map(({ type, slug, title, description, fsPath }) => {
+              const href = slugToHref(slug, workshopsConfig.baseUrl);
+              const commonChildObject = { title, description, fsPath, href }
+              switch (type) {
+                case 'file':
+                  return { type: 'doc', ...commonChildObject }
+                case 'directory':
+                  return { type: 'category', ...commonChildObject }
+              }
+            })
+          ;
+          return {
+            ...commonCategoryProps,
+            subtype: 'index',
+            items: flattenedItems,
+          } as Omit<CategoryIndexPageProps, keyof CommonPageProps>;
+        
+        // otherwise render the README markdown
+        } else {
+          const dirFileFsPath = relative(config.basePath, entry.fullPathToFile).split(sep)
+          const contents = await readFile(entry.fullPathToFile, 'utf-8'); // `entry.fullPathToFile` should be the result of `dir.dirFileResolver()`
+          const md = await dirToMd(contents)
+          const toc = await extractToc(md)
+          const { code } = await bundle({
+            source: md,
+            cwd: join(workshopsConfig.root_filepath, ...entry.fsPath),
+            baseUrl: workshopsConfig.baseUrl ?? '/',
+            slug: entry.slug,
+            type: 'readme',
+            remarkPlugins: [
+              [remarkResolveRelativeLinks, {
+                resolver: (url: string) => new URL(url, `https://github.com/${getGithubSlug(dirFileFsPath)}`).href,
+              }],
+            ],
           })
-        ;
-        return {
-          type: 'category',
-          items: flattenedItems,
-          fsPath: entry.fsPath,
-        } as Omit<CategoryPageProps, keyof CommonPageProps>;
-      
-      case 'file':
-        const toc = await extractToc(entry.md)
+
+          return {
+            ...commonCategoryProps,
+            subtype: 'readme',
+            source: code,
+            toc,
+          } as Omit<CategoryReadmePageProps, keyof CommonPageProps>;
+        }
+      }
+      // notebook page
+      case 'file': {
+        const contents = await readFile(entry.fullPath, 'utf-8');
+        const md = await fileToMd(contents);
+        const toc = await extractToc(md)
         const { code } = await bundle({
-          source: entry.md,
+          source: md,
           cwd: join(workshopsConfig.root_filepath, ...entry.fsPath),
           baseUrl: workshopsConfig.baseUrl ?? '/',
           slug: entry.slug,
+          remarkPlugins: [
+            [remarkResolveRelativeLinks, {
+              resolver: (url: string) => `https://github.com/${join(getGithubSlug(entry.fsPath), url)}`,
+            }],
+          ],
         })
         return {
           type: 'doc',
@@ -74,6 +108,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           toc,
           fsPath: entry.fsPath,
         } as Omit<DocPageProps, keyof CommonPageProps>
+      }
     }
   })();
 

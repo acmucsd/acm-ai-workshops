@@ -1,0 +1,19 @@
+// global classes for displaying stuff only in light/dark mode
+// used for rendering github themed images
+
+.light-mode-only {
+}
+
+.dark-mode-only {
+  display: none;
+}
+
+[data-theme=dark] {
+  .light-mode-only {
+    display: none;
+  }
+
+  .dark-mode-only {
+    display: block; // see whatever image display is set to in reset
+  }
+}

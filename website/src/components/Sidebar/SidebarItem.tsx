@@ -2,7 +2,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE-docusaurus file in the root directory of the website source tree.
+ * license/docusaurus file in the root directory of the website source tree.
  */
 
 import React from "react";
@@ -16,7 +16,7 @@ import SidebarItems from "./SidebarItems";
 
 import s from "./styles.module.scss";
 
-import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
+import type { SidebarCategory as SidebarCategoryType, SidebarDoc as SidebarDocType, SidebarItem as SidebarItemType } from "@/lib/pipeline/sidebar/types";
 import type { SidebarProps } from ".";
 
 interface SidebarItemProps extends Omit<SidebarProps, 'items'>, React.AnchorHTMLAttributes<HTMLAnchorElement> {

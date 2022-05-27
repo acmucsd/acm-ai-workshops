@@ -1,6 +1,6 @@
-import { getFsTree } from "@/lib/helpers/fs-tree";
-import { getSidebar } from "@/lib/helpers/sidebar";
-import { workshopsConfig } from "@/lib/pipeline/workshops";
+import { getFsTree } from "@/lib/pipeline/fs-tree";
+import { getSidebar } from "@/lib/pipeline/sidebar";
+import { workshopsConfig } from "@/lib/pipeline/configs/workshops";
 import { slugToHref } from "@/utils/slugToHref";
 
 import { useRouter } from "next/router";
@@ -17,9 +17,10 @@ import PageProvider from "@/layout/context/Page";
 import s from "@/sections/workshops/styles.module.scss"
 
 import type { GetStaticProps, NextPage } from "next";
-import type { Category, CategoryPageProps, Doc } from "@/layout/pages/types";
+import type { Category, CategoryIndexPageProps, Doc } from "@/layout/pages/types";
+import { validateConfig } from "@/lib/pipeline/validate-config";
 
-const WorkshopsRootPage: NextPage<Exclude<CategoryPageProps, 'path'>> = ({ sidebar, items, ...props }) => {
+const WorkshopsRootPage: NextPage<Exclude<CategoryIndexPageProps, 'path'>> = ({ sidebar, items, ...props }) => {
   const router = useRouter();
 
   return (
@@ -42,39 +43,19 @@ export default WorkshopsRootPage;
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const {
-    root_filepath: basePath,
-    baseUrl,
-    globMatch,
-    toMd,
-    getTitleAndDescription,
-    stripExtensionFromSlug,
-  } = workshopsConfig
+  const config = validateConfig(workshopsConfig)
 
-  const entry = await getFsTree({ basePath, globMatch, toMd, getTitleAndDescription, stripExtensionFromSlug })
-  
-  const sidebar = await getSidebar({ baseUrl, basePath });
+  const entry = await getFsTree(config)
+  const sidebar = await getSidebar(config);
 
-  const flattenedItems = Object.values(entry.items).map((entry) => (() => {
-    const href = slugToHref(entry.slug, workshopsConfig.baseUrl);
-    switch (entry.type) {
+  const flattenedItems = Object.values(entry.items).map(({ type, slug, title, description }) => (() => {
+    const href = slugToHref(slug, workshopsConfig.baseUrl);
+    const commonChildObject = { title, description, href }
+      switch (type) {
       case 'file':
-        return {
-          type: 'doc',
-          title: entry.title,
-          description: entry.description,
-          href,
-        } as Doc
+        return { type: 'doc', ...commonChildObject } as Doc
       case 'directory':
-        const numItems = entry.numLeaves;
-        return {
-          type: 'category',
-          title: entry.fsPath[entry.fsPath.length - 1],
-          description: numItems === 1
-            ? `${numItems} item`
-            : `${numItems} items`,
-          href,
-        } as Category
+        return { type: 'category', ...commonChildObject } as Category
       }
     })())
 
