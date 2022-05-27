@@ -5,7 +5,7 @@ import { getGithubSlug } from "../utils/github"
 
 import s from "../styles.module.scss"
 
-const getColabUrl = (fsPath: string[]) => `https://colab.research.google.com/github/${getGithubSlug(fsPath)}`
+const getColabUrl = (fsPath: string[]) => `https://colab.research.google.com/github/${getGithubSlug(fsPath, { blob: true })}`
 
 interface OpenInColabProps {
   fsPath: string[]
