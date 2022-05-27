@@ -45,11 +45,7 @@ workshop-2
 
 ```
 
-<<<<<<< HEAD
 ## 3. Getting Started
-=======
-## 2. Getting Started
->>>>>>> ab9b4c0 (chore: add numbers back to readme headings)
 
 This workshop is about Recurrent Neural Networks for NLP for detecting emotions in a multi-class dataset. This workshop is self-contained from the first and covers RNNs from the ground up!
 

@@ -1,5 +1,4 @@
-import { join } from "path";
-import { join as joinPosix } from "path/posix"
+import { join, relative, sep } from "path";
 import { readFile } from "fs/promises"
 
 import { extractToc } from "@/lib/pipeline/toc";
@@ -15,6 +14,7 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import type { CategoryIndexPageProps, CategoryPageProps, CategoryReadmePageProps, CommonPageProps, DocPageProps, PageProps } from "@/layout/pages/types";
 import remarkResolveRelativeLinks from "@/lib/unified/remark-resolve-relative-links";
 import { getGithubSlug } from "@/layout/components/OpenElsewhereLinks/utils/github";
+import { validateConfig } from "@/lib/pipeline/validate-config";
 
 const Workshop: NextPage<PageProps> = ({ type, ...props }) => {
   switch (type) {
@@ -30,6 +30,7 @@ export default Workshop;
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as { slug: string[] };
 
+  const config = validateConfig(workshopsConfig)
   const { entry, sidebar, fileToMd, dirToMd } = await createPipeline(workshopsConfig).getStaticProps(...slug);
   
   const uniqueProps = await (async () => {
@@ -59,6 +60,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         
         // otherwise render the README markdown
         } else {
+          const dirFileFsPath = relative(config.basePath, entry.fullPathToFile).split(sep)
           const contents = await readFile(entry.fullPathToFile, 'utf-8'); // `entry.fullPathToFile` should be the result of `dir.dirFileResolver()`
           const md = await dirToMd(contents)
           const toc = await extractToc(md)
@@ -69,7 +71,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             slug: entry.slug,
             type: 'readme',
             remarkPlugins: [
-              [remarkResolveRelativeLinks, { resolver: (url: string) => `https://github.com/${joinPosix(getGithubSlug(entry.fsPath), url)}` }],
+              [remarkResolveRelativeLinks, {
+                resolver: (url: string) => new URL(url, `https://github.com/${getGithubSlug(dirFileFsPath)}`).href,
+              }],
             ],
           })
 
@@ -92,7 +96,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           baseUrl: workshopsConfig.baseUrl ?? '/',
           slug: entry.slug,
           remarkPlugins: [
-            [remarkResolveRelativeLinks, { resolver: (url: string) => `https://github.com/${joinPosix(getGithubSlug(entry.fsPath), url)}` }],
+            [remarkResolveRelativeLinks, {
+              resolver: (url: string) => `https://github.com/${join(getGithubSlug(entry.fsPath), url)}`,
+            }],
           ],
         })
         return {
