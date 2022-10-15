@@ -1,7 +1,7 @@
----
+<div style="display:none">
 title: NLP Series
 description: A 3-part series on natural language processing. Learn about text classification, RNNs, and language translation! 
----
+</div>
 
 ![Header for Workshop 3: Seq 2 Seq for Translation](./NLP_Main_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 3: Seq 2 Seq for Translation](./NLP_Main_Header_Dark.png#gh-dark-mode-only)
