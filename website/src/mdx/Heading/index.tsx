@@ -4,7 +4,7 @@ import { linkIconSize } from "./_exports.module.scss";
 import { heading, anchor, svg, path } from "./styles.module.scss"
 
 import type { HTMLAttributes } from "react"
-import type { HeadingLevel } from "@/lib/unified/toc/types"
+import type { HeadingLevel } from "@/lib/pipeline/toc/types"
 
 interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
   as: `h${HeadingLevel}`

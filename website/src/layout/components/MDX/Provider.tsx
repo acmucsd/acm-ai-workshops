@@ -3,17 +3,15 @@ import { createContext, useContext } from "react";
 import { useMDX } from "./useMDX";
 
 import type { FC, ReactNode } from "react";
-import type { DocPageProps } from "@/layout/pages/types";
-import type { TocItem } from "@/lib/unified/toc/types";
+import type { MDXComponentProps } from "./useMDX";
 
 type MDXData = {
-  MDXComponent: FC<MDXProviderProps>
-  toc: TocItem[]
+  MDXComponent: FC<MDXComponentProps>
 }
 
 const MDXContext = createContext<MDXData | undefined>(undefined);
 
-export const useMdxContext = () => {
+export const useMDXContext = () => {
   const context = useContext(MDXContext)
   if (context === undefined) {
     throw new Error('useMDXContext must be used in a MDXProvider')
@@ -21,15 +19,16 @@ export const useMdxContext = () => {
   return context
 }
 
-interface MDXProviderProps extends Pick<DocPageProps, 'code'> {
+interface MDXProviderProps {
+  source: string
   children: ReactNode
 }
 
 export default function MDXProvider ({ children, ...props }: MDXProviderProps) {
-  const { MDXComponent, toc } = useMDX(props)
+  const { MDXComponent } = useMDX(props)
 
   return (
-    <MDXContext.Provider value={{ MDXComponent, toc }}>
+    <MDXContext.Provider value={{ MDXComponent }}>
       {children}
     </MDXContext.Provider>
   )

@@ -1,8 +1,8 @@
 import { createContext, useContext } from "react";
 
 import type { ReactNode } from "react";
-import type { TocItem } from "@/lib/unified/toc/types";
-import { SidebarItem as SidebarItemType } from "@/lib/helpers/sidebar";
+import type { TocItem } from "@/lib/pipeline/toc/types";
+import type { SidebarItem as SidebarItemType } from "@/lib/pipeline/sidebar/types";
 
 type PageData = {
   sidebar?: SidebarItemType[]

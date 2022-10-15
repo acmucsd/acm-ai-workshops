@@ -2,6 +2,7 @@
 
 @import "./reset";
 @import "./katex-0.15.2/katex.min.css";
+@import "./light-dark";
 
 html {
   @include mixins.scrollbar();

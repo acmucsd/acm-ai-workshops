@@ -9,22 +9,15 @@ import ContentContainer from "@/layout/components/ContentContainer";
 import CategoryItemsGrid from "@/layout/components/CategoryItemsGrid";
 import PageProvider from "@/layout/context/Page";
 
-import type { CategoryPageProps } from "@/layout/pages/types";
+import type { CategoryIndexPageProps, CategoryPageProps, CategoryReadmePageProps } from "@/layout/pages/types";
+import CategoryIndexPage from "./CategoryIndexPage";
+import CategoryReadmePage from "./CategoryReadmePage";
 
-export default function CategoryPage ({ slug, sidebar, items }: CategoryPageProps) {
-  const { asPath } = useRouter()
-
-  return (
-    <PageProvider sidebar={sidebar}>
-      <Navbar sidebar={sidebar} path={asPath} />
-      <MainWrapper>
-        <SidebarContainer><Sidebar items={sidebar} activePath={asPath} /></SidebarContainer>
-        <ContentWrapper>
-          <ContentContainer>
-            <CategoryItemsGrid items={items} />
-          </ContentContainer>
-        </ContentWrapper>
-      </MainWrapper>
-    </PageProvider>
-  )
+export default function CategoryPage ({ subtype, ...props }: CategoryPageProps) {
+  switch (subtype) {
+    case 'index':
+      return <CategoryIndexPage {...props as CategoryIndexPageProps} />
+    case 'readme':
+      return <CategoryReadmePage {...props as CategoryReadmePageProps} />
+  }
 }

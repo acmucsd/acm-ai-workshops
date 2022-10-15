@@ -2,12 +2,12 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
- * LICENSE-docusaurus file in the root directory of the website source tree.
+ * license/docusaurus file in the root directory of the website source tree.
  */
 
 import { useMemo } from "react"
 
-import type { HeadingLevel, TocItem } from "@/lib/unified/toc/types"
+import type { HeadingLevel, TocItem } from "@/lib/pipeline/toc/types"
 
 interface FilterTocProps {
   toc: TocItem[]

@@ -1,35 +1,26 @@
+---
+title: "Workshop 3: Machine Translation with RNNs"
+description: "Join us in making a language translation model similar to Google Translate!"
+---
+
 ![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI NLP Workshop Series - Workshop 3 repository.
 
-# Table of Contents:
+## 1. Workshop Recording
 
-<div class="alert alert-block alert-info">
-<ol>
-    <li><a href="#1-workshop-recording">Workshop Recording</a></li>
-    <li><a href="#2-file-directory-structure">File Directory Structure</a></li>
-    <li><a href="#3-getting-started">Getting Started</a></li>
-</ul>
-</div>
-
-# 1. Workshop Recording
-
-*Will be added as soon as uploaded to YouTube*
-
-<!--
 <div align="center">
-<a href="YT Video Link">
-<img
-    src="YT Max Res Thumbnail Link"
-    alt="Screen reader-compatible alt text"
-    width="500px"
-/>
-</a>
+    <a href="https://www.youtube.com/watch?v=AvWhHTifw4I&ab_channel=ACMatUCSanDiego">
+        <img
+            src="https://i.ytimg.com/vi/AvWhHTifw4I/maxresdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg"
+            alt="Thumbnail for N L P Workshop 3, Machine Translation with R N Ns"
+            width="500px"
+        />
+    </a>
 </div>
--->
 
-# 2. File Directory Structure
+## 2. File Directory Structure
 
 ```bash
 workshop-3
@@ -55,7 +46,7 @@ workshop-3
 
 ```
 
-# 3. Getting Started
+## 3. Getting Started
 
 Language Translation is a ubiquitous topic of Modern Natural Language Processing, and the AI that powers language translation is critical to creating a world where we can break down communication barriers between communities that speak different languages.
 
@@ -63,5 +54,5 @@ By the end of this workshop, the reader will have a working Language Translation
 
 Workshop 3 consists of 3 components:
 - [Presentation](./presentation-resources/NLP_Workshop_3_-_Seq2Seq_for_Machine_Translation.pptx) used during the workshop.
-- [Main Notebook](./Main_Notebook_NLP_Series_Workshop_3_Recurrent_Seq2Seq_for_Language_Translation.ipynb) with completed code and explanations.
+- [Main Notebook](./NLP_WS3_Main.ipynb) with completed code and explanations.
 - [Summary Graphic](./presentation-resources/ws3_summary_graphic.pdf) to summarize key points of the workshop.

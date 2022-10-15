@@ -1,18 +1,24 @@
-import { useMemo, useCallback } from "react"
-import { getMDXExport } from "mdx-bundler/client";
+import { useMemo, useCallback } from "react";
+import { ComponentMap, getMDXExport } from "mdx-bundler/client";
 
-import defaultComponents from "@/mdx/components"
+import defaultComponents from "@/mdx/components";
 
-import type { DocPageProps } from "@/layout/pages/types"
+import type { FC } from "react";
 
-interface UseMDXProps extends Pick<DocPageProps, 'code'> {}
+interface UseMDXProps {
+  source: string
+}
 
-export const useMDX = ({ code }: UseMDXProps) => {
-  const { default: BaseComponent, toc } = useMemo(() => getMDXExport(code), [code])
+export interface MDXComponentProps {
+  components?: ComponentMap
+}
 
-  const MDXComponent = useCallback(({ components, ...props}) => (
+export function useMDX ({ source }: UseMDXProps) {
+  const { default: BaseComponent } = useMemo(() => getMDXExport(source), [source])
+
+  const MDXComponent: FC<MDXComponentProps> = useCallback(({ components, ...props}) => (
     <BaseComponent components={{...defaultComponents, ...components}} {...props} />
   ), [BaseComponent])
 
-  return { MDXComponent, toc }
+  return { MDXComponent }
 }

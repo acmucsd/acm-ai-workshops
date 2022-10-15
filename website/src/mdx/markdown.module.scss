@@ -41,12 +41,32 @@ $navbar-height: navbar.$navbar-height;
       scroll-margin-top: $navbar-height;
     }
 
+    // anchor link styles
+    a {
+      color: colors.$red;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     // heading margins
     h1, h2, h3, h4, h5, h6 {
       $heading-margin-top: 2em;
 
       margin: $heading-margin-top 0 1em;
       scroll-margin-top: calc(#{$navbar-height} + #{$heading-margin-top});
+    }
+
+    // lists
+    ol, ul {
+      padding-left: 1em;
+
+      li {
+        &::marker {
+          font-size: 1em;
+        }
+      }
     }
 
     // block margins

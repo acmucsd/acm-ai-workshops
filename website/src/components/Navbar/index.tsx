@@ -9,7 +9,7 @@ import MobileDrawer from "./MobileDrawer";
 import s from "./styles.module.scss"
 
 import type { WindowSize } from "@/hooks/useWindowSize";
-import type { SidebarItem } from "@/lib/helpers/sidebar";
+import type { SidebarItem } from "@/lib/pipeline/sidebar/types";
 
 const navLinks: SidebarItem[] = [
   { type: 'doc', href: '/workshops', label: 'Workshops' },

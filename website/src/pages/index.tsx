@@ -1,6 +1,7 @@
-import { getSidebar } from '@/lib/helpers/sidebar'
-import { workshopsConfig } from '@/lib/pipeline/workshops'
-import type { SidebarItem as SidebarItemType } from '@/lib/helpers/sidebar'
+import { getSidebar } from '@/lib/pipeline/sidebar'
+import { workshopsConfig } from '@/lib/pipeline/configs/workshops'
+import { validateConfig } from '@/lib/pipeline/validate-config'
+import type { SidebarItem as SidebarItemType } from '@/lib/pipeline/sidebar/types'
 
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
@@ -44,13 +45,10 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const {
-    root_filepath: workshopsBasePath,
-    ...restWorkshopsConfig
-  } = workshopsConfig
+  const config = validateConfig(workshopsConfig)
 
   // we can add other sidebars here as well if we want to have stuff other than just the workshops here
-  const workshopsSidebar = await getSidebar({ basePath: workshopsBasePath, ...restWorkshopsConfig });
+  const workshopsSidebar = await getSidebar(config);
 
   // populate the list of sidebars we want to render on the main page
   const sidebar: SidebarItemType[] = [
