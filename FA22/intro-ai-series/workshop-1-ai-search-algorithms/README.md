@@ -100,6 +100,13 @@ intro-ai-series
     You can write something up or use the marketing description.
 -->
 
+## 3.1 Environment Setup
+
+```
+conda env create -f environment.yaml
+conda activate ai
+```
+
 Workshop "Intro to AI: Search Algorithms" consists of <!-- however many you choose --> components:
 - [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
 - [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop.

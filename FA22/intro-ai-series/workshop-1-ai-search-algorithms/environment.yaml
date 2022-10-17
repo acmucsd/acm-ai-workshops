@@ -1,0 +1,11 @@
+name: ai
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - pip:
+    - termcolor
+    - gym
+    - gym[box2d]
+    - moviepy
