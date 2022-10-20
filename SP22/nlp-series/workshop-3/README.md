@@ -1,8 +1,3 @@
----
-title: "Workshop 3: Machine Translation with RNNs"
-description: "Join us in making a language translation model similar to Google Translate!"
----
-
 ![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 3: Seq 2 Seq for Translation](./figures/NLPW3_Header_Dark.png#gh-dark-mode-only)
 
