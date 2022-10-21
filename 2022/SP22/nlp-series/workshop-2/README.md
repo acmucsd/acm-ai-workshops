@@ -1,8 +1,3 @@
----
-title: "Workshop 2: RNNs for Multiclassification"
-description: "Follow us in learning about recurrent neural networks and how to use them in NLP to detect emotions from text"
----
-
 ![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 2: R N Ns for Multiclassification](./figures/NLPW2_Header_Dark.png#gh-dark-mode-only)
 

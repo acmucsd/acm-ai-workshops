@@ -1,8 +1,3 @@
----
-title: "Workshop 1: Intro to NLP"
-description: "Learn about the basics of NLP and practice using them!"
----
-
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Light.png#gh-light-mode-only)
 ![Header for Workshop 1 Intro to N L P](./figures/NLPW1_Header_Dark.png#gh-dark-mode-only)
 
