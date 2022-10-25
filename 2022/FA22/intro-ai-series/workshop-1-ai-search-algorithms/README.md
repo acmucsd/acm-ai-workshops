@@ -1,14 +1,3 @@
----
-title: "Intro to AI: Search Algorithms"
-description: "Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 1st of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Search algorithms for Informed and Uninformed Search in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to search in its environment! Disclaimer: No Prior AI Experience necessary, all are welcome! 😄"
----
-
-<!-- 
-    The above is REQUIRED YAML Frontmatter so the README can be rendered 
-    in the ACM Wiki. DO NOT move the frontmatter from its location. 
-    It is also ESSENTIAL to fill out; make it good!
--->
-
 <!-- 
     If you have any questions about this template, feel free to ask
     your Director for help!

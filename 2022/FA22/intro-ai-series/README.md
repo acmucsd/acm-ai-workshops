@@ -1,14 +1,3 @@
----
-title: "Intro to AI Workshop Series"
-description: "This workshop series will teach you the fundamentals of search and decision-making for AI agents. We will cover Uninformed and Informed Search, Adversarial Search, and Reinforcement Learning. The content we cover includes both a high-level theoretical coverage and a low-level implementation for each concept. By the end of this series, you will have the tools necessary to build your own AI agent which can search and make decisions in various decision-making environments."
----
-
-<!-- 
-    The above is REQUIRED YAML Frontmatter so the README can be rendered 
-    in the ACM Wiki. DO NOT move the frontmatter from its location. 
-    It is also ESSENTIAL to fill out; make it good!
--->
-
 <!-- 
     If you have any questions about this template, feel free to ask
     your Director for help!
