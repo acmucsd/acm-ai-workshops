@@ -1,3 +1,5 @@
+import gym
+
 '''
 Search Algorithms
 '''
@@ -14,6 +16,38 @@ class Search:
     def bfs(self):
         print("Algo: Breadth-First Search")
         # TODO: Implement BFS
+        MAPS = {"4x4":["SGFF", "FHFH", "FFFH", "HFFF"],
+        "8x8":["SFFFFFFF", "FFFFFFFF", "FFFHFFFF", "FFFFFHFF",
+               "FFFHFFFF", "FHHFFFHF", "FHFFHFHF", "FFFHFFFG"]}
+        MAP = "4x4" # can be 8x8 or 4x4
+
+        ACTIONS = {0: "LEFT", 1: "DOWN", 2: "RIGHT", 3: "UP"}
+        RENDER_MODE="rgb_array_list"
+        env = gym.make("FrozenLake-v1", desc=MAPS[MAP], render_mode=RENDER_MODE, is_slippery=False)
+        env.action_space.seed(42)
+        observation, info = env.reset(seed=42)
+        queue = [[]]
+        while len(queue) > 0 :
+            acs = queue.pop(0)
+            for i in range(4):
+                rew = -1
+                done = False
+                obs, info = env.reset(seed=42)
+                for a in acs:
+                    obs,rew, terminated, truncated, _ = env.step(a)
+                    if terminated or truncated:
+                        done=True
+                        break
+                if rew > 0.0:
+                    print('Found path by taking following actions: ', acs)
+                    env.close()
+                    return acs
+                if done:
+                    break
+                queue.append(acs +[i] )
+        
+        print("No sol found")
+        return None
 
 
     def ucs(self):
