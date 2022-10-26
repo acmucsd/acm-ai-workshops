@@ -44,7 +44,31 @@ The official ACM AI **Intro to AI: Search Algorithms Workshop** repository.
     is posted to the ACMUCSD YT channel (https://www.youtube.com/channel/UCyjPATFqc3FwOiuqJ2UG1Eg), replace the text with an <img> element.
 -->
 
-# 1. Workshop Video
+# 1. Getting Started
+
+<!-- 
+    You can write something up or use the marketing description.
+-->
+
+## 1.1 Environment Setup
+
+```
+conda env create -f environment.yaml
+conda activate ai
+cd gym
+pip install -e .
+```
+
+Workshop "Intro to AI: Search Algorithms" consists of <!-- however many you choose --> components:
+- [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
+- [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop.
+
+<!-- 
+    Note: The above list will depend on your specific workshop.
+-->
+
+
+# 2. Workshop Video
 
 *Will be added as soon as uploaded to YouTube*
 
@@ -66,7 +90,7 @@ The official ACM AI **Intro to AI: Search Algorithms Workshop** repository.
     Write out your File Directory Structure below (make sure it's up-to-date)
 -->
 
-# 2. File Directory Structure
+# 3. File Directory Structure
 
 ```bash
 intro-ai-series
@@ -81,27 +105,4 @@ intro-ai-series
     SECTION: Getting Started
     ---------
     Brief description of your workshop here
--->
-
-# 3. Getting Started
-
-<!-- 
-    You can write something up or use the marketing description.
--->
-
-## 3.1 Environment Setup
-
-```
-conda env create -f environment.yaml
-conda activate ai
-cd gym
-pip install -e .
-```
-
-Workshop "Intro to AI: Search Algorithms" consists of <!-- however many you choose --> components:
-- [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
-- [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop.
-
-<!-- 
-    Note: The above list will depend on your specific workshop.
 -->
