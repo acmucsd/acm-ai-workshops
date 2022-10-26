@@ -119,7 +119,6 @@ class Search:
                 curr = e_coord
 
             if terminated:
-                # print('Found path by taking following actions: ', acs)
                 save_video(
                     env.render(),
                     "videos/bfs",
@@ -141,16 +140,54 @@ class Search:
         return None
 
 
-    def ucs(self, env, map, map_side_length):
+    def ucs(self, env, map, map_side_length, cost_board, start):
         print("Algo: Uniform Cost Search")
-        # TODO: Implement UCS
+        board = np.ones((map_side_length, map_side_length), dtype=int) * -1
+        in_frontier = np.zeros((map_side_length, map_side_length), dtype=bool)
+        observation, info = env.reset(seed=42)
+        curr = self.get_coordinate(observation, map_side_length)
+        pq = [(cost_board[curr], curr)]
+        heapify(pq)
+        while len(pq) > 0:
+            curr_tuple = heappop(pq)
+            curr_cost = curr_tuple[0]
+            e_coord = curr_tuple[1]
+
+            if e_coord != start:
+                board[e_coord] = curr_tuple[2]
+                in_frontier[next_c] = False
+            
+            terminated = False
+            if e_coord != curr:
+                backtrack_actions = self.backtrack_path(board, e_coord, curr)
+                env, rew, terminated = self.follow_action_sequence(env, backtrack_actions)
+                curr = e_coord
+
+            if terminated:
+                # print('Found path by taking following actions: ', acs)
+                save_video(
+                    env.render(),
+                    "videos/ucs",
+                    fps=env.metadata["render_fps"],
+                    #step_starting_index=step_starting_index,
+                    #episode_index=episode_index,
+                    name_prefix=map
+                )    
+                env.close()
+                return board
+
+            for i in range(4):
+                next_c, valid = self.action_to_coordinate(i, curr)
+                if valid and not (board[next_c] != -1 or in_frontier[next_c]):
+                    heappush(pq, (curr_cost  + cost_board[next_c], next_c, i))
+                    in_frontier[next_c] = True
 
 
     def a_star(self, env, map, map_side_length, cost_board, start, goal):
         print("Algo: A* Search")
         board = np.ones((map_side_length, map_side_length), dtype=int) * -1
         visited = np.zeros((map_side_length, map_side_length), dtype=bool)
-        observation, info = env.reset(seed=42)
+        _, _ = env.reset(seed=42)
         curr = start
         frontier = [(cost_board[curr] + self.h_value(curr, goal), 0, curr)]
         heapify(frontier)
