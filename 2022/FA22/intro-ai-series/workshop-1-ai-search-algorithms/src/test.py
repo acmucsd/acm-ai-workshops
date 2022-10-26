@@ -18,7 +18,7 @@ MAP = "8x8" # can be 8x8 or 4x4
 
 USE_DETERMINISTIC=True # runs a deterministic path which results in Success
 TRAJECTORY = {"4x4": [1, 1, 2, 2, 1, 2],
-              "8x8": [2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1]}
+              "8x8": [2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]}
 
 ACTIONS = {0: "LEFT", 1: "DOWN", 2: "RIGHT", 3: "UP"}
 RENDER_MODE="rgb_array_list"
