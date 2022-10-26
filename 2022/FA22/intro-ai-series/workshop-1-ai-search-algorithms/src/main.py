@@ -1,4 +1,5 @@
 from search import *
+import numpy as np
 
 def main():
     search = Search(environment="FrozenLake-v2")
@@ -13,8 +14,19 @@ def main():
     
     search.dfs(env, MAP, map_side_length)
     search.bfs(env, MAP, map_side_length)
+
+    cost_board = np.array([
+        np.zeros(8),
+        np.zeros(8),
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+    ])
     search.ucs(env, MAP, map_side_length)
-    search.a_star(env, MAP, map_side_length)
+    search.a_star(env, MAP, map_side_length, cost_board, (0, 0), (7, 7))
 
 if __name__ == "__main__":
     main()
