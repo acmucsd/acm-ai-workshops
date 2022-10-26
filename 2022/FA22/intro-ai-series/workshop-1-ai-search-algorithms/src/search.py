@@ -143,8 +143,52 @@ class Search:
 
     def ucs(self, env, map, map_side_length):
         print("Algo: Uniform Cost Search")
-        # TODO: Implement UCS
+        board = np.ones((map_side_length, map_side_length), dtype=int) * -1
+        observation, info = env.reset(seed=42)
+        curr = self.get_coordinate(observation, map_side_length)
+        pq = [(0, curr)]
+        visited = set()
+        while pq:
+            dist, e_coord = heapq.heappop(pq)
+            terminated = False
+            # If node visited then skip
+            if e_coord in visited:
+                continue
+            
+            visited.add(e_coord)
+            print("Dist", dist, "Coordinate", e_coord)
+            if e_coord != curr:
+                backtrack_actions = self.backtrack_path(board, e_coord, curr)
+                env, rew, terminated = self.follow_action_sequence(env, backtrack_actions)
+                curr = e_coord
 
+            if terminated:
+                save_video(
+                    env.render(),
+                    "videos/ucs",
+                    fps=env.metadata["render_fps"],
+                    #step_starting_index=step_starting_index,
+                    #episode_index=episode_index,
+                    name_prefix=map
+                )    
+                env.close()
+                return
+
+            for i in range(4):
+                new_dist = 0
+                success = True
+                next_c = e_coord
+                save_coord = e_coord
+                while success:
+                    save_coord = next_c
+                    new_dist += 1
+                    if board[next_c] == -1:
+                        board[next_c] = i
+                    next_c, success = self.action_to_coordinate(i, next_c)
+                heapq.heappush(pq, (new_dist + dist, save_coord))
+        env.close() 
+        print("No sol found")
+        return None
 
     def a_star(self, env, map, map_side_length, cost_board, start, goal):
         print("Algo: A* Search")
