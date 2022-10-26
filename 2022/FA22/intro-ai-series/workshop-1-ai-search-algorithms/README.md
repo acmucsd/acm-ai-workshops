@@ -13,7 +13,7 @@
 ![Alt Text (Intro to AI: Search Algorithms)](./figures/DefaultW1_Header_Light.png#gh-light-mode-only)
 ![Alt Text (Intro to AI: Search Algorithms)](./figures/DefaultW1_Header_Dark.png#gh-dark-mode-only)
 
-The official ACM AI **Intro to AI: Search Algorithms Workshop** repository.
+The official ACM AI **Intro to AI: Search Algorithms Workshop** repository. We demonstrate how to run uninformed and informed search algorithms in a modified version of OpenAI Gym's `FrozenLake-v1` environment.
 
 <!-- 
     SECTION: Table of Contents
@@ -59,9 +59,9 @@ cd gym
 pip install -e .
 ```
 
-Workshop "Intro to AI: Search Algorithms" consists of <!-- however many you choose --> components:
+Workshop "Intro to AI: Search Algorithms" consists of 2 components:
 - [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
-- [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop.
+- [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop. (To be added after workshop)
 
 <!-- 
     Note: The above list will depend on your specific workshop.
@@ -97,7 +97,11 @@ intro-ai-series
     | -- figures
         | -- DefaultW1_Header_Dark.png
         | -- DefaultW1_Header_Light.png
-    | -- ...
+    | -- src
+        | -- videos # where the videos of our agent traversing the FrozenLake grid are stored
+        | -- main.py # calls the core search algorithms
+        | -- search.py # where we define the core search algorithms for our AI agent
+        | -- test.py # for testing determinstic trajectories in FrozenLake enviroment
     | -- README.md
 ```
 
