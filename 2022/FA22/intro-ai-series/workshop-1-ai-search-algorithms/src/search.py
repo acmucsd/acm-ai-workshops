@@ -8,18 +8,12 @@ class Search:
     def __init__(self, environment):
         self.environment = environment
 
-    def dfs(self):
+    def backtrack():
+        return
+
+    def dfs(self, env, map):
         print("Algo: Depth-First Search")
         # TODO: Implement DFS
-        MAPS = {"4x4":["SGFF", "FHFH", "FFFH", "HFFF"],
-        "8x8":["SFFFFFFF", "FFFFFFFF", "FFGHFFFF", "FFFFFHFF",
-               "FFFHFFFF", "FHHFFFHF", "FHFFHFHF", "FFFHFFFF"]}
-        MAP = "8x8" # can be 8x8 or 4x4
-
-        ACTIONS = {0: "LEFT", 1: "DOWN", 2: "RIGHT", 3: "UP"}
-        RENDER_MODE="rgb_array_list"
-        env = gym.make("FrozenLake-v1", desc=MAPS[MAP], render_mode=RENDER_MODE, is_slippery=False)
-        env.action_space.seed(42)
         observation, info = env.reset(seed=42)
         stack = [[]]
         while len(stack) > 0 :
@@ -41,7 +35,7 @@ class Search:
                         fps=env.metadata["render_fps"],
                         #step_starting_index=step_starting_index,
                         #episode_index=episode_index,
-                        name_prefix=MAP
+                        name_prefix=map
                     )    
                     env.close()
                     return acs
@@ -53,19 +47,9 @@ class Search:
         return None
 
 
-    def bfs(self):
+    def bfs(self, env, map):
         print("Algo: Breadth-First Search")
         # TODO: Implement BFS
-        MAPS = {"4x4":["SGFF", "FHFH", "FFFH", "HFFF"],
-        "8x8":["SFFFFFFF", "FFFGFFFF", "FFFHFFFF", "FFFFFHFF",
-               "FFFHFFFF", "FHHFFFHF", "FHFFHFHF", "FFFHFFFF"]}
-        MAP = "8x8" # can be 8x8 or 4x4
-
-        ACTIONS = {0: "LEFT", 1: "DOWN", 2: "RIGHT", 3: "UP"}
-        RENDER_MODE="rgb_array_list"
-        env = gym.make("FrozenLake-v1", desc=MAPS[MAP], render_mode=RENDER_MODE, is_slippery=False)
-        env.action_space.seed(42)
-        observation, info = env.reset(seed=42)
         queue = [[]]
         while len(queue) > 0 :
             acs = queue.pop(0)
@@ -86,7 +70,7 @@ class Search:
                         fps=env.metadata["render_fps"],
                         #step_starting_index=step_starting_index,
                         #episode_index=episode_index,
-                        name_prefix=MAP
+                        name_prefix=map
                     )    
                     env.close()
                     return acs
@@ -98,11 +82,11 @@ class Search:
         return None
 
 
-    def ucs(self):
+    def ucs(self, env, map):
         print("Algo: Uniform Cost Search")
         # TODO: Implement UCS
 
 
-    def a_star(self):
+    def a_star(self, env, map):
         print("Algo: A* Search")
         # TODO: Implement A*
