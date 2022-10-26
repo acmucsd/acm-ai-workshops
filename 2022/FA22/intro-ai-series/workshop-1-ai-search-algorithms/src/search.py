@@ -1,5 +1,5 @@
 import gym
-
+from gym.utils.save_video import save_video
 '''
 Search Algorithms
 '''
@@ -17,9 +17,9 @@ class Search:
         print("Algo: Breadth-First Search")
         # TODO: Implement BFS
         MAPS = {"4x4":["SGFF", "FHFH", "FFFH", "HFFF"],
-        "8x8":["SFFFFFFF", "FFFFFFFF", "FFFHFFFF", "FFFFFHFF",
-               "FFFHFFFF", "FHHFFFHF", "FHFFHFHF", "FFFHFFFG"]}
-        MAP = "4x4" # can be 8x8 or 4x4
+        "8x8":["SFGFFFFF", "FFFFFFFF", "FFFHFFFF", "FFFFFHFF",
+               "FFFHFFFF", "FHHFFFHF", "FHFFHFHF", "FFFHFFFF"]}
+        MAP = "8x8" # can be 8x8 or 4x4
 
         ACTIONS = {0: "LEFT", 1: "DOWN", 2: "RIGHT", 3: "UP"}
         RENDER_MODE="rgb_array_list"
@@ -40,12 +40,20 @@ class Search:
                         break
                 if rew > 0.0:
                     print('Found path by taking following actions: ', acs)
+                    save_video(
+                        env.render(),
+                        "videos",
+                        fps=env.metadata["render_fps"],
+                        #step_starting_index=step_starting_index,
+                        #episode_index=episode_index,
+                        name_prefix=MAP
+                    )    
                     env.close()
                     return acs
                 if done:
                     break
                 queue.append(acs +[i] )
-        
+        env.close() 
         print("No sol found")
         return None
 
