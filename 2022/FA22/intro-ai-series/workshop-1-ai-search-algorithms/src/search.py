@@ -1,4 +1,5 @@
 import gym
+import heapq
 from heapq import *
 import numpy as np
 from gym.utils.save_video import save_video
