@@ -94,6 +94,8 @@ intro-ai-series
 ```
 conda env create -f environment.yaml
 conda activate ai
+cd gym
+pip install -e .
 ```
 
 Workshop "Intro to AI: Search Algorithms" consists of <!-- however many you choose --> components:
