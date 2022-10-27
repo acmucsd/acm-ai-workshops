@@ -8,8 +8,9 @@ Search Algorithms
 '''
 
 class Search:
-    def __init__(self, environment):
+    def __init__(self, environment, map_side_length):
         self.environment = environment
+        self.map_side_length = map_side_length
 
     def get_coordinate(self, observation, map_side_length):
         return (int(observation / map_side_length), observation % map_side_length)
@@ -28,7 +29,7 @@ class Search:
         elif action == 3:
             row -= 1
         
-        if row < 0 or col < 0 or row > 7 or col > 7:
+        if row < 0 or col < 0 or row >= self.map_side_length or col >= self.map_side_length:
             return (row, col), False
 
         return (row, col), True
@@ -83,13 +84,10 @@ class Search:
                 curr = e_coord
 
             if terminated:
-                # print('Found path by taking following actions: ', acs)
                 save_video(
                     env.render(),
                     "videos/dfs",
                     fps=env.metadata["render_fps"],
-                    #step_starting_index=step_starting_index,
-                    #episode_index=episode_index,
                     name_prefix=map
                 )    
                 env.close()
@@ -124,8 +122,6 @@ class Search:
                     env.render(),
                     "videos/bfs",
                     fps=env.metadata["render_fps"],
-                    #step_starting_index=step_starting_index,
-                    #episode_index=episode_index,
                     name_prefix=map
                 )    
                 env.close()
@@ -165,13 +161,10 @@ class Search:
                 curr = e_coord
 
             if terminated:
-                # print('Found path by taking following actions: ', acs)
                 save_video(
                     env.render(),
                     "videos/ucs",
                     fps=env.metadata["render_fps"],
-                    #step_starting_index=step_starting_index,
-                    #episode_index=episode_index,
                     name_prefix=map
                 )    
                 env.close()
@@ -212,13 +205,10 @@ class Search:
                 curr = e_coord
 
             if terminated:
-                # print('Found path by taking following actions: ', acs)
                 save_video(
                     env.render(),
                     "videos/a_star",
                     fps=env.metadata["render_fps"],
-                    #step_starting_index=step_starting_index,
-                    #episode_index=episode_index,
                     name_prefix=map
                 )    
                 env.close()
@@ -230,4 +220,3 @@ class Search:
                 next_c, valid = self.action_to_coordinate(i, curr)
                 if valid and not visited[next_c]:
                     heappush(frontier, (curr_G  + cost_board[next_c] + self.h_value(next_c, goal), curr_G  + cost_board[next_c], next_c, i))
-                    # board[next_c] = i
