@@ -2,7 +2,7 @@ from search import *
 from maps import MAPS
 import numpy as np
 import sys
-
+import gym
 def generate_path_video(search, algo_name, map_name, env, board, start, goal):
     env.reset(seed=42)
     backtrack_actions = search.backtrack_path(board, goal, start)
