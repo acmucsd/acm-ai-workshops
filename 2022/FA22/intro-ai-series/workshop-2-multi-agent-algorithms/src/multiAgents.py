@@ -112,6 +112,8 @@ class MinimaxAgent(MultiAgentSearchAgent):
     """
     Your minimax agent (question 2)
     """
+    pacmanAgent = 0
+    ghostAgent = 1 # index of first ghost agent
 
     def getAction(self, gameState: GameState):
         """
@@ -138,15 +140,15 @@ class MinimaxAgent(MultiAgentSearchAgent):
         """
         "*** YOUR CODE HERE ***"
 
-        actions = gameState.getLegalActions(0)
-        successor_states = [gameState.generateSuccessor(0, act) for act in actions]
-        # Map successor_state to corresponding actino
+        actions = gameState.getLegalActions(self.pacmanAgent)
+        successor_states = [gameState.generateSuccessor(self.pacmanAgent, act) for act in actions]
+        # Map successor_state to corresponding action
         result_action = dict(zip(successor_states, actions))
         maxVal = -float('inf')
         maxAction = actions[0]
 
         for state, act in result_action.items():
-            currVal = self.value(state, self.depth, 1)
+            currVal = self.value(state, self.depth, self.ghostAgent)
             if maxVal != max(currVal, maxVal):
                 maxVal = max(currVal, maxVal)
                 maxAction = act
@@ -166,7 +168,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         maxVal = -float("inf") 
         for act in actions:
             successor_state = gameState.generateSuccessor(agent, act) # get child
-            val = self.value(successor_state, currDepth, 1) 
+            val = self.value(successor_state, currDepth, self.ghostAgent) 
             maxVal = max(maxVal, val)
         return maxVal
 
@@ -188,13 +190,15 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     """
     Your minimax agent with alpha-beta pruning (question 3)
     """
+    pacmanAgent = 0
+    ghostAgent = 1 # index of first ghost agent
 
     def getAction(self, gameState: GameState):
         """
         Returns the minimax action using self.depth and self.evaluationFunction
         """
-        actions = gameState.getLegalActions(0)
-        successor_states = [gameState.generateSuccessor(0, act) for act in actions]
+        actions = gameState.getLegalActions(self.pacmanAgent)
+        successor_states = [gameState.generateSuccessor(self.pacmanAgent, act) for act in actions]
         result_action = dict(zip(successor_states, actions))
         maxVal = -float('inf')
         maxAction = actions[0]
@@ -203,7 +207,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         beta = float('inf')
 
         for state, act in result_action.items():
-            currVal = self.value(state, self.depth, 1, alpha, beta)
+            currVal = self.value(state, self.depth, self.ghostAgent, alpha, beta)
             if maxVal != max(currVal, maxVal):
                 maxVal = max(currVal, maxVal)
                 maxAction = act
@@ -225,7 +229,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         maxVal = -float("inf") 
         for act in actions:
             successor_state = gameState.generateSuccessor(agent, act)
-            val = self.value(successor_state, currDepth, 1, alpha, beta)
+            val = self.value(successor_state, currDepth, self.ghostAgent, alpha, beta)
             maxVal = max(maxVal, val)
             if maxVal > beta:  # Check for pruning
                 return maxVal
