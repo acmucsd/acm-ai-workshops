@@ -140,6 +140,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
         actions = gameState.getLegalActions(0)
         successor_states = [gameState.generateSuccessor(0, act) for act in actions]
+        # Map successor_state to corresponding actino
         result_action = dict(zip(successor_states, actions))
         maxVal = -float('inf')
         maxAction = actions[0]
@@ -152,9 +153,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
         return maxAction
 
     def value(self, gameState, currDepth, agent):
-        # Base case (Terminate state)
+        # Base case (Terminal state)
         if currDepth == 0 or gameState.isLose() or gameState.isWin():
-            return self.evaluationFunction(gameState) #static evalutation
+            return self.evaluationFunction(gameState) # static evalutation
         if agent == 0:
             return self.maxValue(gameState, currDepth, agent)
         else:
@@ -162,23 +163,24 @@ class MinimaxAgent(MultiAgentSearchAgent):
         
     def maxValue(self, gameState, currDepth, agent):
         actions = gameState.getLegalActions(agent) # all possible actions
-        successor_states = [gameState.generateSuccessor(agent, act) for act in actions]
         maxVal = -float("inf") 
-        for act in successor_states:
-            val = self.value(act, currDepth, 1)
+        for act in actions:
+            successor_state = gameState.generateSuccessor(agent, act) # get child
+            val = self.value(successor_state, currDepth, 1) 
             maxVal = max(maxVal, val)
         return maxVal
 
     def minValue(self, gameState, currDepth, agent):
         actions = gameState.getLegalActions(agent) # all possible actions
-        successor_states = [gameState.generateSuccessor(agent, act) for act in actions] 
-            
         minVal = float("inf")
-        for act in successor_states:
-            if agent + 1 == gameState.getNumAgents():
-                val = self.value(act, currDepth - 1, 0)
-            else:
-                val = self.value(act, currDepth, agent + 1)
+        numAgents = gameState.getNumAgents()
+        for act in actions:
+            successor_state = gameState.generateSuccessor(agent, act)
+            depth = currDepth
+            # Evaluate for all ghosts. If reach the last ghost, update depth
+            if agent + 1 == numAgents: 
+                depth -= 1
+            val = self.value(successor_state, depth, (agent + 1) % numAgents)
             minVal = min(minVal, val)
         return minVal
            
@@ -225,8 +227,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             successor_state = gameState.generateSuccessor(agent, act)
             val = self.value(successor_state, currDepth, 1, alpha, beta)
             maxVal = max(maxVal, val)
-            # Check for pruning
-            if maxVal > beta:
+            if maxVal > beta:  # Check for pruning
                 return maxVal
             alpha = max(alpha, maxVal)
         return maxVal
@@ -234,15 +235,16 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     def minValue(self, gameState, currDepth, agent, alpha, beta):
         actions = gameState.getLegalActions(agent) # all possible actions
         minVal = float("inf")
+        numAgents = gameState.getNumAgents()
         for act in actions:
             successor_state = gameState.generateSuccessor(agent, act)
-            if agent + 1 == gameState.getNumAgents():
-                val = self.value(successor_state, currDepth - 1, 0, alpha, beta)
-            else:
-                val = self.value(successor_state, currDepth, agent + 1, alpha, beta)
+            depth = currDepth
+             # Evaluate for all ghosts. If reach the last ghost, update depth
+            if agent + 1 == numAgents: 
+                depth -= 1
+            val = self.value(successor_state, depth, (agent + 1) % numAgents, alpha, beta)
             minVal = min(minVal, val)
-            # Check for pruning
-            if minVal < alpha:
+            if minVal < alpha:  # Check for pruning
                 return minVal
             beta = min(beta, minVal)
         return minVal
