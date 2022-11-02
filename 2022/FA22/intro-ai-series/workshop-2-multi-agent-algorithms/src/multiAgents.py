@@ -12,6 +12,7 @@
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
 
+from pure_eval import Evaluator
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -136,8 +137,48 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
 
+        actions = gameState.getLegalActions(0)
+        successor_states = [gameState.generateSuccessor(0, act) for act in actions]
+        result_action = dict(zip(successor_states, actions))
+        maxVal = -float('inf')
+        maxAction = actions[0]
+
+        for state, act in result_action.items():
+            currVal = self.minimax(state, self.depth, 1)
+            print(state, act)
+            if maxVal != max(currVal, maxVal):
+                maxVal = max(currVal, maxVal)
+                maxAction = act
+        return maxAction
+        
+    def minimax(self, gameState, currDepth, agent):
+        actions = gameState.getLegalActions(agent) # all possible actions
+        successor_states = [gameState.generateSuccessor(agent, act) for act in actions]
+
+        # Base case (Terminate state)
+        if currDepth == 0 or gameState.isLose() or gameState.isWin():
+            return self.evaluationFunction(gameState) #static evalutation
+        
+        # Case 1: Maximizing
+        if agent == 0: # Pacman 
+            maxVal = -float("inf") 
+            for act in successor_states:
+                val = self.minimax(act, currDepth, 1)
+                maxVal = max(maxVal, val)
+            return maxVal
+
+        # Case 2: Minimizing 
+        if agent > 0: # Not Pacman
+            minVal = float("inf")
+            for act in successor_states:
+                if agent + 1 == gameState.getNumAgents():
+                    val = self.minimax(act, currDepth - 1, 0)
+                else:
+                    val = self.minimax(act, currDepth, agent + 1)
+                minVal = min(minVal, val)
+            return minVal
+           
 class AlphaBetaAgent(MultiAgentSearchAgent):
     """
     Your minimax agent with alpha-beta pruning (question 3)
