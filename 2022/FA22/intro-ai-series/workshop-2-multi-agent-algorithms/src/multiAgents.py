@@ -203,8 +203,62 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
         All ghosts should be modeled as choosing uniformly at random from their
         legal moves.
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        numGhosts = gameState.getNumAgents()
+        agentIndex=0
+        maxVal = -99999999  
+        bestAction = 0
+        depth = 1
+       
+        
+        successor={}
+        for i in range((numGhosts-1)):
+            successor[i]=i+1
+        successor[(numGhosts-1)]=0
+        nextAgent = successor[agentIndex]
+        
+        for action in gameState.getLegalActions(agentIndex):
+            nextState = gameState.generateSuccessor(agentIndex,action)
+            actionVal = self.expectAgentNode(nextAgent,depth,nextState,successor)
+            if actionVal>maxVal:
+                maxVal = actionVal
+                bestAction = action
+        
+        return bestAction
+        
+    def expectAgentNode(self,agentIndex,depth,gameState,successor): 
+        import numpy as np
+        expectVal = [] 
+        nextAgent = successor[agentIndex]
+    
+        if gameState.getLegalActions(agentIndex)==[]:
+            return self.evaluationFunction(gameState)
+    
+        if nextAgent==0:
+            for action in gameState.getLegalActions(agentIndex):
+                nextState = gameState.generateSuccessor(agentIndex,action)
+                expectVal.append(self.maxAgentNode(nextAgent, depth, nextState,successor))
+            return np.mean(expectVal)
+        else:
+            for action in gameState.getLegalActions(agentIndex):
+                nextState = gameState.generateSuccessor(agentIndex,action)
+                expectVal.append(self.expectAgentNode(nextAgent, depth, nextState,successor))
+            return np.mean(expectVal)
+            
+            
+            
+    def maxAgentNode(self,agentIndex,depth,gameState,successor):      
+        depth += 1
+        maxVal=-99999999
+        nextAgent = successor[agentIndex]
+
+        if depth==(self.depth+1) or gameState.getLegalActions(agentIndex)==[]:
+            return self.evaluationFunction(gameState)
+        
+        
+        for action in gameState.getLegalActions(agentIndex):
+            nextState = gameState.generateSuccessor(agentIndex, action)
+            maxVal = max(maxVal, self.expectAgentNode(nextAgent,depth,nextState,successor))
+        return maxVal
 
 def betterEvaluationFunction(currentGameState: GameState):
     """
