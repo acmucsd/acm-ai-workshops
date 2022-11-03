@@ -72,6 +72,7 @@ python pacman.py
 to play a game of pacman and get a grasp on the environment.
 
 Algorithms:
+
 Q2 - Minimax
 
 Q3 - Alpha-Beta Pruning
