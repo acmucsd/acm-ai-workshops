@@ -73,8 +73,11 @@ to play a game of pacman and get a grasp on the environment.
 
 Algorithms:
 Q2 - Minimax
+
 Q3 - Alpha-Beta Pruning
+
 Q4 - Expectimax
+
 <!-- 
     Note: The above list will depend on your specific workshop.
 -->
