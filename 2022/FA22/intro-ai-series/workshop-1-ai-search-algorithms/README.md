@@ -10,8 +10,8 @@
     Request new headers from you Director to fit your workshop!
 -->
 
-![Alt Text (Intro to AI: Search Algorithms)](./figures/DefaultW1_Header_Light.png#gh-light-mode-only)
-![Alt Text (Intro to AI: Search Algorithms)](./figures/DefaultW1_Header_Dark.png#gh-dark-mode-only)
+![Intro to AI: Search Algorithms](./figures/W1_Header_Light.png#gh-light-mode-only)
+![Intro to AI: Search Algorithms](./figures/W1_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI **Intro to AI: Search Algorithms Workshop** repository. We demonstrate how to run uninformed and informed search algorithms in a modified version of OpenAI Gym's `FrozenLake-v1` environment.
 
