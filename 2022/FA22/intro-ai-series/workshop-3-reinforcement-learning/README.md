@@ -10,10 +10,10 @@
     Request new headers from you Director to fit your workshop!
 -->
 
-![Intro to AI: Multi Agent Search](./figures/W2_Header_Light.png#gh-light-mode-only)
-![Intro to AI: Multi Agent Search](./figures/W2_Header_Dark.png#gh-dark-mode-only)
+![Intro to AI: Reinforcement Learning](./figures/W2_Header_Light.png#gh-light-mode-only)
+![Intro to AI: Reinforcement Learning](./figures/W2_Header_Dark.png#gh-dark-mode-only)
 
-The official ACM AI **Intro to AI: Multi Agent Search Algorithms Workshop** repository. We demonstrate how to run various multi-agent search algorithms in a custom Pacman environment from Berkeley's [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj2/#welcome-to-multi-agent-pacman).
+The official ACM AI **Intro to AI: Reinforcement Learning Workshop** repository. We demonstrate how to run reinforcement learning algorithms in a custom Pacman environment from Berkeley's [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/).
 
 <!-- 
     SECTION: Table of Contents
@@ -57,7 +57,7 @@ conda env create -f environment.yaml
 conda activate ai
 ```
 
-Workshop "Intro to AI: Multi Agent Search Algorithms" consists of 2 components:
+Workshop "Intro to AI: Reinforcement Learning" consists of 2 components:
 - [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
 - [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop. (To be added after workshop)
 
@@ -67,17 +67,17 @@ Please refer to [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/pro
 
 Try running
 ```
-python pacman.py
+python gridworld.py -m
 ```
-to play a game of pacman and get a grasp on the environment.
+to play in the gridworld environment manually and get a grasp on the environment.
 
 Algorithms:
 
-Q2 - Minimax
+Q2 - Value Iteration
 
-Q3 - Alpha-Beta Pruning
+Q3 - Q-Learning and Epsilon-Greedy
 
-Q4 - Expectimax
+Q4 - Deep Q-Learning
 
 <!-- 
     Note: The above list will depend on your specific workshop.
