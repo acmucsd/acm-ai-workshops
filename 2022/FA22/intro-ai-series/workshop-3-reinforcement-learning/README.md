@@ -13,7 +13,7 @@
 ![Intro to AI: Reinforcement Learning](./figures/W3_Header_Light.png#gh-light-mode-only)
 ![Intro to AI: Reinforcement Learning](./figures/W3_Header_Dark.png#gh-dark-mode-only)
 
-The official ACM AI **Intro to AI: Reinforcement Learning Workshop** repository. We demonstrate how to run reinforcement learning algorithms in a custom Pacman environment from Berkeley's [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/).
+The official ACM AI **Intro to AI: Reinforcement Learning Workshop** repository. In this workshop we will demonstrate how to run basic reinforcement learning algorithms in custom Gridworld, Pacman, and Crawler environments from Berkeley's [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/).
 
 <!-- 
     SECTION: Table of Contents
@@ -57,28 +57,38 @@ conda env create -f environment.yaml
 conda activate ai
 ```
 
-Workshop "Intro to AI: Reinforcement Learning" consists of 2 components:
+Workshop "Intro to AI: Multi Agent Search Algorithms" consists of 2 components:
 - [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
 - [Summary Graphic](<!-- Local Path to Summary Graphic -->) to summarize key points of the workshop. (To be added after workshop)
 
-Please refer to [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj2/#welcome-to-multi-agent-pacman) for exact details on the code.
+Please refer to [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/) for exact details on the code.
 
 ## 1.2 Testing the Code
 
 Try running
 ```
-python gridworld.py -m
+python gridworld.py
 ```
-to play in the gridworld environment manually and get a grasp on the environment.
+to play a game of Gridworld and get a grasp on the environment. Note environment moves are non-deterministic: as in if you try to move up, there is only an 80% chance you move right. We will be working on developing the following agents in the Gridworld environment primarily, but if they are implemented correctly, they should also work in the Pacman and Crawler environments.
+
+You can try running the Pacman and Crawler environments through:
+```
+python pacman.py
+```
+and
+```
+python crawler.py
+```
+respectively.
 
 Algorithms:
+Q1 - Value Iteration
 
-Q2 - Value Iteration
+Q3 - Q-Learning
 
-Q3 - Q-Learning and Epsilon-Greedy
+Q4 - Epsilon Greedy
 
-Q4 - Deep Q-Learning
-
+Q6 - Approximate Q-Learning
 <!-- 
     Note: The above list will depend on your specific workshop.
 -->
@@ -111,14 +121,16 @@ Q4 - Deep Q-Learning
 ```bash
 intro-ai-series
     | -- figures
-        | -- W3_Header_Dark.png
         | -- W3_Header_Light.png
+        | -- W3_Header_Dark.png
     | -- src
-        | -- gridworld.py # gridworld env
-        | -- crawler.py # crawler env
-        | -- pacman.py # pacman env
-        | -- valueIterationAgents.py # implementation of value iteration algorithm
-        | -- qlearningAgents.py # implementation of q-learning algorithm
+        | -- valueIterationAgents.py # implement value iteration
+        | -- qlearningAgents.py # implement q-learning
+        | -- mdp.py # defines methods on general MDPs
+        | -- learningAgents.py # defines base classes for value iteration and q-learning which will be extended in implementation
+        | -- gridworld.py # implements gridworld
+        | -- featureExtractors.py # extracts features from (state, action) pairs for approximate Q-learning
+        | -- util.py # useful utility function with data structures for implementing algorithms (optional o use), such as util.Counter (useful for Q-learning)
         | -- autograder.py # run this for determining the correctness of code
     | -- README.md
 ```
