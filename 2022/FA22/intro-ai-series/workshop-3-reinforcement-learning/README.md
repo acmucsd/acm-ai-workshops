@@ -10,8 +10,8 @@
     Request new headers from you Director to fit your workshop!
 -->
 
-![Intro to AI: Reinforcement Learning](./figures/W2_Header_Light.png#gh-light-mode-only)
-![Intro to AI: Reinforcement Learning](./figures/W2_Header_Dark.png#gh-dark-mode-only)
+![Intro to AI: Reinforcement Learning](./figures/W3_Header_Light.png#gh-light-mode-only)
+![Intro to AI: Reinforcement Learning](./figures/W3_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI **Intro to AI: Reinforcement Learning Workshop** repository. We demonstrate how to run reinforcement learning algorithms in a custom Pacman environment from Berkeley's [CS 188](https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/).
 
