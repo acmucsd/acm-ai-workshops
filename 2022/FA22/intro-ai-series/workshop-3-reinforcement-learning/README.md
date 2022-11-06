@@ -111,12 +111,14 @@ Q4 - Deep Q-Learning
 ```bash
 intro-ai-series
     | -- figures
-        | -- DefaultW1_Header_Dark.png
-        | -- DefaultW1_Header_Light.png
+        | -- W3_Header_Dark.png
+        | -- W3_Header_Light.png
     | -- src
-        | -- multiAgents.py # implement the algorithms
-        | -- pacman.py # main file that runs pacman games
-        | -- util.py # useful utility function with data structures for implementing algorithms (optional o use)
+        | -- gridworld.py # gridworld env
+        | -- crawler.py # crawler env
+        | -- pacman.py # pacman env
+        | -- valueIterationAgents.py # implementation of value iteration algorithm
+        | -- qlearningAgents.py # implementation of q-learning algorithm
         | -- autograder.py # run this for determining the correctness of code
     | -- README.md
 ```
