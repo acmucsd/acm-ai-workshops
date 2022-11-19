@@ -66,8 +66,9 @@ intro-ai-series
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 1st of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Search algorithms for Informed and Uninformed Search in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to search in its environment! Disclaimer: No Prior AI Experience necessary, all are welcome! 😄
+Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 1st of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Search algorithms for Informed and Uninformed Search in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to search in its environment! 
 
+Slides: https://acmurl.com/ai-search-slides
 <!-- 
     SECTION: Resources
     ---------
@@ -80,8 +81,9 @@ Interested in learning about the core algorithms behind Artificial Intelligence 
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 2nd of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Multi-Agent Search algorithms like Minimax and Expectimax in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to do multi-agent search in its environment to win a game! Disclaimer: No Prior AI Experience necessary, all are welcome! 😄
+Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 2nd of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Multi-Agent Search algorithms like Minimax and Expectimax in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to do multi-agent search in its environment to win a game! 
 
+Slides: https://acmurl.com/ai-multiagent-slides
 <!-- 
     SECTION: Resources
     ---------
@@ -94,7 +96,9 @@ Interested in learning about the core algorithms behind Artificial Intelligence 
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 3rd of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Markov Decision Processes and Reinforcement Learning in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to effectively win games in its environment! Disclaimer: No Prior AI Experience necessary, all are welcome! 😄
+Interested in learning about the core algorithms behind Artificial Intelligence and Decision-Making? 🧠 Come to our 3rd of 3 Intro to AI Workshops this quarter! In this workshop, we will cover Markov Decision Processes and Reinforcement Learning in a Game Environment 👾. This workshop will include an interactive Google Colab Notebook for you to code along with us, and by the end, you will have built an AI agent that learns to effectively win games in its environment! 
+
+Slides: https://acmurl.com/reinforcement-learning-slides
 
 <!-- 
     SECTION: Resources
