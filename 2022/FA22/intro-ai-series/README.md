@@ -130,6 +130,6 @@ Slides: https://acmurl.com/reinforcement-learning-slides
 - Alan Li
 - Stefanie Dao: [LinkedIn](https://www.linkedin.com/in/stefanie-dao/) | [GitHub](https://github.com/StefanieDao)
 - Milan Ganai
-- Jackie Piepkorn: 
+- Jackie Piepkorn: [LinkedIn](https://www.linkedin.com/in/jackie-piepkorn/) | [GitHub](https://github.com/jackiepiepkorn)
 - Jonathan Zamora: [Site](https://jonzamora.dev/) | [LinkedIn](https://www.linkedin.com/in/jonzamora18/) | [GitHub](https://github.com/jonzamora)
 - Arth Shukla: [Site](https://arth.website/) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
