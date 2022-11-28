@@ -128,7 +128,7 @@ Slides: https://acmurl.com/reinforcement-learning-slides
 # 4. Author Info
 
 - Alan Li
-- Stefanie Dao
+- Stefanie Dao: [LinkedIn](https://www.linkedin.com/in/stefanie-dao/) | [GitHub](https://github.com/StefanieDao)
 - Milan Ganai
 - Jackie Piepkorn: 
 - Jonathan Zamora: [Site](https://jonzamora.dev/) | [LinkedIn](https://www.linkedin.com/in/jonzamora18/) | [GitHub](https://github.com/jonzamora)
