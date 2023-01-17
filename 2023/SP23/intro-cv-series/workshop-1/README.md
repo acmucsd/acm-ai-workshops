@@ -1,0 +1,110 @@
+<!-- 
+    If you have any questions about this template, feel free to ask
+    your Director for help!
+-->
+
+
+<!-- 
+    SECTION: Header
+    ---------
+    Request new headers from you Director to fit your workshop!
+-->
+
+![Intro to CV: Search Algorithms](./figures/W1_Header_Light.png#gh-light-mode-only)
+![Intro to CV: Search Algorithms](./figures/W1_Header_Dark.png#gh-dark-mode-only)
+
+The official ACM AI **Intro to CV: Pytorch and Neural Networks** repository. Here you can find the slides and notebook for the workshop. Feel free to go through it yourself to learn how to train a neural network for classifying handwritten digits!
+
+<!-- 
+    SECTION: Table of Contents
+    ---------
+    Mandatory Sections:
+        - File Directory Structure
+        - Workshop Recording
+            - if you recorded your workshop, please make it available here
+        - Getting Started
+            - Give an interesting description of your workshop!
+            - E.g. you can use the marketing descriptiong (w/o the emojis
+              and make the nouns general ('you' becomes 'the reader'))
+        - Resources
+            - Images, papers, etc
+    Do NOT Include:
+        - Author Info
+            - This should only be in the main README for your series
+    Other Possible Sections:
+        - Anything else you'd like, but try not to be redundant!
+            - Make sure it's not already in the main series README or
+              another section
+-->
+
+<!-- 
+    SECTION: Workshop Video
+    ---------
+    Most, if not all, workshops should have recordings. Once the recording
+    is posted to the ACMUCSD YT channel (https://www.youtube.com/channel/UCyjPATFqc3FwOiuqJ2UG1Eg), replace the text with an <img> element.
+-->
+
+# 1. Getting Started
+
+<!-- 
+    You can write something up or use the marketing description.
+-->
+
+## 1.1 Environment Setup
+
+```
+conda env create -f environment.yaml
+conda activate ai
+```
+
+Workshop "Intro to CV: Neural Networks" consists of 2 components:
+- [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
+- [Slide Deck](<!-- Local Path to Slide Deck -->) for the presentation slides
+
+<!-- 
+    Note: The above list will depend on your specific workshop.
+-->
+
+
+# 2. Workshop Video
+
+*Will be added as soon as uploaded to YouTube*
+
+<!--
+<div align="center">
+<a href="YT Video Link">
+<img
+    src="YT Max Res Thumbnail Link"
+    alt="Screen reader-compatible alt text"
+    width="500px"
+/>
+</a>
+</div>
+-->
+
+<!-- 
+    SECTION: File Directory Structure
+    ---------
+    Write out your File Directory Structure below (make sure it's up-to-date)
+-->
+
+# 3. File Directory Structure
+
+```bash
+intro-ai-series
+    | -- figures
+        | -- DefaultW1_Header_Dark.png
+        | -- DefaultW1_Header_Light.png
+    | -- src
+        | -- videos # where the videos of our agent traversing the FrozenLake grid are stored
+        | -- main.py # calls the core search algorithms
+        | -- search.py # where we define the core search algorithms for our AI agent
+        | -- test.py # for testing determinstic trajectories in FrozenLake enviroment
+    | -- README.md
+```
+
+<!-- 
+    SECTION: Getting Started
+    ---------
+    Brief description of your workshop here
+-->
