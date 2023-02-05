@@ -108,5 +108,5 @@ Interested in learning about Computer Vision - teaching computers to process and
 
 - Alan Li: [LinkedIn](https://www.linkedin.com/in/alan-li-2001/) | [GitHub](https://github.com/yuyeon)
 - Stefanie Dao: [LinkedIn](https://www.linkedin.com/in/stefanie-dao/) | [GitHub](https://github.com/StefanieDao)
-- Weiji
+- Weiji Chen
 - Arth Shukla: [Site](https://arth.website/) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
