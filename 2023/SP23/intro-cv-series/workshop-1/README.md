@@ -44,29 +44,8 @@ The official ACM AI **Intro to CV: Pytorch and Neural Networks** repository. Her
     is posted to the ACMUCSD YT channel (https://www.youtube.com/channel/UCyjPATFqc3FwOiuqJ2UG1Eg), replace the text with an <img> element.
 -->
 
-# 1. Getting Started
 
-<!-- 
-    You can write something up or use the marketing description.
--->
-
-## 1.1 Environment Setup
-
-```
-conda env create -f environment.yaml
-conda activate ai
-```
-
-Workshop "Intro to CV: Neural Networks" consists of 2 components:
-- [Notebook](<!-- Local Path to Notebook -->) with completed code and explanations.
-- [Slide Deck](<!-- Local Path to Slide Deck -->) for the presentation slides
-
-<!-- 
-    Note: The above list will depend on your specific workshop.
--->
-
-
-# 2. Workshop Video
+# 1. Workshop Recording
 
 *Will be added as soon as uploaded to YouTube*
 
@@ -88,23 +67,35 @@ Workshop "Intro to CV: Neural Networks" consists of 2 components:
     Write out your File Directory Structure below (make sure it's up-to-date)
 -->
 
-# 3. File Directory Structure
+# 2. File Directory Structure
 
 ```bash
-intro-ai-series
+workshop-1
     | -- figures
-        | -- DefaultW1_Header_Dark.png
-        | -- DefaultW1_Header_Light.png
-    | -- src
-        | -- videos # where the videos of our agent traversing the FrozenLake grid are stored
-        | -- main.py # calls the core search algorithms
-        | -- search.py # where we define the core search algorithms for our AI agent
-        | -- test.py # for testing determinstic trajectories in FrozenLake enviroment
+        | -- CVW1_Header_Dark.png
+        | -- CVW1_Header_Light.png
+    | -- Main_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb
+    | -- Interactive_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb
     | -- README.md
+
 ```
 
 <!-- 
     SECTION: Getting Started
     ---------
     Brief description of your workshop here
+-->
+
+## 3 Getting Started
+
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
+
+Workshop 1 consists of 4 components:
+- [Presentation](./presentation-resources/) used during the workshop.
+- [Main Notebook](./Main_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb) with completed code and explanations.
+- [Interactive Notebook](./Interactive_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb) with questions and exercises for the reader.
+- [Summary Graphic](./presentation-resources/) to summarize key points of the workshop.
+
+<!-- 
+    Note: The above list will depend on your specific workshop.
 -->

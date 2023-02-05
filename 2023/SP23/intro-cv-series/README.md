@@ -46,8 +46,8 @@ intro-cv-series
     | -- workshop-1
         | -- [Workshop 1 Resources]
     | -- ...
-    | -- Default_Main_Header_Dark.png
-    | -- Default_Main_Header_Light.png
+    | -- CV_Main_Header_Dark.png
+    | -- CV_Main_Header_Light.png
     | -- ...
     | -- README.md
 ```
@@ -60,20 +60,13 @@ intro-cv-series
 
 # 2. Getting Started
 
-## 2.1 Workshop 1 - Intro to CV: Pytorch and Neural Networks
+## 2.1 Workshop 1 - Intro to CV: Pytorch and Image Classification
 
 <!-- 
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-An introduction to Pytorch, basic machine learning formulations, and neural networks. This workshop will lead students through developing a multi layer neural network to classify handwritten digits from the MNIST dataset, and provide the foundation and intuitions for students to begin tackling basic computer vision problems on their own, and empower their own learning.
-
-Slides: 
-<!-- 
-    SECTION: Resources
-    ---------
-    Make sure to cite everything you use, whether directly or for inspiration!
--->
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
 
 ## 2.2 Workshop 2 - Intro to CV: Convolutional Neural Networks
 
@@ -81,14 +74,6 @@ Slides:
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-N/A
-
-Slides: 
-<!-- 
-    SECTION: Resources
-    ---------
-    Make sure to cite everything you use, whether directly or for inspiration!
--->
 
 ## 2.3 Workshop 3 - Intro to CV
 
@@ -96,9 +81,6 @@ Slides:
     You can write something up for each worksop or use their marketing descriptions.
 -->
 
-N/A
-
-Slides: 
 
 <!-- 
     SECTION: Resources
@@ -109,8 +91,6 @@ Slides:
 # 3. Resources
 
 ## 3.1 Workshop 1 - Intro to CV: Pytorch and Neural Networks
-
-- 
 
 ## 3.2 Workshop 2 - Intro to CV: Convolutional Neural Networks
 
