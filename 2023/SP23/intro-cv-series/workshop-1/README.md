@@ -10,8 +10,8 @@
     Request new headers from you Director to fit your workshop!
 -->
 
-![Intro to CV: Search Algorithms](./figures/W1_Header_Light.png#gh-light-mode-only)
-![Intro to CV: Search Algorithms](./figures/W1_Header_Dark.png#gh-dark-mode-only)
+![Intro to CV: Search Algorithms](./figures/CVW1_Header_Light.png#gh-light-mode-only)
+![Intro to CV: Search Algorithms](./figures/CVW1_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI **Intro to CV: Pytorch and Neural Networks** repository. Here you can find the slides and notebook for the workshop. Feel free to go through it yourself to learn how to train a neural network for classifying handwritten digits!
 

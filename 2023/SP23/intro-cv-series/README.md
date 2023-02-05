@@ -10,8 +10,8 @@
     Request new headers from you Director to fit your workshop!
 -->
 
-![Alt Text (Intro to CV Workshop Series)](./Default_Main_Header_Light.png#gh-light-mode-only)
-![Alt Text (Intro to CV Workshop Series)](./Default_Main_Header_Dark.png#gh-dark-mode-only)
+![Alt Text (Intro to CV Workshop Series)](./CV_Main_Header_Light.png#gh-light-mode-only)
+![Alt Text (Intro to CV Workshop Series)](./CV_Main_Header_Dark.png#gh-dark-mode-only)
 
 The official ACM AI **Intro to Computer Vision Workshop Series** repository.
 
