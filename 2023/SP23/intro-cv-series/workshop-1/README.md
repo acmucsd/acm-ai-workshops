@@ -87,7 +87,7 @@ workshop-1
     Brief description of your workshop here
 -->
 
-## 3 Getting Started
+# 3 Getting Started
 
 Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
 
