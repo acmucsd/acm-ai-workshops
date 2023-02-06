@@ -74,6 +74,8 @@ workshop-1
     | -- figures
         | -- CVW1_Header_Dark.png
         | -- CVW1_Header_Light.png
+    | -- presentation-resources
+        | -- Slides_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.pptx
     | -- Main_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb
     | -- Interactive_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb
     | -- Slides_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.pdf
