@@ -90,10 +90,9 @@ workshop-1
 
 Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
 
-Workshop 1 consists of 4 components:
+Workshop 1 consists of 3 components:
 - [Presentation](./presentation-resources/) used during the workshop.
-- [Main Notebook](./Main_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb) with completed code and explanations.
-- [Interactive Notebook](./Interactive_Notebook_Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb) with questions and exercises for the reader.
+- [Colab Notebook](./Intro_to_CV_Workshop_1_Pytorch_and_Image_Classification.ipynb) with completed code and explanations.
 - [Summary Graphic](./presentation-resources/) to summarize key points of the workshop.
 
 <!-- 
