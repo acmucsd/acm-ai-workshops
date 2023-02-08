@@ -47,7 +47,9 @@ The official ACM AI **Intro to CV: Pytorch and Neural Networks** repository. Her
 
 # 1. Workshop Recording
 
-*Will be added as soon as uploaded to YouTube*
+Unfortunately, due to last-minute glitches in software, a recording was not made for this workshop. We apologize for the inconvenience. However, the [presentation](./Slides_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.pdf) and [interactive notebook](./Interactive_Notebook_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.ipynb) have all necessary content explained in the workshop.
+
+If you have any questions, feel free to ask in out [ACM AI Discord](https://discord.gg/SZA2WV36sJ); we'd be happy to help!
 
 <!--
 <div align="center">
