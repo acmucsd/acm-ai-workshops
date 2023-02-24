@@ -92,7 +92,7 @@ workshop-2
 
 # 3. Getting Started
 
-Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 2nd of 3 Intro to CV Workshops this quarter! Building on the previous workshops, we will transform a typical neural network into a CNN made specifically for computer vision. Make sure to bring a computer, as we will have interactive notebooks for participants to code in Pytorch along with the presenters.
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 2nd of 2 Intro to CV Workshops this quarter! Building on the previous workshops, we will transform a typical neural network into a CNN made specifically for computer vision. Make sure to bring a computer, as we will have interactive notebooks for participants to code in Pytorch along with the presenters.
 
 Workshop 1 consists of 2 components:
 - [Presentation](./Slides_Intro_to_CV_Workshop_2_Convolutional_Neural_Networks_CNNs.pdf) used during the workshop.

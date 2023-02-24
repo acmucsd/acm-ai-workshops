@@ -74,7 +74,7 @@ Interested in learning about Computer Vision - teaching computers to process and
     You can write something up for each workshop or use their marketing descriptions.
 -->
 
-Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 2nd of 3 Intro to CV Workshops this quarter! Building on the previous workshops, we will transform a typical neural network into a CNN made specifically for computer vision. Make sure to bring a computer, as we will have interactive notebooks for participants to code in Pytorch along with the presenters.
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 2nd of 2 Intro to CV Workshops this quarter! Building on the previous workshops, we will transform a typical neural network into a CNN made specifically for computer vision. Make sure to bring a computer, as we will have interactive notebooks for participants to code in Pytorch along with the presenters.
 
 <!-- 
     SECTION: Resources
@@ -82,11 +82,11 @@ Interested in learning about Computer Vision - teaching computers to process and
     Make sure to cite everything you use, whether directly or for inspiration!
 -->
 
-# 3. Resources
+<!-- # 3. Resources
 
 ## 3.1 Workshop 1 - Intro to CV: Pytorch and Neural Networks
 
-## 3.2 Workshop 2 - Intro to CV: Convolutional Neural Networks
+## 3.2 Workshop 2 - Intro to CV: Convolutional Neural Networks -->
 
 
 <!-- 
@@ -96,9 +96,10 @@ Interested in learning about Computer Vision - teaching computers to process and
     your partners below! Add your LinkedIn and GitHub!
 -->
 
-# 4. Author Info
+# 3. Author Info
 
 - Alan Li: [LinkedIn](https://www.linkedin.com/in/alan-li-2001/) | [GitHub](https://github.com/yuyeon)
 - Stefanie Dao: [LinkedIn](https://www.linkedin.com/in/stefanie-dao/) | [GitHub](https://github.com/StefanieDao)
 - Weiji Chen
+- Milan Ganai
 - Arth Shukla: [Site](https://arth.website/) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
