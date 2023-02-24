@@ -102,5 +102,5 @@ Interested in learning about Computer Vision - teaching computers to process and
 - Stefanie Dao: [LinkedIn](https://www.linkedin.com/in/stefanie-dao/) | [GitHub](https://github.com/StefanieDao)
 - Weiji Chen
 - Milan Ganai
-- Jackie Piepkorn
+- Jackie Piepkorn: [LinkedIn](https://www.linkedin.com/in/jackie-piepkorn/) | [GitHub](https://github.com/jackiepiepkorn)
 - Arth Shukla: [Site](https://arth.website/) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/) | [GitHub](https://github.com/arth-shukla)
