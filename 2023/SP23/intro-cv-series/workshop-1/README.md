@@ -49,7 +49,7 @@ The official ACM AI **Intro to CV: Pytorch and Neural Networks** repository. Her
 
 Unfortunately, due to last-minute glitches in software, a recording was not made for this workshop. We apologize for the inconvenience. However, the [presentation](./Slides_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.pdf) and [interactive notebook](./Interactive_Notebook_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.ipynb) have all necessary content explained in the workshop.
 
-If you have any questions, feel free to ask in out [ACM AI Discord](https://discord.gg/SZA2WV36sJ); we'd be happy to help!
+If you have any questions, feel free to ask in out [ACM AI Discord](https://discord.gg/SZA2WV36sJ); we're happy to help!
 
 <!--
 <div align="center">
@@ -93,7 +93,7 @@ workshop-1
 
 # 3. Getting Started
 
-Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 2 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
 
 Workshop 1 consists of 3 components:
 - [Presentation](./Slides_Intro_to_CV_Workshop_1_Getting_Started_with_Computer_Vision.pdf) used during the workshop.

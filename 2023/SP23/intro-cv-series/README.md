@@ -63,24 +63,18 @@ intro-cv-series
 ## 2.1 Workshop 1 - Intro to CV: Pytorch and Image Classification
 
 <!-- 
-    You can write something up for each worksop or use their marketing descriptions.
+    You can write something up for each workshop or use their marketing descriptions.
 -->
 
-Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 3 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 1st of 2 Intro to CV Workshops this quarter! In this workshop, participants will receive a code-focused, interactive introduction to Pytorch, Neural Networks, and Image Classification in MNIST. Make sure to bring a computer, as we will have interactive notebooks for participants to code along with the presenters.
 
 ## 2.2 Workshop 2 - Intro to CV: Convolutional Neural Networks
 
 <!-- 
-    You can write something up for each worksop or use their marketing descriptions.
+    You can write something up for each workshop or use their marketing descriptions.
 -->
 
-
-## 2.3 Workshop 3 - Intro to CV
-
-<!-- 
-    You can write something up for each worksop or use their marketing descriptions.
--->
-
+Interested in learning about Computer Vision - teaching computers to process and classify images? Come to our 2nd of 3 Intro to CV Workshops this quarter! Building on the previous workshops, we will transform a typical neural network into a CNN made specifically for computer vision. Make sure to bring a computer, as we will have interactive notebooks for participants to code in Pytorch along with the presenters.
 
 <!-- 
     SECTION: Resources
@@ -93,8 +87,6 @@ Interested in learning about Computer Vision - teaching computers to process and
 ## 3.1 Workshop 1 - Intro to CV: Pytorch and Neural Networks
 
 ## 3.2 Workshop 2 - Intro to CV: Convolutional Neural Networks
-
-## 3.3 Workshop 3 - Intro to CV
 
 
 <!-- 
