@@ -1,7 +1,9 @@
+<!--
 ---
 title: "Deep Reinforcement Learning"
 description: "Join us for an immersive workshop on Deep Reinforcement Learning (DRL), a cutting-edge approach for solving complex decision-making problems that is revolutionizing artificial intelligence. This workshop and repository will provide participants with a comprehensive understanding of the fundamental concepts, techniques, and applications of Deep RL."
 ---
+-->
 
 <!-- 
     The above is REQUIRED YAML Frontmatter so the README can be rendered 
