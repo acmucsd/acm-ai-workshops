@@ -147,3 +147,4 @@ deep-rl
 # 5. Author Info
 
 - Jonathan Zamora: [LinkedIn](https://www.linkedin.com/in/jonzamora18) | [GitHub](https://github.com/jonzamora)
+- Arth Shukla [Site](https://arth.website) | [GitHub](https://github.com/arth-shukla) | [LinkedIn](https://www.linkedin.com/in/arth-shukla/)
