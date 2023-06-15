@@ -1,6 +1,6 @@
-[submodule "2023/SP23/deep-rl/ddqn-mario"]
-	path = 2023/SP23/deep-rl/ddqn-mario
-	url = https://github.com/arth-shukla/ddqn-mario
 [submodule "2023/SP23/deep-rl/ppo-mario"]
 	path = 2023/SP23/deep-rl/ppo-mario
-	url = https://github.com/arth-shukla/ppo-mario
+	url = https://github.com/arth-shukla/ppo-mario.git
+[submodule "2023/SP23/deep-rl/ddqn-mario"]
+	path = 2023/SP23/deep-rl/ddqn-mario
+	url = https://github.com/arth-shukla/ddqn-mario.git
