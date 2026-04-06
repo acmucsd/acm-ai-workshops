@@ -46,9 +46,6 @@ intro-cv-series
     | -- workshop-1
         | -- [Workshop 1 Resources]
     | -- ...
-    | -- CV_Main_Header_Dark.png
-    | -- CV_Main_Header_Light.png
-    | -- ...
     | -- README.md
 ```
 
